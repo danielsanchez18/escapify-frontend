@@ -1,0 +1,42 @@
+<section class="flex items-center justify-between gap-x-5">
+
+  <!-- Resultados -->
+  <p class="text-sm max-sm:hidden">10 de 298 resultados</p>
+
+  <!-- Paginacion, Ir a Pagina -->
+  <div class="flex items-center gap-x-5">
+
+    <!-- Paginacion -->
+    <div class="flex items-center">
+      <button class="rounded-full flex items-center justify-center w-8 h-8 hover:bg-gray-100 hover:text-black text-sm font-semibold">
+        <lucide-icon [name]="ChevronLeft" class="size-4" />
+      </button>
+      <button class="rounded-full flex items-center justify-center w-8 h-8 bg-primary text-white text-sm font-semibold">
+        1
+      </button>
+      <button class="rounded-full flex items-center justify-center w-8 h-8 hover:bg-gray-100 text-sm">
+        2
+      </button>
+      <button class="rounded-full flex items-center justify-center w-8 h-8 hover:bg-gray-100 text-sm">
+        3
+      </button>
+      <button class="rounded-full flex items-center justify-center w-8 h-8 hover:bg-gray-100 text-sm">
+        <lucide-icon [name]="ElipsisIcon" class="size-4" />
+      </button>
+      <button class="rounded-full flex items-center justify-center w-8 h-8 hover:bg-gray-100 text-sm">
+        30
+      </button>
+      <button class="rounded-full flex items-center justify-center w-8 h-8 hover:bg-gray-100 text-sm">
+        <lucide-icon [name]="ChevronRight" class="size-4" />
+      </button>
+    </div>
+
+    <!-- Ir a Pagina -->
+    <div class="relative max-w-20">
+      <input type="text" class="px-3 py-2 font-medium rounded-lg border border-gray-200 text-xs w-full pr-6" placeholder="Ir a pág.">
+      <lucide-icon [name]="ChevronRight" class="size-4 text-gray-500 absolute right-[3px] top-1/2 -translate-y-1/2" />
+    </div>
+
+  </div>
+
+</section>

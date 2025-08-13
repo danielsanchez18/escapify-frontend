@@ -1,0 +1,21 @@
+<div class="px-5 py-3 bg-gray-950 font-medium rounded-full flex items-center gap-x-7 text-sm">
+
+  @if (btnDelete) {
+    <button class="text-red-400 hover:underline underline-offset-4">
+      Eliminar
+    </button>
+  }
+
+  @if (btnEdit) {
+    <a routerLink="editar" class="text-green-500 border-gray-300 hover:underline underline-offset-4">
+      Editar
+    </a>
+  }
+
+  @if (btnExport) {
+    <a routerLink="exportar" class="text-white hover:underline underline-offset-4">
+      Exportar
+    </a>
+  }
+
+</div>

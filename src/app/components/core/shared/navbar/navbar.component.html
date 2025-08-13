@@ -1,0 +1,29 @@
+<nav class="bg-white flex max-md:flex-col h-full">
+
+  <section class="py-3 px-10 md:hidden">
+    <a routerLink="/dashboard" class="inline-flex h-10">
+      <img src="/img/logo-horizontal.png" alt="Logo" class="h-full">
+    </a>
+  </section>
+
+  <section class="max-md:flex-1 overflow-y-auto">
+    <div class="max-md:px-5 max-md:gap-y-1 gap-x-2 md:py-2.5 flex max-md:flex-col md:items-center">
+      @for (link of links; track $index) {
+
+      <a class="flex items-center gap-x-2 text-sm text-nowrap px-5 py-2.5
+          sm:border-l-2 max-sm:rounded-lg border-transparent max-md:hover:bg-gray-100
+          md:px-3 md:py-2 md:rounded-lg text-black/80 md:text-black/60 md:hover:text-black"
+
+          routerLink="{{link.href}}"
+          routerLinkActive="bg-gray-100 text-primary md:text-black/100 md:border-transparent sm:border-l-primary">
+
+        <lucide-icon [name]="link.icon" class="size-4" />
+        {{link.text}}
+
+      </a>
+
+      }
+    </div>
+  </section>
+
+</nav>

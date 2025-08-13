@@ -1,0 +1,16 @@
+<div class="relative w-full md:max-w-md group">
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    [placeholder]="placeholder"
+    class="pl-10 pr-16 py-2 text-sm w-full rounded-lg border border-gray-200 focus:outline-primary bg-white group-hover:shadow"
+    (input)="onSearchInput()"
+  >
+
+  <!-- Icono de Placeholder -->
+  <lucide-icon [name]="Search" class="size-4 text-gray-500 absolute left-2 top-1/2 -translate-y-1/2 group-hover:text-primary-light" />
+
+  <button *ngIf="searchQuery" class="absolute top-1/2 text-xs right-3 font-semibold -translate-y-1/2 text-primary" (click)="clearSearch()">
+    Limpiar
+  </button>
+</div>

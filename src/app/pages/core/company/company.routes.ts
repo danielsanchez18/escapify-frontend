@@ -1,0 +1,38 @@
+import { Routes } from '@angular/router';
+
+export const COMPANY_ROUTES: Routes = [
+  {
+    path: '',
+    loadComponent: () => import('./overview/overview.component').then(m => m.PageCoreCompanyOverview),
+  },
+  {
+    path: 'estadisticas',
+    loadComponent: () => import('./stats/stats.component').then(m => m.PageCoreCompanyStats),
+  },
+  {
+    path: 'exportar',
+    loadComponent: () => import('./export/export.component').then(m => m.PageCoreCompanyExport),
+  },
+  {
+    path: 'agregar',
+    loadComponent: () => import('./add/add.component').then(m => m.PageCoreCompanyAdd),
+  },
+  {
+    path: ':id',
+    loadComponent: () => import('./details/details.component').then(m => m.PageCoreCompanyDetails),
+  },
+  // {
+  //   path: ':id/editar',
+  //   loadComponent: () => import('./edit/edit.component').then(m => m.PageCompanyEdit),
+  // },
+  // {
+  //   path: ':id/estadisticas',
+  //   loadComponent: () => import('./details-stats/details-stats.component').then(m => m.PageCompanyDetailsStats),
+  // },
+  // {
+  //   path: ':id/exportar',
+  //   loadComponent: () => import('./details-export/details-export.component').then(m => m.PageCompanyDetailsExport),
+  // }
+];
+
+

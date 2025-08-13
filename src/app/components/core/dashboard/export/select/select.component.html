@@ -1,0 +1,51 @@
+<section class="bg-white border border-gray-200 rounded-xl px-5 py-5 space-y-5">
+
+  <div class="grid grid-cols-[auto_1fr] items-center gap-x-2">
+    <lucide-icon [name]="FileCog" class="size-4 stroke-[1.5]" />
+    <h3 class="font-medium">Seleccionar datos a exportar</h3>
+    <p class="text-sm text-gray-600 col-span-2">Elige los conjuntos de datos que deseas incluir en la exportación</p>
+  </div>
+
+  <div class="divide-y divide-gray-200">
+
+    <article class="py-4 flex gap-x-3">
+      <div class="p-2 rounded-lg bg-gray-100 h-fit">
+        <lucide-icon [name]="TrendingUp" class="size-4 text-gray-700" />
+      </div>
+      <div class="w-full">
+        <h3 class="text-sm font-medium">Tráfico de la aplicación</h3>
+        <p class="text-xs text-gray-600">Datos de visitas y usuarios</p>
+        <p class="font-semibold text-xs px-2 py-1.5 rounded-full bg-gray-100 w-fit mt-2">30 registros</p>
+      </div>
+      <div class="flex justify-center items-center gap-x-1">
+        <button class="p-1 rounded-lg bg-white hover:shadow">
+          <lucide-icon [name]="Settings" class="size-5 stroke-[1.5]" />
+        </button>
+        <button class="p-1 rounded-lg bg-primary">
+          <lucide-icon [name]="Check" class="size-4 text-white" />
+        </button>
+      </div>
+    </article>
+
+    <article class="py-4 flex gap-x-3">
+      <div class="p-2 rounded-lg bg-gray-100 h-fit">
+        <lucide-icon [name]="Building2" class="size-4 text-gray-700" />
+      </div>
+      <div class="w-full">
+        <h3 class="text-sm font-medium">Análisis por Empresa</h3>
+        <p class="text-xs text-gray-600">Datos detallados de empresa</p>
+        <p class="font-semibold text-xs px-2 py-1.5 rounded-full bg-gray-100 w-fit mt-2">1,247 registros</p>
+      </div>
+      <div class="flex justify-center items-center gap-x-1">
+        <button class="p-1 rounded-lg bg-white hover:shadow">
+          <lucide-icon [name]="Settings" class="size-5 stroke-[1.5]" />
+        </button>
+        <button class="p-1 rounded-lg bg-primary">
+          <lucide-icon [name]="Check" class="size-4 text-white" />
+        </button>
+      </div>
+    </article>
+
+  </div>
+
+</section>

@@ -1,0 +1,52 @@
+<section class="bg-white border border-gray-200 rounded-xl px-5 py-5 space-y-5">
+
+  <div class="grid grid-cols-[auto_1fr] items-center gap-x-2">
+    <lucide-icon [name]="Download" class="size-4 stroke-[1.5]" />
+    <h3 class="font-medium">Formato de exportación</h3>
+    <p class="text-sm text-gray-600 col-span-2">Elige el formato de archivo para la exportación</p>
+  </div>
+
+  <div class="">
+
+    <!-- Formato Excel -->
+    <button class="p-3 rounded-xl border border-primary grid grid-cols-[auto_1fr_auto] gap-x-3 items-center w-full">
+      <div class="p-2 rounded-lg bg-[#E7F0E7]">
+        <lucide-icon [name]="FileSpreadsheetIcon" class="size-5 text-[#51965c]" />
+      </div>
+      <div>
+        <p class="text-start font-medium text-sm">Excel (.xlsx)</p>
+        <p class="text-start text-xs text-gray-600 line-clamp-2">Formato de hoja de cálculo con múltiple pestañas</p>
+      </div>
+      <button class="rounded-full w-5 h-5 border-2 border-primary bg-white flex items-center justify-center">
+        <span class="w-3 h-3 bg-primary rounded-full"></span>
+      </button>
+    </button>
+
+    <!-- Formato CSV -->
+    <button class="p-3 rounded-xl border border-transparent grid grid-cols-[auto_1fr_auto] gap-x-3 items-center w-full">
+      <div class="p-2 rounded-lg bg-[#DAE4EB]">
+        <lucide-icon [name]="Table" class="size-5 text-[#074A79]" />
+      </div>
+      <div>
+        <p class="text-start font-medium text-sm">CSV (.csv)</p>
+        <p class="text-start text-xs text-gray-600 line-clamp-2">Valores separados por comas, compatible universalmente</p>
+      </div>
+      <button class="rounded-full w-5 h-5 border border-gray-300 bg-white flex items-center justify-center">
+      </button>
+    </button>
+
+    <!-- Formato PDF -->
+    <button class="p-3 rounded-xl border border-transparent grid grid-cols-[auto_1fr_auto] gap-x-3 items-center w-full">
+      <div class="p-2 rounded-lg bg-[#F6DFDB]">
+        <lucide-icon [name]="File" class="size-5 text-[#C3290E]" />
+      </div>
+      <div>
+        <p class="text-start font-medium text-sm">PDF (.pdf)</p>
+        <p class="text-start text-xs text-gray-600 line-clamp-2">Documento con formato para presentaciones</p>
+      </div>
+      <button class="rounded-full w-5 h-5 border border-gray-300 bg-white flex items-center justify-center">
+      </button>
+    </button>
+  </div>
+
+</section>

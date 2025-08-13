@@ -1,0 +1,82 @@
+<section class="space-y-7 rounded-xl border border-gray-200 py-5">
+
+  <!-- Titulo, Busqueda, Filtros -->
+  <article class="flex items-center justify-between gap-x-3 px-5">
+
+    <!-- Buscar -->
+    <component-shared-search [(searchQuery)]="searchQuery" [placeholder]="'Buscar por nombre...'"
+      (searchQueryChange)="loadCompanies()" />
+
+    <!-- Boton de Filtros -->
+    <button
+      class="px-2 py-2 rounded-lg border border-gray-200 flex items-center gap-x-2 text-gray-600 hover:bg-gray-50 hover:shadow">
+      <lucide-icon [name]="ListFilter" class="size-4 stroke-[1.5]" />
+      <p class="font-medium text-sm">Filtros</p>
+      <p class="flex items-center justify-center rounded-full font-semibold bg-primary text-white size-5 text-xs">0</p>
+    </button>
+
+  </article>
+
+  <!-- Tabla empresas -->
+  <div class="overflow-x-auto mx-5">
+    <div class="min-w-full inline-block align-middle">
+      <div class="overflow-hidden">
+        <table class="min-w-full divide-y divide-white">
+          <thead>
+            <tr class="text-xs uppercase bg-gray-100">
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">empresa</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">Suscripcion</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">n° sucur.</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">n° trabaj.</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">Ventas</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">Estado</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">creado por</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr routerLink="12" class="group hover:bg-gray-50 hover:cursor-pointer max-xl:w-full">
+              <td class="px-6 py-4 whitespace-nowrap text-sm">
+                <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
+                  <img class="min-w-10 max-w-10 h-10 bg-gray-200 rounded-full object-cover" src="/img/logo-min.png" alt="Company Logo">
+                  <div class="flex flex-col">
+                    <p class="text-gray-800 font-semibold">Escapify</p>
+                    <p class="text-gray-500 text-xs">Tecnología</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <div class="">
+                  <p class="text-sm text-gray-900 font-medium">Premium</p>
+                  <p class="text-xs text-gray-600">13 días restantes</p>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3 sucursales</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">13 trabajadores</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">S/. 1203.00</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <div class="flex items-center gap-x-1.5">
+                  <div class="w-2.5 h-2.5 bg-green-600 rounded-full"></div>
+                  Activo
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
+                  <img class="min-w-10 max-w-10 h-10 bg-gray-200 rounded-full object-cover" src="https://avatars.githubusercontent.com/u/148911330?v=4" alt="Usuario">
+                  <div class="flex flex-col">
+                    <p class="text-gray-800 font-semibold">Daniel Sánchez</p>
+                    <p class="text-gray-500 text-xs">18 de Jun 25</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paginación -->
+  <div class="px-5">
+    <component-shared-paginator />
+  </div>
+</section>
