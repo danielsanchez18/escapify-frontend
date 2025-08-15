@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const COMPANY_ROUTES: Routes = [
   {
     path: '',
-    loadComponent: () => import('./overview/overview.component').then(m => m.PageCoreCompanyOverview),
+    loadComponent: () => import('./overview/overview.component').then(m => m.PageCoreCompanyOverview)
   },
   {
     path: 'estadisticas',
@@ -20,6 +20,12 @@ export const COMPANY_ROUTES: Routes = [
   {
     path: ':id',
     loadComponent: () => import('./details/details.component').then(m => m.PageCoreCompanyDetails),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('@components/core/company/details/general/general.component').then(m => m.ComponentCoreCompanyDetailsGeneral),
+      },
+    ]
   },
   // {
   //   path: ':id/editar',

@@ -1,50 +1,29 @@
-<div class="grid lg:grid-cols-[auto_1fr] gap-5">
-  <section
-    class="rounded-xl lg:w-sm xl:w-md border border-gray-200 p-5 space-y-5 shadow"
-  >
-    <h2 class="font-medium text-sm">Información de Contacto</h2>
-    <div class="space-y-2.5">
-      <div class="flex items-center gap-x-3 text-gray-700">
-        <lucide-icon [img]="Mail" class="size-4 stroke-[1.5]" />
-        <p class="text-sm">escapify&#64;gmail.com</p>
+<div class="grid gap-5">
+  <section class="p-5 rounded-xl border border-gray-200 shadow space-y-5">
+    <div class="grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] gap-x-3 items-center gap-y-5">
+      <img
+        class="w-16 h-16 rounded-full object-cover"
+        src="http://localhost:4200/img/logo-min.png"
+        alt="Logo de la empresa"
+      />
+      <div class="space-y-1 sm:space-y-0.5">
+        <div class="flex items-center gap-x-3">
+          <h2 class="font-medium">Escapify</h2>
+          <span class="sm:hidden text-xs text-white px-2 py-1.5 rounded-full bg-primary leading-none font-medium">Activa</span>
+        </div>
+        <button class="flex text-gray-600 items-center text-start gap-x-2 hover:text-black">
+          <p class="text-sm line-clamp-1">ID: 0b6a7a5f-f821-4ae0-9ef2-ea45748dbc23</p>
+          <lucide-icon [name]="Copy" class="size-4" />
+        </button>
       </div>
-      <div class="flex items-center gap-x-3 text-gray-700">
-        <lucide-icon [img]="Phone" class="size-4 stroke-[1.5]" />
-        <p class="text-sm">+51 936245721</p>
-      </div>
-      <div class="flex items-center gap-x-3 text-gray-700">
-        <lucide-icon [img]="Globe" class="size-4 stroke-[1.5]" />
-        <p class="text-sm">https://escapify.com</p>
-      </div>
+      <button class="max-sm:hidden w-fit text-nowrap px-3 py-2 text-[13px] font-medium rounded-lg bg-primary hover:bg-primary-dark text-white">
+        Empresa activa
+      </button>
     </div>
-  </section>
-  <section class="rounded-xl w-full border border-gray-200 p-5 items-start shadow">
-    <h2 class="font-medium text-sm">Información General</h2>
-    <div class="text-sm flex items-center gap-x-2.5 mt-5">
-      <p class="text-gray-700">Nombre:</p>
-      <p>Escapify</p>
-    </div>
-    <div class="text-sm flex items-center gap-x-2.5 mt-2.5">
-      <p class="text-gray-700">Tag:</p>
-      <p>Tecnología</p>
-    </div>
-    <div class="text-sm flex items-center gap-x-2.5 mt-2.5">
-      <p class="text-gray-700">País:</p>
-      <img class="h-3.5" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Peru.svg/1200px-Flag_of_Peru.svg.png" alt="">
-      <p>Perú</p>
-    </div>
-    <div class="text-sm flex items-center gap-x-2.5 mt-2.5">
-      <p class="text-gray-700">Moneda:</p>
-      <p>S/. (PEN)</p>
-    </div>
-    <div class="text-sm flex items-center mt-2.5">
-      <p class="text-gray-700">
-        Descripción:
-        <span class="text-black text-balance ml-2.5"
-          >Empresa de tecnología que se dedica a la creación de software para la
-          gestión de empresas.</span
-        >
-      </p>
+
+    <div class="py-5 border-t border-gray-200">
+      <h2 class="font-medium">Descripción</h2>
+      <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
     </div>
   </section>
 </div>

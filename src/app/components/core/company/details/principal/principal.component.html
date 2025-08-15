@@ -1,48 +1,115 @@
-<section class="rounded-xl border border-gray-200 p-5 pb-7 shadow">
+<section
+  class="rounded-xl w-full lg:w-sm border border-gray-200 p-2 pb-5 shadow"
+>
   <div class="space-y-3">
-    <div class="bg-primary w-full h-36 rounded-lg"></div>
-    <div class="relative bg-gray-100 rounded-full w-32 h-32 border-4 border-white -mt-24 mx-auto">
-      <img class="size-full bg-gray-100 rounded-full object-cover" src="/img/logo-min.png" alt="Company Logo">
-      <div class="bg-purple-600 rounded-full w-8 h-8 absolute bottom-0 end-0 flex items-center justify-center">
+    <div
+      class="bg-primary bg-cover bg-[url('https://angular.pixelstrap.net/fastkart/assets/images/inner-page/cover-img.jpg')] w-full h-32 rounded-lg"
+    ></div>
+    <div
+      class="relative bg-gray-100 rounded-full w-28 h-28 border-4 border-white -mt-20 mx-auto"
+    >
+      <img
+        class="size-full bg-gray-100 rounded-full object-cover"
+        src="/img/logo-min.png"
+        alt="Company Logo"
+      />
+      <div
+        class="bg-purple-600 rounded-full w-8 h-8 absolute bottom-0 end-0 flex items-center justify-center"
+      >
         <lucide-icon [name]="Crown" class="size-4.5 text-white" />
       </div>
     </div>
-    <div class="flex flex-col items-center mx-auto w-fit">
-      <h2 class="font-medium text-lg">Escapify</h2>
+    <div class="flex flex-col items-center mx-auto w-fit px-3">
+      <h2 class="font-medium text-lg line-clamp-1">Escapify</h2>
       <p class="text-gray-500 text-sm">Tecnología</p>
     </div>
-    <div class="w-full flex items-center gap-x-3">
-      <button class="relative flex items-center gap-x-1.5 px-2 py-1.5 rounded-lg">
-        <lucide-icon [name]="List" class="size-4.5 stroke-[1.5]" />
-        <p class="text-sm font-medium">General</p>
-        <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[30%] h-[2.5px] bg-gray-800 rounded-full"></span>
-      </button>
-      <button class="relative flex items-center gap-x-1.5 px-2 py-1.5 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-black">
-        <lucide-icon [name]="Crown" class="size-4.5 stroke-[1.5]" />
-        <p class="text-sm">Suscripción</p>
-        <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[30%] h-[2.5px] bg-transparent rounded-full"></span>
-      </button>
-      <button class="relative flex items-center gap-x-1.5 px-2 py-1.5 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-black">
-        <lucide-icon [name]="MapPin" class="size-4.5 stroke-[1.5]" />
-        <p class="text-sm">Sucursales</p>
-        <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[30%] h-[2.5px] bg-transparent rounded-full"></span>
-      </button>
-      <button class="relative flex items-center gap-x-1.5 px-2 py-1.5 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-black">
-        <lucide-icon [name]="ClipboardCheck" class="size-4.5 stroke-[1.5]" />
-        <p class="text-sm">Auditoría</p>
-        <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[30%] h-[2.5px] bg-transparent rounded-full"></span>
-      </button>
+  </div>
 
-      <div class="w-full flex items-center justify-end">
-        <button class="px-3 py-1.5 bg-primary text-white font-medium text-sm rounded-lg">
-          <p>Empresa Activa</p>
-        </button>
-      </div>
-    </div>
+  <div class="mt-7 px-3 space-y-0.5 max-lg:hidden">
+    <a
+      routerLink=""
+      class="flex items-center gap-x-3 px-5 py-2.5 border-l-2 border-primary text-sm font-medium text-primary bg-primary/10"
+    >
+      <lucide-icon [name]="List" class="size-4" />
+      Información General
+    </a>
+    <a
+      routerLink=""
+      class="flex items-center gap-x-3 px-5 py-2.5 border-l-2 border-transparent text-gray-700 text-sm font-medium hover:bg-gray-100"
+    >
+      <lucide-icon [name]="Crown" class="size-4" />
+      Suscripción
+    </a>
+    <a
+      routerLink=""
+      class="flex items-center gap-x-3 px-5 py-2.5 border-l-2 border-transparent text-gray-700 text-sm font-medium hover:bg-gray-100"
+    >
+      <lucide-icon [name]="MapPin" class="size-4" />
+      Sucursales
+    </a>
+    <a
+      routerLink=""
+      class="flex items-center gap-x-3 px-5 py-2.5 border-l-2 border-transparent text-gray-700 text-sm font-medium hover:bg-gray-100"
+    >
+      <lucide-icon [name]="Users" class="size-4" />
+      Usuarios
+    </a>
+    <a
+      routerLink=""
+      class="flex items-center gap-x-3 px-5 py-2.5 border-l-2 border-transparent text-gray-700 text-sm font-medium hover:bg-gray-100"
+    >
+      <lucide-icon [name]="ClipboardCheck" class="size-4" />
+      Auditoría
+    </a>
+    <a
+      routerLink=""
+      class="flex items-center gap-x-3 px-5 py-2.5 border-l-2 border-transparent text-gray-700 text-sm font-medium hover:bg-gray-100"
+    >
+      <lucide-icon [name]="ChartPie" class="size-4" />
+      Estadísticas
+    </a>
+  </div>
+
+  <div class="flex items-center gap-x-3 px-3 pb-2 lg:hidden pt-7 overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <a
+      routerLink=""
+      class="relative inline-flex items-center gap-x-1.5 px-2 py-1.5 rounded-lg"
+    >
+      <lucide-icon [name]="List" class="size-4.5 stroke-[1.5]" />
+      <p class="text-sm font-medium">General</p>
+      <div
+        class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[30%] h-[2.5px] bg-gray-800 rounded-full"
+      ></div>
+    </a>
+    <a
+      routerLink=""
+      class="relative inline-flex items-center gap-x-1.5 px-2 py-1.5 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-black"
+    >
+      <lucide-icon [name]="Crown" class="size-4.5 stroke-[1.5]" />
+      <p class="text-sm">Suscripción</p>
+      <div
+        class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[30%] h-[2.5px] bg-transparent rounded-full"
+      ></div>
+    </a>
+    <a
+      routerLink=""
+      class="relative inline-flex items-center gap-x-1.5 px-2 py-1.5 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-black"
+    >
+      <lucide-icon [name]="MapPin" class="size-4.5 stroke-[1.5]" />
+      <p class="text-sm">Sucursales</p>
+      <div
+        class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[30%] h-[2.5px] bg-transparent rounded-full"
+      ></div>
+    </a>
+    <a
+      routerLink=""
+      class="relative inline-flex items-center gap-x-1.5 px-2 py-1.5 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-black"
+    >
+      <lucide-icon [name]="ClipboardCheck" class="size-4.5 stroke-[1.5]" />
+      <p class="text-sm">Auditoría</p>
+      <div
+        class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[30%] h-[2.5px] bg-transparent rounded-full"
+      ></div>
+    </a>
   </div>
 </section>
-
-<div class="mt-5">
-  <component-core-company-details-general />
-</div>
-

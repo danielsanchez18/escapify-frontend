@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Globe, LucideAngularModule, Mail, Phone } from 'lucide-angular';
+import { Copy, Globe, LucideAngularModule, Mail, Phone } from 'lucide-angular';
 
 @Component({
   selector: 'component-core-company-details-general',
@@ -13,5 +13,6 @@ export class ComponentCoreCompanyDetailsGeneral {
   readonly Globe = Globe;
   readonly Phone = Phone;
   readonly Mail = Mail;
+  readonly Copy = Copy;
 
 }

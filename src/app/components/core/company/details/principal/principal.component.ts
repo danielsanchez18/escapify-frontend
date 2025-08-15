@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { LucideAngularModule, Crown, List, MapPin, ClipboardCheck } from 'lucide-angular';
-import { ComponentCoreCompanyDetailsGeneral } from "../general/general.component";
+import { LucideAngularModule, Crown, List, MapPin, ClipboardCheck, Users, ChartPie } from 'lucide-angular';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'component-core-company-details-principal',
   imports: [
     LucideAngularModule,
-    ComponentCoreCompanyDetailsGeneral
+    LucideAngularModule,
+    RouterModule
 ],
   templateUrl: './principal.component.html',
 })
@@ -16,5 +17,7 @@ export class ComponentCoreCompanyDetailsPrincipal {
   readonly List = List;
   readonly MapPin = MapPin;
   readonly ClipboardCheck = ClipboardCheck;
+  readonly Users = Users;
+  readonly ChartPie = ChartPie;
 
 }
