@@ -25,6 +25,10 @@ export const COMPANY_ROUTES: Routes = [
         path: '',
         loadComponent: () => import('@components/core/company/details/general/general.component').then(m => m.ComponentCoreCompanyDetailsGeneral),
       },
+      {
+        path: 'suscripcion',
+        loadComponent: () => import('@components/core/company/details/suscription/suscription.component').then(m => m.ComponentCoreCompanyDetailsSuscription),
+      },
     ]
   },
   // {

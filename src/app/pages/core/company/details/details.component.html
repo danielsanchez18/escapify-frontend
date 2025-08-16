@@ -1,16 +1,20 @@
 
-<section class="w-full grid gap-y-7 lg:gap-y-10 px-5 sm:px-7 lg:px-10">
+<section class="w-full flex flex-col gap-y-7 lg:gap-y-10 px-5 sm:px-7 lg:px-10 relative">
 
   <div class="grid items-center">
     <a routerLink=".." class="text-sm text-primary font-semibold hover:underline w-fit">Regresar</a>
     <p class="text-lg font-medium">Detalles de Empresa</p>
   </div>
 
-  <div class="h-full grid lg:grid-cols-[auto_1fr] gap-5">
-    <div class="w-full lg:max-w-sm">
+  <div class="h-full flex flex-col lg:flex-row gap-5">
+    <div class="relative">
+      <div class="sticky top-10">
       <component-core-company-details-principal />
+      </div>
     </div>
-    <router-outlet />
+    <div class="w-full overflow-y-auto">
+      <router-outlet />
+    </div>
   </div>
 
   <!-- Toast Component (Editar / Eliminar / Exportar) -->

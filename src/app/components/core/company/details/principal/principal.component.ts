@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { LucideAngularModule, Crown, List, MapPin, ClipboardCheck, Users, ChartPie } from 'lucide-angular';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'component-core-company-details-principal',
   imports: [
     LucideAngularModule,
     LucideAngularModule,
-    RouterModule
+    RouterModule,
+    CommonModule
 ],
   templateUrl: './principal.component.html',
 })
