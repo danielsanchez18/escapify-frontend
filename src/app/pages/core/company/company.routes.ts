@@ -29,6 +29,22 @@ export const COMPANY_ROUTES: Routes = [
         path: 'suscripcion',
         loadComponent: () => import('@components/core/company/details/suscription/suscription.component').then(m => m.ComponentCoreCompanyDetailsSuscription),
       },
+      {
+        path: 'sucursales',
+        loadComponent: () => import('@components/core/company/details/branchs/branchs.component').then(m => m.ComponentCoreCompanyDetailsBranchs),
+      },
+      {
+        path: 'usuarios',
+        loadComponent: () => import('@components/core/company/details/users/users.component').then(m => m.ComponentCoreCompanyDetailsUsers),
+      },
+      {
+        path: 'auditoria',
+        loadComponent: () => import('@components/core/company/details/audit/audit.component').then(m => m.ComponentCoreCompanyDetailsAudit),
+      },
+      {
+        path: 'estadisticas',
+        loadComponent: () => import('@components/core/company/details/stats/stats.component').then(m => m.ComponentCoreCompanyDetailsStats),
+      },
     ]
   },
   // {
