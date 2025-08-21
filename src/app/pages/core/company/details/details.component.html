@@ -18,11 +18,63 @@
   </div>
 
   <!-- Toast Component (Editar / Eliminar / Exportar) -->
-  <div class="sticky bottom-5 left-1/2 transform z-50 w-full flex justify-center">
+  <div class="sticky bottom-5 left-1/2 transform z-40 w-full flex justify-center">
     <component-shared-toast
       [btnDelete]="true"
       [btnEdit]="true"
       [btnExport]="true"
     />
   </div>
+
+
 </section>
+
+<!-- Modal de confirmación de eliminar de empresa -->
+<div id="alerts-confirm"
+class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+role="dialog" tabindex="-1" aria-labelledby="alerts-confirm-label">
+
+<component-shared-alerts-confirm
+  *ngIf="company"
+  [message]="'¿Está seguro de que desea eliminar esta empresa?'"
+  [value]="company.name"
+  (confirmAction)="onConfirmDeleteCompany()"
+/>
+
+</div>
+
+<!-- Modal de éxito de eliminar empresa -->
+<div id="alerts-success"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-success-label">
+
+  <component-shared-alerts-success
+    [message]="successMessage"
+    [linkPrimary]="'/core/empresas'"
+    />
+
+</div>
+
+<!-- Modal de error de eliminar empresa -->
+<div id="alerts-error"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-error-label">
+
+  <component-shared-alerts-error
+    [message]="errorMessage"
+    [btnPrimary]="'Cerrar'"
+  />
+
+</div>
+
+<!-- Botones de acción -->
+<button type="button"
+  class="hidden" id="open-error-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-error" data-hs-overlay="#alerts-error"
+></button>
+
+<button type="button"
+  class="hidden" id="open-success-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-success" data-hs-overlay="#alerts-success"
+></button>
+

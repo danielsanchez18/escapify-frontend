@@ -1,0 +1,33 @@
+<div class="hs-overlay-animation-target hs-overlay-open:scale-100 hs-overlay-open:opacity-100 scale-95 opacity-0 ease-in-out transition-all duration-100 sm:max-w-sm sm:w-full m-3 sm:mx-auto min-h-[calc(100%-56px)] flex items-center">
+  <div class="bg-white rounded-2xl px-5 py-5 shadow-lg flex flex-col items-center gap-y-5 w-full pointer-events-auto">
+
+    <!-- Icono -->
+    <section class="">
+      <div class="text-red-700 bg-red-50 rounded-lg p-2">
+        <lucide-icon [name]="CircleX" class="size-8" />
+      </div>
+    </section>
+
+    <!-- Contenido -->
+    <section class="text-center space-y-0">
+      <p class="font-semibold text-lg">{{ title }}</p>
+      <p class="text-sm text-wrap">
+        {{ message }}
+      </p>
+    </section>
+
+    <!-- Botones de acción -->
+    <section class="flex items-center gap-x-2 w-full mt-1">
+      <button *ngIf="btnSecondary" type="button"
+        class="w-full text-sm btn-secondary" data-hs-overlay="#alerts-error">
+        {{ btnSecondary }}
+      </button>
+
+      <button type="button" data-hs-overlay="#alerts-error"
+        class="w-full text-sm btn-primary">
+        {{ btnPrimary }}
+      </button>
+    </section>
+  </div>
+</div>
+

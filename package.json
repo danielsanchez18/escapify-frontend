@@ -17,6 +17,7 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@preline/overlay": "^3.2.3",
     "@preline/toggle-password": "^3.2.3",
     "@tailwindcss/postcss": "^4.1.11",
     "lucide-angular": "^0.539.0",

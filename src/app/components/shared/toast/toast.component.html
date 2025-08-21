@@ -1,7 +1,8 @@
 <div class="px-5 py-3 bg-gray-950 font-medium rounded-full flex items-center gap-x-7 text-sm">
 
   @if (btnDelete) {
-    <button class="text-red-400 hover:underline underline-offset-4">
+    <button class="text-red-400 hover:underline underline-offset-4"
+      aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-confirm" data-hs-overlay="#alerts-confirm">
       Eliminar
     </button>
   }

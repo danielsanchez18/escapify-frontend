@@ -47,10 +47,10 @@ export const COMPANY_ROUTES: Routes = [
       },
     ]
   },
-  // {
-  //   path: ':id/editar',
-  //   loadComponent: () => import('./edit/edit.component').then(m => m.PageCompanyEdit),
-  // },
+  {
+    path: ':id/editar',
+    loadComponent: () => import('./edit/edit.component').then(m => m.PageCoreCompanyEdit),
+  },
   // {
   //   path: ':id/estadisticas',
   //   loadComponent: () => import('./details-stats/details-stats.component').then(m => m.PageCompanyDetailsStats),

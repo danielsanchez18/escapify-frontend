@@ -1,0 +1,146 @@
+<div class="">
+  <section class="rounded-xl border border-gray-200 w-full">
+    <div class="py-3 px-5 border-b border-gray-200 flex items-center gap-x-2">
+      <p class="text-sm font-medium">Información Básica</p>
+    </div>
+
+    <form class="grid md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 p-5 gap-x-10 gap-y-5">
+
+      <!-- Foto -->
+      <div class="space-y-2 md:col-span-2">
+        <label for="image" class="block text-sm font-medium">
+          Foto
+          <span class="text-gray-500 font-normal text-xs">(La imagen no debe pesar mas de 2MB)</span>
+        </label>
+        <input
+          id="image" name="image"
+          type="file" accept="image/*"
+          class="text-sm w-full contain-content rounded-lg border file:border-r file:border-gray-200 border-gray-200 file:text-sm file:py-2 file:px-4 file:focus:outline-primary file:mr-4 file:text-gray-600 hover:shadow hover:file:bg-gray-50 hover:cursor-pointer hover:file:cursor-pointer">
+      </div>
+
+      <!-- Nombre -->
+      <div class="space-y-2">
+        <label for="name" class="block text-sm font-medium">
+          Nombre de la empresa
+          <span class="text-red-600">*</span>
+          <span class="text-gray-500 font-normal text-xs"> (Máximo 50 caracteres)</span>
+        </label>
+        <input
+          name="name"
+          type="text"
+          placeholder="Ingrese el nombre de la empresa"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+      </div>
+
+      <!-- Tag -->
+      <div class="space-y-2">
+        <label for="tag" class="block text-sm font-medium">
+          Tag
+          <span class="text-red-600">*</span>
+        </label>
+        <input
+          name="tag"
+          type="text"
+          placeholder="Ingrese el tag de la empresa"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+      </div>
+
+      <!-- Descripcion -->
+      <div class="space-y-2 md:col-span-2 lg:col-span-1 xl:col-span-2">
+        <label for="description" class="block text-sm font-medium">
+          Descripción
+          <span class="text-gray-500 font-normal text-xs"> (Máximo 255 caracteres)</span>
+        </label>
+        <textarea
+          name="description"
+          placeholder="Ingrese la descripción de la empresa"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary resize-none"
+        ></textarea>
+      </div>
+
+      <!-- País -->
+      <div class="space-y-2">
+        <label for="country" class="block text-sm font-medium">
+          País
+          <span class="text-red-600">*</span>
+        </label>
+        <select
+          name="country"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+          <option value="">Seleccione el pais de la empresa</option>
+          <option value="1">Peru</option>
+          <option value="2">Colombia</option>
+          <option value="3">Bolivia</option>
+        </select>
+      </div>
+
+      <!-- Moneda -->
+      <div class="space-y-2">
+        <label for="currency" class="block text-sm font-medium">
+          Moneda
+          <span class="text-red-600">*</span>
+        </label>
+        <select
+          name="currency"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+          <option value="">Seleccione la moneda de la empresa</option>
+          <option value="1">PEN</option>
+          <option value="2">USD</option>
+          <option value="3">EUR</option>
+        </select>
+      </div>
+
+      <!-- Correo -->
+      <div class="space-y-2">
+        <label for="email" class="block text-sm font-medium">
+          Correo
+          <span class="text-red-600">*</span>
+        </label>
+        <input
+          name="email"
+          type="email"
+          placeholder="Ingrese el correo de la empresa"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+      </div>
+
+      <!-- Telefono -->
+      <div class="space-y-2">
+        <label for="phone" class="block text-sm font-medium">
+          Telefono
+          <span class="text-red-600">*</span>
+        </label>
+        <input
+          name="phone"
+          type="tel"
+          placeholder="Ingrese el telefono de la empresa"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+      </div>
+
+      <!-- Website -->
+      <div class="space-y-2">
+        <label for="website" class="block text-sm font-medium">
+          Website
+        </label>
+        <input
+          name="website"
+          type="url"
+          placeholder="Ingrese el website de la empresa"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+      </div>
+
+      <article class="flex items-center justify-end gap-x-2 md:col-span-2">
+        <button type="button"
+          class="px-3 py-2 text-sm font-medium border border-gray-200 bg-white hover:bg-gray-50 text-gray-800 rounded-lg hover:shadow">
+          Cancelar
+        </button>
+        <button type="button"
+          class="btn-primary text-sm"
+          aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-confirm" data-hs-overlay="#alerts-confirm">
+          Guardar Cambios
+        </button>
+      </article>
+    </form>
+
+  </section>
+
+</div>
