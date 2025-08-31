@@ -8,7 +8,7 @@
     >
       <img
         class="size-full bg-gray-100 rounded-full object-cover"
-        src="/img/logo-min.png"
+        [src]="companyLogoUrl"
         alt="Company Logo"
       />
       <div
@@ -18,14 +18,14 @@
       </div>
     </div>
     <div class="flex flex-col items-center mx-auto w-fit px-3">
-      <h2 class="font-medium text-lg line-clamp-1">Escapify</h2>
-      <p class="text-gray-500 text-sm">Tecnología</p>
+      <h2 class="font-medium text-lg line-clamp-1">{{ company?.name }}</h2>
+      <p class="text-gray-500 text-sm">{{ company?.tag }}</p>
     </div>
   </div>
 
   <div class="mt-7 px-3 space-y-0.5 max-lg:hidden">
     <a
-      routerLink="/core/empresas/12"
+      routerLink="/core/empresas/{{ company?.id }}"
       routerLinkActive="border-l-primary bg-primary/10 pointer-events-none text-primary"
       [routerLinkActiveOptions]="{ exact: true }"
       class="flex items-center gap-x-3 px-5 py-2.5 border-l-2 border-transparent text-sm hover:bg-gray-100"
@@ -79,7 +79,7 @@
     class="flex items-center gap-x-3 px-1 pb-2 lg:hidden pt-7 overflow-x-auto scrollbar-hide"
   >
     <a
-      routerLink="/core/empresas/12"
+      routerLink="/core/empresas/{{ company?.id }}"
       #rlaGeneral="routerLinkActive"
       routerLinkActive="pointer-events-none text-gray-950"
       [routerLinkActiveOptions]="{ exact: true }"

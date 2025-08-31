@@ -15,5 +15,6 @@ export class ComponentSharedToast {
   @Input() btnDelete: boolean = false;
   @Input() btnEdit: boolean = false;
   @Input() btnExport: boolean = false;
+  @Input() btnRestore: boolean = false;
 
 }

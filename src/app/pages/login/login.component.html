@@ -9,13 +9,13 @@
       <p class="text-sm text-gray-500">Ingresa tus credenciales para ingresar al sistema.</p>
     </div>
 
-    <form class="space-y-5 w-full">
+    <form class="space-y-5 w-full" [formGroup]="form" (ngSubmit)="onSubmit()">
 
       <!-- Correo -->
       <div class="gap-y-2 flex flex-col">
         <label for="email" class="text-sm font-medium">Correo:</label>
         <div class="relative">
-          <input type="email" name="email" id="email" placeholder="Ingrese su correo"
+          <input type="email" name="email" id="email" formControlName="email" placeholder="Ingrese su correo"
             class="border rounded-lg border-gray-300 text-sm px-4 py-2 w-full pl-12 focus:outline-primary">
           <lucide-icon [name]="AtSign" class="absolute text-gray-500 size-4 top-1/2 -translate-y-1/2 left-2" />
         </div>
@@ -25,7 +25,7 @@
       <div class="gap-y-2 flex flex-col">
         <label for="password" class="text-sm font-medium">Contraseña:</label>
         <div class="relative">
-          <input type="password" name="password" id="password" placeholder="Ingrese su contraseña"
+          <input type="password" name="password" id="password" formControlName="password" placeholder="Ingrese su contraseña"
             class="border rounded-lg border-gray-300 text-sm py-2 w-full pl-12 pr-12 focus:outline-primary">
           <lucide-icon [name]="Lock" class="absolute text-gray-500 size-4 top-1/2 -translate-y-1/2 left-2" />
           <button type="button" data-hs-toggle-password='{
@@ -41,13 +41,41 @@
           </svg>
         </button>
         </div>
-        <a routerLink="" class="text-sm text-primary font-medium self-end underline-offset-4 mt-2 hover:underline">Olvidé mi contraseña</a>
+
+        <div class="flex items-center justify-between mt-3">
+          <div class="flex items-center space-x-2">
+            <input type="checkbox" id="rememberMe" formControlName="rememberMe" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded cursor-pointer">
+            <label for="rememberMe" class="text-sm cursor-pointer">Recordar</label>
+          </div>
+          <a routerLink="/forgot-password" class="text-sm text-primary font-medium self-end underline-offset-4 hover:underline">Olvidé mi contraseña</a>
+        </div>
       </div>
 
       <!-- Boton -->
-      <a routerLink="/core" class="block btn-primary mt-3 text-sm">
-        Ingresar
-      </a>
+      <button type="submit"
+        class="block btn-primary mt-3 text-sm w-full text-center">
+        {{ loading() ? 'Cargando ...' : 'Ingresar' }}
+      </button>
     </form>
   </div>
 </section>
+
+
+<!-- Botones de acción -->
+<button type="button"
+  class="hidden" id="open-error-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-error" data-hs-overlay="#alerts-error"
+></button>
+
+<!-- Modal de error de registro de empresa -->
+<div id="alerts-error"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-error-label">
+
+  <component-shared-alerts-error
+    [title]="titleError"
+    [message]="errorMessage"
+    [btnPrimary]="'Cerrar'"
+  />
+
+</div>

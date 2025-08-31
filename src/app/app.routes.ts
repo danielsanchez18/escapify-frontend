@@ -1,14 +1,24 @@
 import { Routes } from '@angular/router';
+import { PageError } from '@pages/error/error.component';
 import { PageLogin } from '@pages/login/login.component';
+import { PermissionGuard } from './core/guards/permission.guard';
+import { LoginGuard } from './core/guards/login.guard';
 
 export const routes: Routes = [
   {
-    path: 'ingresar', component: PageLogin
+    path: 'ingresar',
+    component: PageLogin,
+    // canActivate: [LoginGuard]
   },
   {
-
     path: 'core',
-    loadChildren: () => import('./layouts/core/core.routes').then(m => m.CORE_ROUTES)
+    // canActivate: [PermissionGuard],
+    // data: { requiredPermission: 'ACCESS.FULL' },
+    loadChildren: () => import('./layouts/core/core.routes').then(m => m.CORE_ROUTES),
+  },
+  {
+    path: 'error',
+    component: PageError
   },
   {
     path: '**',

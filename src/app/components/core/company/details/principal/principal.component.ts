@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LucideAngularModule, Crown, List, MapPin, ClipboardCheck, Users, ChartPie } from 'lucide-angular';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Company } from '@interfaces/enterprise.interface';
 
 @Component({
   selector: 'component-core-company-details-principal',
@@ -21,5 +22,8 @@ export class ComponentCoreCompanyDetailsPrincipal {
   readonly ClipboardCheck = ClipboardCheck;
   readonly Users = Users;
   readonly ChartPie = ChartPie;
+
+  @Input() company?: Company;
+  @Input() companyLogoUrl: string = 'img/logo-min.png';
 
 }

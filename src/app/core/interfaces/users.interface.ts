@@ -7,7 +7,6 @@ export interface User {
   lastname?: string;
   phoneNumber: string;
   email: string;
-  password: string;
   photoUrl: string;
   provider: string;
   providerId?: string;

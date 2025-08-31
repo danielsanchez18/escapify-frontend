@@ -4,7 +4,8 @@
       <p class="text-sm font-medium">Información Básica</p>
     </div>
 
-    <form class="grid md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 p-5 gap-x-10 gap-y-5">
+    <form [formGroup]="companyForm"
+      class="grid md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 p-5 gap-x-10 gap-y-5">
 
       <!-- Foto -->
       <div class="space-y-2 md:col-span-2">
@@ -15,7 +16,9 @@
         <input
           id="image" name="image"
           type="file" accept="image/*"
+          (change)="onImageSelected($event)"
           class="text-sm w-full contain-content rounded-lg border file:border-r file:border-gray-200 border-gray-200 file:text-sm file:py-2 file:px-4 file:focus:outline-primary file:mr-4 file:text-gray-600 hover:shadow hover:file:bg-gray-50 hover:cursor-pointer hover:file:cursor-pointer">
+          <p *ngIf="errorMessageValidator" class="text-red-600 text-xs">{{ errorMessageValidator }}</p>
       </div>
 
       <!-- Nombre -->
@@ -23,13 +26,21 @@
         <label for="name" class="block text-sm font-medium">
           Nombre de la empresa
           <span class="text-red-600">*</span>
-          <span class="text-gray-500 font-normal text-xs"> (Máximo 50 caracteres)</span>
+          <span class="text-gray-500 font-normal text-xs"> (Máximo 100 caracteres)</span>
         </label>
         <input
-          name="name"
+          id="name" name="name"
+          formControlName="name"
+          maxlength="100"
           type="text"
           placeholder="Ingrese el nombre de la empresa"
-          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary"
+        >
+        <div *ngIf="companyForm.get('name')?.touched && companyForm.get('name')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="companyForm.get('name')?.errors?.['required']">El nombre es obligatorio.</div>
+          <div *ngIf="companyForm.get('name')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</div>
+          <div *ngIf="companyForm.get('name')?.errors?.['maxlength']">El nombre no debe exceder los 100 caracteres.</div>
+        </div>
       </div>
 
       <!-- Tag -->
@@ -39,10 +50,18 @@
           <span class="text-red-600">*</span>
         </label>
         <input
-          name="tag"
+          id="tag" name="tag"
+          formControlName="tag"
+          maxlength="20"
           type="text"
           placeholder="Ingrese el tag de la empresa"
-          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary"
+        >
+        <div *ngIf="companyForm.get('tag')?.touched && companyForm.get('tag')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="companyForm.get('tag')?.errors?.['required']">El tag es obligatorio.</div>
+          <div *ngIf="companyForm.get('tag')?.errors?.['minlength']">El tag debe tener al menos 3 caracteres.</div>
+          <div *ngIf="companyForm.get('tag')?.errors?.['maxlength']">El tag no debe exceder los 20 caracteres.</div>
+        </div>
       </div>
 
       <!-- Descripcion -->
@@ -53,6 +72,8 @@
         </label>
         <textarea
           name="description"
+          formControlName="description"
+          maxlength="255"
           placeholder="Ingrese la descripción de la empresa"
           class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary resize-none"
         ></textarea>
@@ -66,11 +87,11 @@
         </label>
         <select
           name="country"
+          formControlName="country"
           class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
-          <option value="">Seleccione el pais de la empresa</option>
-          <option value="1">Peru</option>
-          <option value="2">Colombia</option>
-          <option value="3">Bolivia</option>
+          <option value="Peru">Perú</option>
+          <option value="Colombia">Colombia</option>
+          <option value="Bolivia">Bolivia</option>
         </select>
       </div>
 
@@ -82,11 +103,11 @@
         </label>
         <select
           name="currency"
+          formControlName="currency"
           class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
-          <option value="">Seleccione la moneda de la empresa</option>
-          <option value="1">PEN</option>
-          <option value="2">USD</option>
-          <option value="3">EUR</option>
+          <option value="PEN">PEN</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
         </select>
       </div>
 
@@ -94,46 +115,63 @@
       <div class="space-y-2">
         <label for="email" class="block text-sm font-medium">
           Correo
-          <span class="text-red-600">*</span>
         </label>
         <input
-          name="email"
-          type="email"
+          id="email" name="email"
+          formControlName="email"
+          type="email" maxlength="100"
           placeholder="Ingrese el correo de la empresa"
-          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary"
+        >
+        <div *ngIf="companyForm.get('email')?.touched && companyForm.get('email')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="companyForm.get('email')?.errors?.['email']">Ingrese un correo válido.</div>
+          <div *ngIf="companyForm.get('email')?.errors?.['maxlength']">El correo no debe exceder los 50 caracteres.</div>
+        </div>
       </div>
 
       <!-- Telefono -->
       <div class="space-y-2">
-        <label for="phone" class="block text-sm font-medium">
+        <label for="phoneNumber" class="block text-sm font-medium">
           Telefono
-          <span class="text-red-600">*</span>
         </label>
         <input
-          name="phone"
-          type="tel"
-          placeholder="Ingrese el telefono de la empresa"
-          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+          id="phoneNumber" name="phoneNumber"
+          formControlName="phoneNumber"
+          type="text" maxlength="20"
+          placeholder="Ingrese el número de teléfono"
+          (input)="onPhoneNumberInput($event)"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 focus:outline-primary"
+        >
+        <div *ngIf="companyForm.get('phoneNumber')?.touched && companyForm.get('phoneNumber')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="companyForm.get('phoneNumber')?.errors?.['minlength']">El teléfono debe tener al menos 9 dígitos.</div>
+          <div *ngIf="companyForm.get('phoneNumber')?.errors?.['maxlength']">El teléfono no debe exceder los 20 dígitos.</div>
+        </div>
       </div>
 
       <!-- Website -->
-      <div class="space-y-2">
+      <div class="space-y-2 md:col-span-2 lg:col-span-1 xl:col-span-2">
         <label for="website" class="block text-sm font-medium">
           Website
         </label>
         <input
-          name="website"
-          type="url"
-          placeholder="Ingrese el website de la empresa"
-          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+          id="website" name="website"
+          formControlName="website"
+          type="text"
+          placeholder="www.example.com"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary"
+        >
+        <div *ngIf="companyForm.get('website')?.touched && companyForm.get('website')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="companyForm.get('website')?.errors?.['pattern']">Ingrese una URL válida (por ejemplo: www.example.com).</div>
+        </div>
       </div>
 
       <article class="flex items-center justify-end gap-x-2 md:col-span-2">
         <button type="button"
+          routerLink=".."
           class="px-3 py-2 text-sm font-medium border border-gray-200 bg-white hover:bg-gray-50 text-gray-800 rounded-lg hover:shadow">
           Cancelar
         </button>
-        <button type="button"
+        <button type="submit"
           class="btn-primary text-sm"
           aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-confirm" data-hs-overlay="#alerts-confirm">
           Guardar Cambios
@@ -144,3 +182,50 @@
   </section>
 
 </div>
+
+<!-- Modal de confirmación de registro de empresa -->
+<div id="alerts-confirm"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-confirm-label">
+
+  <component-shared-alerts-confirm
+    [message]="'¿Está seguro de guardar lo cambios?'"
+    (confirmAction)="onConfirmCompany()"
+  />
+
+</div>
+
+<!-- Modal de éxito de registro de empresa -->
+<div id="alerts-success"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-success-label">
+
+  <component-shared-alerts-success
+    [message]="successMessage"
+    [linkPrimary]="'dashboard/empresas/{{ companyId }}'"
+    />
+
+</div>
+
+<!-- Modal de error de registro de empresa -->
+<div id="alerts-error"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-error-label">
+
+  <component-shared-alerts-error
+    [message]="errorMessage"
+    [btnPrimary]="'Cerrar'"
+  />
+
+</div>
+
+<!-- Botones de acción -->
+<button type="button"
+  class="hidden" id="open-error-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-error" data-hs-overlay="#alerts-error"
+></button>
+
+<button type="button"
+  class="hidden" id="open-success-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-success" data-hs-overlay="#alerts-success"
+></button>

@@ -9,18 +9,22 @@
   <div class="h-full flex flex-col lg:flex-row gap-5">
     <div class="relative">
       <div class="sticky top-10">
-      <component-core-company-details-principal />
+      <component-core-company-details-principal
+        [company]="company"
+        [companyLogoUrl]="companyLogoUrl"
+      />
       </div>
     </div>
     <div class="w-full overflow-y-auto">
-      <router-outlet />
+      <router-outlet/>
     </div>
   </div>
 
   <!-- Toast Component (Editar / Eliminar / Exportar) -->
   <div class="sticky bottom-5 left-1/2 transform z-40 w-full flex justify-center">
     <component-shared-toast
-      [btnDelete]="true"
+      [btnDelete]="!!company && !company.deleted"
+      [btnRestore]="!!company && !!company.deleted"
       [btnEdit]="true"
       [btnExport]="true"
     />
@@ -36,9 +40,9 @@ role="dialog" tabindex="-1" aria-labelledby="alerts-confirm-label">
 
 <component-shared-alerts-confirm
   *ngIf="company"
-  [message]="'¿Está seguro de que desea eliminar esta empresa?'"
+  [message]="confirmMessage"
   [value]="company.name"
-  (confirmAction)="onConfirmDeleteCompany()"
+  (confirmAction)="onConfirmCompanyAction()"
 />
 
 </div>

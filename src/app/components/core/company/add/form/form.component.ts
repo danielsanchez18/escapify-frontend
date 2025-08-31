@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { ComponentSharedAlertsConfirm } from '@components/shared/alerts/confirm/confirm.component';
 import { ComponentSharedAlertsError } from '@components/shared/alerts/error/error.component';
 import { ComponentSharedAlertsSuccess } from '@components/shared/alerts/success/success.component';
-import { Company } from '@interfaces/company.interface';
+import { Company } from '@interfaces/enterprise.interface';
 import { CompanyService } from '@services/company.service';
 
 @Component({
@@ -14,7 +15,8 @@ import { CompanyService } from '@services/company.service';
     CommonModule,
     ComponentSharedAlertsConfirm,
     ComponentSharedAlertsSuccess,
-    ComponentSharedAlertsError
+    ComponentSharedAlertsError,
+    RouterLink
 ],
   templateUrl: './form.component.html',
 })
@@ -32,8 +34,11 @@ export class ComponentCoreCompanyAddForm {
   constructor(private fb: FormBuilder) {
     this.companyForm = this.fb.group({
       name: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      description: [null, [Validators.maxLength(255)]],
       tag: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       phoneNumber: [null, [Validators.minLength(9), Validators.maxLength(20)]],
+      country: [null, [Validators.required]],
+      currency: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.maxLength(100)]],
       website: [null, [Validators.pattern('^(https?:\/\/)?(www\.)?[a-zA-Z0-9\-]+\.[a-zA-Z]{2,6}(\.[a-zA-Z]{2,6})?(\/[^\s]*)?$')]],
     });
@@ -73,6 +78,7 @@ export class ComponentCoreCompanyAddForm {
 
     if (this.companyForm.valid) {
       const company: Company = this.companyForm.value;
+
       const formData = new FormData();
       console.log(company);
 

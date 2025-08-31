@@ -22,7 +22,7 @@
       "@interfaces/*": ["./src/app/core/interfaces/*"],
       "@services/*": ["./src/app/core/services/*"],
       "@layouts/*": ["./src/app/layouts/*"],
-      "@shared/*": ["./src/app/shared/*"],
+      "@core/*": ["./src/app/core/*"],
       "@pages/*": ["./src/app/pages/*"]
     }
   },
