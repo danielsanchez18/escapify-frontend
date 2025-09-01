@@ -5,7 +5,7 @@
 
     <!-- Buscar por nombre -->
     <component-shared-search [(searchQuery)]="searchByName" [placeholder]="'Buscar por nombre...'"
-      (searchQueryChange)="loadCompanies()" />
+      (searchQueryChange)="loadBranches()" />
 
     <!-- Boton de Filtros -->
     <button
@@ -22,65 +22,62 @@
     <div class="min-w-full inline-block align-middle">
       <div class="overflow-hidden h-[25.5rem]">
         <!-- Empty content -->
-        <div *ngIf="companies.length === 0" class="flex flex-col items-center justify-center w-full h-full">
+        <div *ngIf="branches.length === 0" class="flex flex-col items-center justify-center w-full h-full">
           <img src="/img/empty.png" alt="Empty content" class="h-22 mask-b-from-40% mb-5">
           <p class="font-medium mb-2">Sin datos</p>
           <p class="text-sm text-gray-500 text-center">Aún no hay datos disponibles. <br> Le avisaremos cuando haya alguna actualización.</p>
         </div>
         <!-- Table content -->
-        <table *ngIf="companies.length > 0" class="min-w-full divide-y divide-white">
+        <table *ngIf="branches.length > 0" class="min-w-full divide-y divide-white">
           <thead>
             <tr class="text-xs uppercase bg-gray-100">
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">sucursal</th>
               <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">empresa</th>
-              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">Suscripcion</th>
-              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">n° sucur.</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">ubicación</th>
               <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">n° trabaj.</th>
-              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">Ventas</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">Ventas tot.</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">Ventas (Mes)</th>
               <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">Estado</th>
               <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">creado por</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200">
-            <tr *ngFor="let company of companies" routerLink="{{ company.id }}"
+            <tr *ngFor="let branch of branches" routerLink="{{ branch.id }}"
               class="group hover:bg-gray-50 hover:cursor-pointer max-xl:w-full">
               <td class="px-6 py-4 whitespace-nowrap text-sm">
                 <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
-                  <img *ngIf="company.logoUrl && company.id && logoMap[company.id]" [src]="logoMap[company.id]"
-                    alt="{{ company.name }} logo" class="min-w-10 max-w-10 h-10 bg-gray-100 rounded-full object-cover">
+                  <img *ngIf="branch.logoUrl && branch.id && logoMap[branch.id]" [src]="logoMap[branch.id]"
+                    alt="{{ branch.name }} logo" class="min-w-10 max-w-10 h-10 bg-gray-100 rounded-full object-cover">
                   <div class="flex flex-col">
-                    <p class="text-gray-800 font-semibold group-hover:text-primary group-hover:underline">{{ company.name }}</p>
-                    <p class="text-gray-500 text-xs">{{ company.tag }}</p>
+                    <p class="text-gray-800 font-semibold group-hover:text-primary group-hover:underline">{{ branch.name }}</p>
+                    <p class="text-gray-500 text-xs">{{ branch.address }}</p>
                   </div>
                 </div>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                <div class="">
-                  <p class="text-sm text-gray-900 font-medium">Premium</p>
-                  <p class="text-xs text-gray-600">13 días restantes</p>
-                </div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ branchCountMap[company.id!] }} sucursales</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ branch.companyName }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ branch.city }}, {{ branch.country }}</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">13 trabajadores</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">S/. 1203.00</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">S/. 1203.00</td>
               <td class="px-6 py-3 whitespace-nowrap text-sm font-medium">
-                @if (company.deleted) {
+                @if (branch.deleted) {
                   <p class="text-xs uppercase font-semibold leading-none px-2 py-2 rounded-lg bg-red-600 text-white w-fit">Eliminada</p>
                 } @else {
-                  <p *ngIf="company.enabled" class="text-xs uppercase font-semibold leading-none px-2 py-2 rounded-lg bg-[#51965c] text-white w-fit">Activa</p>
-                  <p *ngIf="!company.enabled" class="text-xs uppercase font-medium leading-none px-2 py-2 rounded-lg bg-gray-200 w-fit">Inactiva</p>
+                  <p *ngIf="branch.enabled" class="text-xs uppercase font-semibold leading-none px-2 py-2 rounded-lg bg-[#51965c] text-white w-fit">Activa</p>
+                  <p *ngIf="!branch.enabled" class="text-xs uppercase font-medium leading-none px-2 py-2 rounded-lg bg-gray-200 w-fit">Inactiva</p>
                 }
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                 <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
                   <img class="min-w-10 max-w-10 h-10 bg-gray-100 rounded-full object-cover"
-                    [src]="company.audit && company.audit.createdBy && userPhotoMap[company.audit.createdBy] ? userPhotoMap[company.audit.createdBy] : '/img/logo-min.png'"
+                    [src]="branch.audit && branch.audit.createdBy && userPhotoMap[branch.audit.createdBy] ? userPhotoMap[branch.audit.createdBy] : '/img/logo-min.png'"
                     alt="User Photo" />
                   <div class="flex flex-col">
-                    <p class="text-gray-800 font-semibold">{{ company.audit && company.audit.createdBy &&
-                      userMap[company.audit.createdBy] ? userMap[company.audit.createdBy].name : 'Desconocido' }} {{
-                      company.audit && company.audit.createdBy && userMap[company.audit.createdBy] ?
-                      userMap[company.audit.createdBy].lastname : '' }}</p>
-                    <p class="text-gray-500 text-xs">{{ company.audit.createdAt | date: 'MMM dd, yyyy' }}</p>
+                    <p class="text-gray-800 font-semibold">{{ branch.audit && branch.audit.createdBy &&
+                      userMap[branch.audit.createdBy] ? userMap[branch.audit.createdBy].name : 'Desconocido' }} {{
+                      branch.audit && branch.audit.createdBy && userMap[branch.audit.createdBy] ?
+                      userMap[branch.audit.createdBy].lastname : '' }}</p>
+                    <p class="text-gray-500 text-xs">{{ branch.audit.createdAt | date: 'MMM dd, yyyy' }}</p>
                   </div>
                 </div>
               </td>
@@ -92,7 +89,7 @@
   </div>
 
   <!-- Paginación -->
-  <div *ngIf="companies.length > 0" class="px-5">
+  <div *ngIf="branches.length > 0" class="px-5">
     <component-shared-paginator
       [page]="page"
       [totalPages]="totalPages"

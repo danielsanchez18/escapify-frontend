@@ -62,8 +62,8 @@ export class BranchService {
 
   getByCompanyId(companyId: string, page: number, size: number): Observable<PaginatedResponse<Branch>> {
     const params = new HttpParams()
-      .set('page', page.toString())
-      .set('size', size.toString());
+      .set('page', page?.toString())
+      .set('size', size?.toString());
 
     return this.http.get<PaginatedResponse<Branch>>(`${this.apiUrl}/company/${companyId}`, { params });
   }

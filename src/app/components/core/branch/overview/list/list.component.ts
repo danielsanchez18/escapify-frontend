@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ComponentSharedPaginator } from '@components/shared/paginator/paginator.component';
 import { ComponentSharedSearch } from '@components/shared/search/search.component';
-import { Company } from '@interfaces/enterprise.interface';
+import { Branch, Company } from '@interfaces/enterprise.interface';
 import { PaginatedResponse } from '@interfaces/paginated-response.interface';
 import { User } from '@interfaces/users.interface';
 import { CompanyService } from '@services/company.service';
@@ -15,7 +15,7 @@ import { TokenStorage } from '@core/auth/token-storage';
 import { BranchService } from '@services/branch.service';
 
 @Component({
-  selector: 'component-core-company-overview-list',
+  selector: 'component-core-branch-overview-list',
   imports: [
     LucideAngularModule,
     CommonModule, FormsModule, RouterLink,
@@ -24,7 +24,7 @@ import { BranchService } from '@services/branch.service';
   ],
   templateUrl: './list.component.html',
 })
-export class ComponentCoreCompanyOverviewList {
+export class ComponentCoreBranchOverviewList {
 
   readonly ListFilter = ListFilter;
   readonly Check = Check;
@@ -35,17 +35,17 @@ export class ComponentCoreCompanyOverviewList {
   readonly MapPinHouse = MapPinHouse;
   readonly Crown = Crown;
 
-  private companyService = inject(CompanyService);
   private branchService = inject(BranchService);
   private userService = inject(UserService);
   private imageService = inject(ImageService);
 
 
-  companies: Company[] = [];
+  branches: Branch[] = [];
   searchByName: string = '';
-  searchByTag: string = '';
+  searchByAddress: string = '';
+  searchByCity: string = '';
   searchByCountry: string = '';
-  searchByCurrency: string = '';
+  searchByCompanyId: string = '';
   startDate: string | null = null;
   endDate: string | null = null;
   enabled: boolean | null = null;
@@ -59,19 +59,18 @@ export class ComponentCoreCompanyOverviewList {
 
   userMap: { [id: string]: User } = {};
   userPhotoMap: { [id: string]: string } = {};
-  logoMap: { [companyId: string]: string } = {};
-  branchCountMap: { [companyId: string]: number } = {};
+  logoMap: { [branchId: string]: string } = {};
 
   ngOnInit(): void {
-    this.loadCompanies();
+    this.loadBranches();
   }
 
-  loadCompanies(): void {
-    this.companyService.search(
+  loadBranches(): void {
+    this.branchService.search(
       this.searchByName,
-      this.searchByTag,
-      this.searchByCountry,
-      this.searchByCurrency,
+      this.searchByAddress,
+      this.searchByCity,
+      this.searchByCompanyId,
       this.startDate,
       this.endDate,
       this.enabled,
@@ -80,14 +79,14 @@ export class ComponentCoreCompanyOverviewList {
       this.size,
       this.sort
     ).subscribe(
-      (response: PaginatedResponse<Company>) => {
-        this.companies = response.data.content;
+      (response: PaginatedResponse<Branch>) => {
+        this.branches = response.data.content;
         this.totalElements = response.data.totalElements;
         this.totalPages = response.data.totalPages;
         this.calculateNumberOfElements();
 
         // Obtener IDs únicos de usuarios creadores
-        const userIds = Array.from(new Set(this.companies.map(c => c.audit?.createdBy).filter(Boolean)));
+        const userIds = Array.from(new Set(this.branches.map(c => c.audit?.createdBy).filter(Boolean)));
 
         // Cargar usuarios y guardarlos en el mapa
         userIds.forEach(id => {
@@ -110,28 +109,16 @@ export class ComponentCoreCompanyOverviewList {
         });
 
         const token = TokenStorage.getAccessToken();
-        this.companies.forEach(company => {
-          if (company.logoUrl) {
-            this.imageService.getProtectedImageUrl(company.logoUrl, token ?? '').then(blobUrl => {
-              this.logoMap[company.id!] = blobUrl;
+        this.branches.forEach(branch => {
+          if (branch.logoUrl) {
+            this.imageService.getProtectedImageUrl(branch.logoUrl, token ?? '').then(blobUrl => {
+              this.logoMap[branch.id!] = blobUrl;
             });
-          }
-
-          if (company.id) {
-            this.branchService.getByCompanyId(company.id, 0, 1).subscribe(
-              (response: any) => {
-                this.branchCountMap[company.id!] = response.data.totalElements;
-              },
-              (error) => {
-                this.branchCountMap[company.id!] = 0;
-                console.error('Error al cargar sucursales', error);
-              }
-            );
           }
         });
       },
       (error) => {
-        console.error('Error al cargar las empresas', error);
+        console.error('Error al cargar las sucursales', error);
       }
     )
   }
@@ -139,7 +126,7 @@ export class ComponentCoreCompanyOverviewList {
   changePage(pageNumber: number): void {
     if (pageNumber >= 0 && pageNumber < this.totalPages) {
       this.page = pageNumber;
-      this.loadCompanies();
+      this.loadBranches();
     }
   }
 
@@ -150,7 +137,7 @@ export class ComponentCoreCompanyOverviewList {
   // Método para limpiar la búsqueda desde el componente hijo
   clearSearch(): void {
     this.searchByName = '';
-    this.loadCompanies();
+    this.loadBranches();
   }
 
 }
