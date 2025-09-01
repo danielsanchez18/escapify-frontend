@@ -59,7 +59,19 @@ export class PageCoreCompanyDetails implements OnInit {
             this.confirmMessage = '¿Está seguro de que desea eliminar esta empresa?';
           }
         },
-        error: (error) => this.errorMessage = 'No se pudo cargar la empresa'
+        error: (error) => {
+          this.errorMessage = error.error?.error || 'Error al obtener la empresa';
+          console.log(error);
+
+          const errorButton = document.getElementById('open-error-modal') as HTMLElement;
+          errorButton?.click();
+
+          const confirmButton = document.querySelector('#alerts-error .btn-primary') as HTMLElement;
+          if (confirmButton) confirmButton.textContent = 'Regresar';
+          confirmButton.addEventListener('click', () => {
+            window.location.href = '/core/empresas';
+          });
+        }
       });
     }
   }
