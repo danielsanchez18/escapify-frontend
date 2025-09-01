@@ -1,0 +1,237 @@
+<div class="flex flex-col lg:flex-row gap-5 h-full">
+
+  <!-- Seleccionar empresa -->
+  <section
+    class="border border-gray-200 rounded-xl p-5 space-y-7 w-full h-full flex flex-col"
+    [ngClass]="{'lg:max-w-md': companySelected}"
+  >
+    <div>
+      <h3 class="font-medium">Seleccione la empresa</h3>
+      <p class="text-gray-500 text-sm line-clamp-1">Busca y selecciona la empresa para la nueva sucursal</p>
+    </div>
+    <div>
+      <component-shared-search
+        [(searchQuery)]="searchByName"
+        [placeholder]="'Buscar empresa por nombre...'"
+        (searchQueryChange)="loadCompanies()"
+        [ngClass]="{'pointer-events-none': companySelected}"
+      />
+      <div *ngIf="companies.length > 0 && !companySelected && searchByName.length > 2" class="mt-2 p-1.5 rounded-b-lg shadow-lg">
+        <button *ngFor="let company of companies"
+          class="flex items-center gap-x-2 w-full px-3 py-1.5 text-left hover:bg-gray-100 rounded-lg"
+          (click)="onCompanySelected(company)">
+          <img *ngIf="company.logoUrl && company.id && logoMap[company.id]" [src]="logoMap[company.id]"
+            alt="{{ company.name }} logo" class="min-w-7 max-w-7 h-7 bg-gray-100 rounded-full object-cover">
+          <p class="text-gray-800 text-sm">{{ company.name }}</p>
+        </button>
+      </div>
+    </div>
+
+    <!-- Empresa Seleccionada -->
+    <div *ngIf="companySelected" class="border border-primary rounded-lg flex items-center gap-x-3 w-full p-3">
+      <img *ngIf="companySelected.logoUrl && companySelected.id && logoMap[companySelected.id]" [src]="logoMap[companySelected.id]"
+            alt="{{ companySelected.name }} logo" class="min-w-10 max-w-10 h-10 bg-gray-100 rounded-full object-cover">
+      <div class="w-full">
+        <p class="text-gray-800 font-medium text-sm">{{ companySelected.name }}</p>
+        <p class="text-gray-500 text-xs">{{ companySelected.tag }}</p>
+      </div>
+      <button class="p-1.5 rounded-lg hover:bg-primary/10 hover:text-primary"
+        (click)="companySelected = null; branchForm.reset();">
+        <lucide-icon [name]="X" class="size-4" />
+      </button>
+    </div>
+
+    <!-- Empresa sin Seleccionar -->
+    <div *ngIf="!companySelected && companies.length === 0 || searchByName.length < 3 && !companySelected" class="py-10 flex flex-col items-center justify-center w-full h-full">
+      <img src="/img/empty.png" alt="Empty content" class="h-16 mask-b-from-40% mb-5">
+      <p class="font-medium -mt-3">Sin resultados</p>
+      <p class="text-sm text-gray-500 text-center">Escriba 3 caracteres o más para buscar.</p>
+    </div>
+  </section>
+
+  <!-- Formulario -->
+  <section class="border border-gray-200 rounded-xl space-y-7 p-5 w-full transition-opacity duration-300"
+    [ngClass]="{'pointer-events-none hidden': !companySelected}">
+    <div>
+      <h3 class="font-medium">Datos de la Sucursal</h3>
+      <p class="text-gray-500 text-sm truncate">Completa la información de la nueva sucursal</p>
+    </div>
+
+    <form [formGroup]="branchForm" class="grid xl:grid-cols-2 gap-x-10 gap-y-5">
+
+      <!-- Nombre -->
+      <div class="space-y-2 xl:col-span-2">
+        <label for="name" class="block text-sm font-medium">
+          Nombre de la sucursal
+          <span class="text-red-600">*</span>
+          <span class="text-gray-500 font-normal text-xs"> (Máximo 100 caracteres)</span>
+        </label>
+        <input
+          id="name" name="name"
+          formControlName="name"
+          maxlength="100"
+          type="text"
+          placeholder="Ej: Sucursal Principal"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary"
+        >
+        <div *ngIf="branchForm.get('name')?.touched && branchForm.get('name')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="branchForm.get('name')?.errors?.['required']">El nombre es obligatorio.</div>
+          <div *ngIf="branchForm.get('name')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</div>
+          <div *ngIf="branchForm.get('name')?.errors?.['maxlength']">El nombre no debe exceder los 100 caracteres.</div>
+        </div>
+      </div>
+
+      <!-- País -->
+      <div class="space-y-2">
+        <label for="country" class="block text-sm font-medium">
+          País
+          <span class="text-red-600">*</span>
+        </label>
+        <select
+          id="country" name="country"
+          formControlName="country"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+          <option value="Peru">Perú</option>
+          <option value="Colombia">Colombia</option>
+          <option value="Bolivia">Bolivia</option>
+        </select>
+        <div *ngIf="branchForm.get('country')?.touched && branchForm.get('country')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="branchForm.get('country')?.errors?.['required']">El país es obligatorio.</div>
+        </div>
+      </div>
+
+      <!-- Ciudad -->
+      <div class="space-y-2">
+        <label for="city" class="block text-sm font-medium">
+          Ciudad
+          <span class="text-red-600">*</span>
+        </label>
+        <select
+          id="city" name="city"
+          formControlName="city"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+          <option value="Colombia">Monsefú - Chiclayo</option>
+          <option value="Bolivia">Reque - Chiclayo</option>
+        </select>
+        <div *ngIf="branchForm.get('city')?.touched && branchForm.get('city')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="branchForm.get('city')?.errors?.['required']">La ciudad es obligatoria.</div>
+        </div>
+      </div>
+
+      <!-- Dirección -->
+      <div class="space-y-2">
+        <label for="address" class="block text-sm font-medium">
+          Dirección
+          <span class="text-red-600">*</span>
+          <span class="text-gray-500 font-normal text-xs"> (Máximo 100 caracteres)</span>
+        </label>
+        <input
+          id="address" name="address"
+          formControlName="address"
+          type="text" maxlength="100"
+          placeholder="Ingrese la dirección de la sucursal"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 focus:outline-primary"
+        >
+        <div *ngIf="branchForm.get('address')?.touched && branchForm.get('address')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="branchForm.get('address')?.errors?.['required']">La dirección es obligatoria.</div>
+          <div *ngIf="branchForm.get('address')?.errors?.['maxlength']">La dirección no debe exceder los 100 caracteres.</div>
+        </div>
+      </div>
+
+      <!-- Telefono -->
+      <div class="space-y-2">
+        <label for="phoneNumber" class="block text-sm font-medium">
+          Telefono
+        </label>
+        <input
+          id="phoneNumber" name="phoneNumber"
+          formControlName="phoneNumber"
+          type="text" maxlength="20"
+          placeholder="Ingrese el número de teléfono"
+          (input)="onPhoneNumberInput($event)"
+          class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 focus:outline-primary"
+        >
+        <div *ngIf="branchForm.get('phoneNumber')?.touched && branchForm.get('phoneNumber')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="branchForm.get('phoneNumber')?.errors?.['minlength']">El teléfono debe tener al menos 9 dígitos.</div>
+          <div *ngIf="branchForm.get('phoneNumber')?.errors?.['maxlength']">El teléfono no debe exceder los 20 dígitos.</div>
+        </div>
+      </div>
+
+      <!-- Foto -->
+      <div class="space-y-2 xl:col-span-2">
+        <label for="image" class="block text-sm font-medium">
+          Foto
+          <span class="text-gray-500 font-normal text-xs">(La imagen no debe pesar mas de 2MB)</span>
+        </label>
+        <input
+          id="image" name="image"
+          type="file" accept="image/*"
+          (change)="onImageSelected($event)"
+          class="text-sm w-full contain-content rounded-lg border file:border-r file:border-gray-200 border-gray-200 file:text-sm file:py-2 file:px-4 file:focus:outline-primary file:mr-4 file:text-gray-600 hover:shadow hover:file:bg-gray-50 hover:cursor-pointer hover:file:cursor-pointer">
+        <p *ngIf="errorMessageValidator" class="text-red-600 text-xs">{{ errorMessageValidator }}</p>
+      </div>
+
+      <article class="flex items-center justify-end gap-x-2 xl:col-span-2">
+        <button type="button"
+          routerLink=".."
+          class="px-3 py-2 text-sm font-medium border border-gray-200 bg-white hover:bg-gray-50 text-gray-800 rounded-lg hover:shadow">
+          Cancelar
+        </button>
+        <button type="button"
+          class="btn-primary text-sm" [disabled]="branchForm.invalid"
+          aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-confirm" data-hs-overlay="#alerts-confirm">
+          Crear Sucursal
+        </button>
+      </article>
+    </form>
+
+  </section>
+</div>
+
+<!-- Modal de confirmación de registro de sucursal -->
+<div id="alerts-confirm"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-confirm-label">
+
+  <component-shared-alerts-confirm
+    [message]="'¿Está seguro de que desea registrar una nueva sucursal?'"
+    [value]="branchForm.value.name"
+    (confirmAction)="onConfirmBranch()"
+  />
+
+</div>
+
+<!-- Modal de éxito de registro de sucursal -->
+<div id="alerts-success"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-success-label">
+
+  <component-shared-alerts-success
+    [message]="successMessage"
+    [linkPrimary]="'/core/sucursales'"
+    />
+
+</div>
+
+<!-- Modal de error de registro de sucursal -->
+<div id="alerts-error"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-error-label">
+
+  <component-shared-alerts-error
+    [message]="errorMessage"
+    [btnPrimary]="'Cerrar'"
+  />
+
+</div>
+
+<!-- Botones de acción -->
+<button type="button"
+  class="hidden" id="open-error-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-error" data-hs-overlay="#alerts-error"
+></button>
+
+<button type="button"
+  class="hidden" id="open-success-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-success" data-hs-overlay="#alerts-success"
+></button>

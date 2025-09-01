@@ -16,6 +16,11 @@ export const CORE_ROUTES: Routes = [
         loadChildren: () => import('@pages/core/company/company.routes').then(m => m.COMPANY_ROUTES),
         data: { breadcrumb: 'Empresas' }
       },
+      {
+        path: 'sucursales',
+        loadChildren: () => import('@pages/core/branch/branch.routes').then(m => m.BRANCH_ROUTES),
+        data: { breadcrumb: 'Sucursales' }
+      },
     ]
   }
 ];

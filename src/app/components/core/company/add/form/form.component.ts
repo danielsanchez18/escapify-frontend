@@ -80,8 +80,6 @@ export class ComponentCoreCompanyAddForm {
       const company: Company = this.companyForm.value;
 
       const formData = new FormData();
-      console.log(company);
-
       formData.append('company', JSON.stringify(company)); // Convertimos la empresa a JSON
 
       if (this.image) {

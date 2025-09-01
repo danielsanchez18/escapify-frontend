@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LayoutDashboard, LucideAngularModule, Users, Store, Crown, UserLock, ClipboardMinus, Activity, Headset, MessageCircle, Bell, Cog, Settings } from 'lucide-angular';
+import { LayoutDashboard, LucideAngularModule, Users, Store, Crown, UserLock, ClipboardMinus, Activity, Headset, MessageCircle, Bell, Cog, Settings, MapPinHouse } from 'lucide-angular';
 
 @Component({
   selector: 'component-core-shared-navbar',
@@ -14,6 +14,7 @@ export class ComponentCoreSharedNavbar {
 
   readonly LayoutDashboard = LayoutDashboard;
   readonly Store = Store;
+  readonly MapPinHouse = MapPinHouse;
   readonly Users = Users;
   readonly UserLock = UserLock;
   readonly Crown = Crown;
@@ -27,6 +28,7 @@ export class ComponentCoreSharedNavbar {
   links = [
     { href: "dashboard", text: "Overview", icon: LayoutDashboard },
     { href: "empresas", text: "Empresas", icon: Store },
+    { href: "sucursales", text: "Sucursales", icon: MapPinHouse },
     { href: "suscripciones", text: "Suscripciones", icon: Crown },
     { href: "usuarios", text: "Usuarios", icon: Users },
     { href: "roles", text: "Roles y Permisos", icon: UserLock },
