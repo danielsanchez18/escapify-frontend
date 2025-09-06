@@ -1,15 +1,28 @@
 <div>
-  <section class="rounded-xl border border-gray-200 p-5 space-y-5">
+  <section class="rounded-xl border border-gray-200 p-5 space-y-7">
     <div class="flex items-center gap-x-3 justify-between">
       <p class="font-medium">Lista de Sucursales</p>
-      <a routerLink="/core/sucursales/agregar" class="font-medium text-white bg-primary text-sm rounded-lg px-3 py-2 hover:bg-primary-dark">Agregar</a>
+      <a *ngIf="branches.length > 0"
+        routerLink="/core/sucursales/agregar"
+        class="flex items-center gap-x-1 font-medium text-white bg-primary text-[13px] rounded-lg px-2.5 leading-none py-2 hover:bg-primary-dark">
+        <lucide-icon [name]="Plus" class="size-4 stroke-3" />
+        Agregar
+      </a>
     </div>
 
     <!-- Tabla sucursales -->
     <div class="overflow-x-hidden hover:overflow-x-auto">
       <div class="min-w-full inline-block align-middle">
         <div class="overflow-hidden">
-          <table class="min-w-full divide-y divide-white">
+          <!-- Empty content -->
+          <div *ngIf="branches.length === 0" class="flex flex-col items-center justify-center w-full h-full">
+            <img src="/img/empty.png" alt="Empty content" class="h-18 mask-b-from-40% mb-5">
+            <p class="font-medium ">Sin sucursales</p>
+            <p class="text-sm text-gray-500 text-center">Registra una nueva sucursal.</p>
+            <a routerLink="/core/sucursales/agregar" class="leading-none mt-5 font-medium text-white bg-primary text-[13px] rounded-lg px-2.5 py-2.5 hover:bg-primary-dark">Agregar</a>
+          </div>
+          <!-- Table content -->
+          <table *ngIf="branches.length > 0" class="min-w-full divide-y divide-white">
             <thead>
               <tr class="text-xs uppercase bg-gray-100">
                 <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">sucursal</th>
@@ -21,31 +34,15 @@
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-              <tr routerLink="12" class="group hover:bg-gray-50 hover:cursor-pointer max-xl:w-full">
+              <tr *ngFor="let branch of branches" routerLink="/core/sucursales/{{ branch.id }}"
+                class="group hover:bg-gray-50 hover:cursor-pointer max-xl:w-full">
                 <td class="px-6 py-4 whitespace-nowrap text-sm">
                   <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
-                    <img class="min-w-10 max-w-10 h-10 bg-gray-100 rounded-lg object-cover" src="/img/logo-min.png" alt="Company Logo">
+                    <img *ngIf="branch.logoUrl && branch.id && logoMap[branch.id]" [src]="logoMap[branch.id]"
+                      alt="{{ branch.name }} logo" class="min-w-10 max-w-10 h-10 bg-gray-100 rounded-full object-cover">
                     <div class="flex flex-col">
-                      <p class="font-semibold group-hover:text-primary group-hover:underline">Sede Central</p>
-                      <p class="text-gray-500">Av. 28 de Julio 123 - Monsefú</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium">S/. 120.00</td>
-                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium">S/. 120.00</td>
-                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium">
-                  <p class="text-xs uppercase font-semibold leading-none px-2 py-2 rounded-lg bg-[#51965c] text-white w-fit">Activo</p>
-                </td>
-                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium">12</td>
-                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium">12</td>
-              </tr>
-              <tr routerLink="12" class="group hover:bg-gray-50 hover:cursor-pointer max-xl:w-full">
-                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                  <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
-                    <img class="min-w-10 max-w-10 h-10 bg-gray-100 rounded-lg object-cover" src="/img/logo-min.png" alt="Company Logo">
-                    <div class="flex flex-col">
-                      <p class="font-semibold group-hover:text-primary group-hover:underline">Sede Central</p>
-                      <p class="text-gray-500">Av. 28 de Julio 123 - Monsefú</p>
+                      <p class="text-gray-800 font-semibold group-hover:text-primary group-hover:underline">{{ branch.name }}</p>
+                      <p class="text-gray-500 text-xs">{{ branch.address }}</p>
                     </div>
                   </div>
                 </td>

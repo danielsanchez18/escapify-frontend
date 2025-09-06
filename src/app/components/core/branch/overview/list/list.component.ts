@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ComponentSharedPaginator } from '@components/shared/paginator/paginator.component';
 import { ComponentSharedSearch } from '@components/shared/search/search.component';
-import { Branch, Company } from '@interfaces/enterprise.interface';
+import { Branch } from '@interfaces/enterprise.interface';
 import { PaginatedResponse } from '@interfaces/paginated-response.interface';
 import { User } from '@interfaces/users.interface';
-import { CompanyService } from '@services/company.service';
 import { ImageService } from '@services/image.service';
 import { Check, CircleCheck, ListFilter, LucideAngularModule, Minus, Tag, Users, MapPinHouse, Crown } from 'lucide-angular';
 import { UserService } from '@services/user.service';
@@ -45,7 +44,7 @@ export class ComponentCoreBranchOverviewList {
   searchByAddress: string = '';
   searchByCity: string = '';
   searchByCountry: string = '';
-  searchByCompanyId: string = '';
+  searchByCompanyName: string = '';
   startDate: string | null = null;
   endDate: string | null = null;
   enabled: boolean | null = null;
@@ -70,7 +69,8 @@ export class ComponentCoreBranchOverviewList {
       this.searchByName,
       this.searchByAddress,
       this.searchByCity,
-      this.searchByCompanyId,
+      this.searchByCountry,
+      this.searchByCompanyName,
       this.startDate,
       this.endDate,
       this.enabled,

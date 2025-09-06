@@ -110,8 +110,8 @@
           id="city" name="city"
           formControlName="city"
           class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
-          <option value="Colombia">Monsefú - Chiclayo</option>
-          <option value="Bolivia">Reque - Chiclayo</option>
+          <option value="Monsefú - Chiclayo">Monsefú - Chiclayo</option>
+          <option value="Reque - Chiclayo">Reque - Chiclayo</option>
         </select>
         <div *ngIf="branchForm.get('city')?.touched && branchForm.get('city')?.invalid" class="text-red-600 text-xs">
           <div *ngIf="branchForm.get('city')?.errors?.['required']">La ciudad es obligatoria.</div>

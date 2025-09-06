@@ -34,6 +34,7 @@ export class BranchService {
     address: string | null,
     city: string | null,
     country: string | null,
+    companyName: string | null,
     startDate: string | null,
     endDate: string | null,
     enabled: boolean | null,
@@ -52,6 +53,7 @@ export class BranchService {
     if (address) params = params.set('address', address);
     if (city) params = params.set('city', city);
     if (country) params = params.set('country', country);
+    if (companyName) params = params.set('companyName', companyName);
     if (startDate) params = params.set('startDate', startDate);
     if (endDate) params = params.set('endDate', endDate);
     if (enabled !== null) params = params.set('enabled', enabled.toString());

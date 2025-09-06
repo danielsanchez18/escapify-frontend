@@ -1,0 +1,122 @@
+<div class="grid gap-5">
+
+  <!-- Información Básica -->
+  <section
+    class="w-full border grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] items-center gap-y-5 gap-x-3 border-gray-200 rounded-xl p-5">
+    <img class="w-14 h-14 rounded-full object-cover" [src]="branchLogoUrl" alt="Logo de la sucursal" />
+
+    <div class="space-y-1 sm:space-y-0.5">
+      <div class="flex items-center gap-x-3">
+        <h2 class="font-medium line-clamp-1">{{ branch?.name }}</h2>
+        @if (branch?.enabled) {
+        <span
+          class="sm:hidden text-xs text-white px-2 py-1.5 rounded-lg bg-primary leading-none font-medium">Activa</span>
+        } @else {
+        <span
+          class="sm:hidden text-xs text-black px-2 py-1.5 rounded-lg bg-gray-100 leading-none font-medium">Inactiva</span>
+        }
+      </div>
+      <button class="flex items-center text-start gap-x-2 text-gray-600 hover:text-black disabled:pointer-events-none"
+        [disabled]="isCopyDisabled" (click)="copyBranchId(branch?.id)">
+        <p class="text-sm line-clamp-1 ">ID: {{ branch?.id }}</p>
+        <lucide-icon *ngIf="!isCopied" [name]="Copy" class="size-4" />
+        <lucide-icon *ngIf="isCopied" [name]="CopyCheck" class="size-4 text-blue-600" />
+        <span *ngIf="isCopied" class="text-sm text-blue-600">Copiado</span>
+      </button>
+    </div>
+
+    @if (branch?.enabled) {
+    <button type="button"
+      class="max-sm:hidden w-fit text-nowrap px-2.5 py-2.5 leading-none text-xs font-medium rounded-lg bg-primary text-white">
+      ACTIVA
+    </button>
+    } @else {
+    <button type="button"
+      class="max-sm:hidden w-fit text-nowrap uppercase px-2.5 py-2.5 leading-none text-xs font-medium rounded-lg bg-gray-100">
+      INACTIVA
+    </button>
+    }
+
+    <div class="col-span-2 sm:col-span-3 grid grid-cols-2 pt-5 border-t gap-y-5 border-gray-200">
+
+      <div class="space-y-1">
+        <h2 class="font-medium text-sm text-gray-500">Empresa</h2>
+        <div class="flex items-center gap-x-2 text-sm line-clamp-1">
+          <p *ngIf="branch?.companyName">{{ branch?.companyName }}</p>
+          <p *ngIf="!branch?.companyName">Sin registrar</p>
+        </div>
+      </div>
+
+      <div class="space-y-1">
+        <h2 class="font-medium text-sm text-gray-500">Teléfono</h2>
+        <div class="flex items-center gap-x-2 text-sm line-clamp-1">
+          <lucide-icon [name]="Phone" class="size-4" />
+          <p *ngIf="branch?.phoneNumber">{{ branch?.phoneNumber }}</p>
+          <p *ngIf="!branch?.phoneNumber">Sin registrar</p>
+        </div>
+      </div>
+
+      <div class="space-y-1">
+        <h2 class="font-medium text-sm text-gray-500">Dirección</h2>
+        <div class="flex items-center gap-x-2 text-sm line-clamp-1">
+          <lucide-icon [name]="MapPin" class="size-4" />
+          <p *ngIf="branch?.address">{{ branch?.address }}</p>
+          <p *ngIf="!branch?.address">Sin registrar</p>
+        </div>
+      </div>
+
+      <div class="space-y-1">
+        <h2 class="font-medium text-sm text-gray-500">Ciudad, País</h2>
+        <div class="flex items-center gap-x-2 text-sm line-clamp-1">
+          <p *ngIf="branch?.city">{{ branch?.city }}, {{ branch?.country }}</p>
+          <p *ngIf="!branch?.city">Sin registrar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Informacion de Auditoria -->
+  <section class="border border-gray-200 rounded-xl h-fit">
+    <div class="py-3 px-5 border-b border-gray-200 flex items-center gap-x-2">
+      <p class="text-sm font-medium">Información de Auditoría</p>
+    </div>
+
+    <div class="px-5 divide-y divide-gray-200">
+      <div class="py-5 space-y-2">
+        <div class="flex items-center gap-x-2">
+          <p class="text-sm text-gray-500">Fecha de creación:</p>
+          <p class="text-sm">{{ branch?.audit?.createdAt | date: 'MMM dd, yyyy - HH:mm' }}</p>
+        </div>
+        <div class="flex items-center gap-x-1">
+          <p class="text-sm text-gray-500 mr-3">Creado por:</p>
+          <div class="bg-white size-6 rounded-full flex items-center justify-center overflow-hidden">
+            <img [src]="createdByPhotoUrl" alt="Usuario" class="object-cover">
+          </div>
+          <a routerLink="/usuarios/{{ branch?.audit?.createdBy }}" class="text-sm hover:underline hover:text-primary">{{
+            createdByUser?.name || 'Desconocido' }} {{
+            createdByUser?.lastname || '' }}</a>
+        </div>
+      </div>
+      <div class="py-5 space-y-2">
+        <div class="flex items-center gap-x-2">
+          <p class="text-sm text-gray-500">Fecha de actualización:</p>
+          @if (branch?.audit?.updatedAt) {
+          <p class="text-sm">{{ branch?.audit?.updatedAt | date: 'MMM dd, yyyy - HH:mm' }}</p>
+          } @else {
+          <p class="text-sm">Sin actualizar</p>
+          }
+        </div>
+        <div *ngIf="branch?.audit?.updatedAt" class="flex items-center gap-x-1">
+          <p class="text-sm text-gray-500 mr-3">Actualizado por:</p>
+          <div class="bg-white size-6 rounded-full overflow-hidden">
+            <img [src]="updatedByPhotoUrl" alt="Usuario" class="object-cover">
+          </div>
+          <a routerLink="/usuarios/{{ branch?.audit?.updatedBy }}" class="text-sm hover:underline hover:text-primary">{{
+            updatedByUser?.name || 'Desconocido' }} {{
+            updatedByUser?.lastname || '' }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

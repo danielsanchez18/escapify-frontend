@@ -1,0 +1,90 @@
+<section class="border border-gray-200 bg-white rounded-xl p-5 space-y-7">
+
+  <div>
+    <h2 class="font-medium">Personal de la Sucursal</h2>
+    <p class="text-sm text-gray-500">Usuarios con acceso a esta sucursal específica</p>
+  </div>
+
+  <div class="space-y-5">
+
+    <div>
+      <!-- Buscar personal por nombre -->
+      <component-shared-search [(searchQuery)]="searchByName" [placeholder]="'Buscar por nombre...'"
+        (searchQueryChange)="loadUsers()" />
+    </div>
+
+    <!-- Lista de personal -->
+    <div class="overflow-x-hidden hover:overflow-x-auto">
+      <div class="min-w-full inline-block align-middle">
+        <div class="overflow-hidden min-h-[15rem]">
+
+          <!-- Empty content -->
+          <!-- <div *ngIf="users.length === 0" class="flex flex-col items-center justify-center w-full h-full">
+            <img src="/img/empty.png" alt="Empty content" class="h-22 mask-b-from-40% mb-5">
+            <p class="font-medium mb-2">Sin datos</p>
+            <p class="text-sm text-gray-500 text-center">Aún no hay datos disponibles. <br> Le avisaremos cuando haya
+              alguna actualización.</p>
+          </div> -->
+
+          <!-- Table content -->
+          <!-- <table *ngIf="users.length > 0" class="min-w-full divide-y divide-white"> -->
+          <table class="min-w-full divide-y divide-white">
+            <thead>
+              <tr class="text-xs uppercase bg-gray-100">
+                <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">empleado</th>
+                <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">rol</th>
+                <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">fecha de reg.</th>
+                <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">ult. actividad</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <!-- <tr *ngFor="let user of users" routerLink="{{ user.id }}" -->
+              <tr class="group hover:bg-gray-50 hover:cursor-pointer max-xl:w-full">
+                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                  <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
+                    <div class="min-w-10 max-w-10 h-10 bg-gray-200 rounded-full object-cover"></div>
+                    <div class="grid grid-cols-[auto_1fr] items-center gap-x-2">
+                      <p class="text-sm line-clamp-1 font-medium group-hover:underline group-hover:text-primary">Nombre del usuario</p>
+                      <lucide-icon [name]="CircleCheck" class="size-4 text-primary" />
+                      <p class="text-sm text-gray-500 col-span-2">user&#64;ejemplo.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <p class="leading-none px-2.5 py-2 rounded-full text-xs font-semibold border bg-white w-fit">Administrador</p>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Jun 17, 2025 - 14:00</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Hace 16 min.</td>
+              </tr>
+              <tr class="group hover:bg-gray-50 hover:cursor-pointer max-xl:w-full">
+                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                  <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
+                    <div class="min-w-10 max-w-10 h-10 bg-gray-200 rounded-full object-cover"></div>
+                    <div class="grid grid-cols-[auto_1fr] items-center gap-x-2">
+                      <p class="text-sm line-clamp-1 font-medium group-hover:underline group-hover:text-primary">Nombre del usuario</p>
+                      <lucide-icon [name]="CircleCheck" class="size-4 text-primary" />
+                      <p class="text-sm text-gray-500 col-span-2">user&#64;ejemplo.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <p class="leading-none px-2.5 py-2 rounded-full text-xs font-semibold border border-blue-600 bg-white text-blue-600 w-fit">Cajero</p>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Jun 17, 2025 - 14:00</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Hace 16 min.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paginación -->
+    <div *ngIf="users.length > 0" class="px-5">
+      <component-shared-paginator [page]="page" [totalPages]="totalPages" [numberOfElements]="numberOfElements"
+        [totalElements]="totalElements" (pageChange)="changePage($event)" />
+    </div>
+
+  </div>
+
+</section>

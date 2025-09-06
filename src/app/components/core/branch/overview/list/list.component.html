@@ -3,8 +3,8 @@
   <!-- Titulo, Busqueda, Filtros -->
   <article class="flex items-center justify-between gap-x-3 px-5">
 
-    <!-- Buscar por nombre -->
-    <component-shared-search [(searchQuery)]="searchByName" [placeholder]="'Buscar por nombre...'"
+    <!-- Buscar por nombre de la empresa -->
+    <component-shared-search [(searchQuery)]="searchByCompanyName" [placeholder]="'Buscar por empresa...'"
       (searchQueryChange)="loadBranches()" />
 
     <!-- Boton de Filtros -->
@@ -17,7 +17,7 @@
 
   </article>
 
-  <!-- Tabla empresas -->
+  <!-- Tabla sucursales -->
   <div class="overflow-x-hidden hover:overflow-x-auto sm:mx-5">
     <div class="min-w-full inline-block align-middle">
       <div class="overflow-hidden h-[25.5rem]">

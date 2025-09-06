@@ -50,7 +50,7 @@ export class ComponentCoreBranchAddForm {
 
   logoMap: { [companyId: string]: string } = {};
 
-  companySelected: Company | null = null;
+  @Input() companySelected: Company | null = null;
 
   branchForm!: FormGroup;
   image: File | null = null;
@@ -69,8 +69,8 @@ export class ComponentCoreBranchAddForm {
       name: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
       phoneNumber: [null, [Validators.minLength(9), Validators.maxLength(20)]],
       address: [null, [Validators.required, Validators.maxLength(100)]],
-      country: [null, [Validators.required, Validators.maxLength(20)]],
       city: [null, [Validators.required, Validators.maxLength(20)]],
+      country: [null, [Validators.required, Validators.maxLength(20)]],
       companyId: [null, Validators.required],
     });
   }
