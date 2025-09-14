@@ -1,0 +1,186 @@
+<section class="w-full p-5 md:px-10 bg-white border border-gray-200 shadow rounded-xl space-y-5">
+
+  <div>
+    <h3 class="font-medium">Editar Sucursal</h3>
+    <p class="text-sm text-gray-500">Modifica los datos de la sucursal a continuación.</p>
+  </div>
+
+  <form [formGroup]="branchForm"
+    class="divide-y divide-gray-200">
+    <div class="py-10 flex max-md:flex-col gap-y-5 gap-x-10">
+      <label for="" class="block text-gray-500 text-sm w-52">
+        Foto
+      </label>
+      <div class="flex items-center gap-x-5">
+        <div class="border-[1.5px] border-gray-400 border-dashed rounded-full size-20"></div>
+        <div class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-2">
+          <button
+            class="text-xs text-white font-medium bg-primary hover:bg-primary-dark rounded-lg p-2.5 leading-none">Subir
+            foto</button>
+          <button
+            class="text-xs text-red-600 font-semibold hover:underline rounded-lg leading-none p-2.5">Eliminar</button>
+          <p class="text-xs col-span-2 text-gray-500">Elige una foto de hasta 1 MB.</p>
+        </div>
+      </div>
+    </div>
+    <article class="space-y-7 md:space-y-7 py-10">
+      <h3 class="font-medium text-sm">Información de la Sucursal</h3>
+
+      <!-- Nombre -->
+      <div class="flex max-md:flex-col gap-y-2 gap-x-10">
+        <label for="name" class="block text-sm text-gray-500 md:w-52 md:mt-2">
+          Nombre
+          <span class="text-red-600">*</span>
+        </label>
+        <div class="md:w-96 space-y-2">
+          <input
+            id="name" name="name"
+            formControlName="name"
+            maxlength="100"
+            type="text"
+            placeholder="Ej: Sucursal Principal"
+            class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary"
+          >
+          <p class="text-xs text-gray-500">Ingresa el nombre completo de la sucursal.</p>
+          <div *ngIf="branchForm.get('name')?.touched && branchForm.get('name')?.invalid" class="text-red-600 text-xs">
+            <div *ngIf="branchForm.get('name')?.errors?.['required']">El nombre es obligatorio.</div>
+            <div *ngIf="branchForm.get('name')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</div>
+            <div *ngIf="branchForm.get('name')?.errors?.['maxlength']">El nombre no debe exceder los 100 caracteres.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- País -->
+      <div class="flex max-md:flex-col gap-y-2 gap-x-10">
+        <label for="country" class="block text-sm text-gray-500 md:w-52 md:mt-2">
+          País
+          <span class="text-red-600">*</span>
+        </label>
+        <div class="md:w-96 space-y-2">
+          <select
+            id="country" name="country"
+            formControlName="country"
+            class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+            <option value="Peru">Perú</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Bolivia">Bolivia</option>
+          </select>
+          <div *ngIf="branchForm.get('country')?.touched && branchForm.get('country')?.invalid" class="text-red-600 text-xs">
+            <div *ngIf="branchForm.get('country')?.errors?.['required']">El país es obligatorio.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ciudad -->
+      <div class="flex max-md:flex-col gap-y-2 gap-x-10">
+        <label for="" class="block text-sm text-gray-500 md:w-52 md:mt-2">
+          Ciudad
+          <span class="text-red-600">*</span>
+        </label>
+        <div class="md:w-96 space-y-2">
+          <select
+            id="city" name="city"
+            formControlName="city"
+            class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
+            <option value="">Selecciona una ciudad</option>
+            <option value="Monsefú - Chiclayo">Monsefú - Chiclayo</option>
+            <option value="Reque - Chiclayo">Reque - Chiclayo</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex max-md:flex-col gap-y-2 gap-x-10">
+        <label for="" class="block text-sm text-gray-500 md:w-52 md:mt-2">
+          Dirección
+          <span class="text-red-600">*</span>
+        </label>
+        <div class="md:w-96">
+          <input
+            id="address" name="address"
+            formControlName="address"
+            maxlength="100"
+            type="text"
+            placeholder="Ej: Calle Falsa 123, Colonia, CP 12345"
+            class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary"
+          >
+          <p class="text-xs text-gray-500 mt-2">Ingresa la dirección completa de la sucursal.</p>
+        </div>
+      </div>
+      <div class="flex max-md:flex-col gap-y-2 gap-x-10">
+        <label for="" class="block text-sm text-gray-500 md:w-52 md:mt-2">
+          Teléfono
+        </label>
+        <div class="md:w-96">
+          <input
+            id="phoneNumber" name="phoneNumber"
+            formControlName="phoneNumber"
+            maxlength="100"
+            type="text"
+            placeholder="Ej: +52 123 456 7890"
+            class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary"
+          >
+          <p class="text-xs text-gray-500 mt-2">Ingresa el número de teléfono de la sucursal.</p>
+        </div>
+      </div>
+      <div class="md:ml-52 md:pl-10 md:w-96">
+        <button type="button"
+          class="text-sm text-white font-medium bg-primary hover:bg-primary-dark rounded-lg px-3 py-2 w-fit"
+          aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-confirm" data-hs-overlay="#alerts-confirm">
+          Guardar cambios
+        </button>
+        <button type="button"
+          routerLink=".."
+          class="text-sm font-medium border border-gray-300 rounded-lg px-3 py-2 w-fit ml-3 hover:bg-gray-100">
+          Cancelar
+        </button>
+      </div>
+    </article>
+  </form>
+</section>
+
+<!-- Modal de confirmación de registro de sucursal -->
+<div id="alerts-confirm"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-confirm-label">
+
+  <component-shared-alerts-confirm
+    [message]="'¿Está seguro de guardar lo cambios?'"
+    (confirmAction)="onConfirmBranch()"
+  />
+
+</div>
+
+<!-- Modal de éxito de registro de sucursal -->
+<div id="alerts-success"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-success-label">
+
+  <component-shared-alerts-success
+    [message]="successMessage"
+    [linkPrimary]="'core/sucursales/' + branch?.id"
+    />
+
+</div>
+
+<!-- Modal de error de registro de sucursal -->
+<div id="alerts-error"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-error-label">
+
+  <component-shared-alerts-error
+    [message]="errorMessage"
+    [btnPrimary]="'Cerrar'"
+  />
+
+</div>
+
+<!-- Botones de acción -->
+<button type="button"
+  class="hidden" id="open-error-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-error" data-hs-overlay="#alerts-error"
+></button>
+
+<button type="button"
+  class="hidden" id="open-success-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-success" data-hs-overlay="#alerts-success"
+></button>

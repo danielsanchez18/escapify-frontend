@@ -39,12 +39,14 @@ export class UserService {
     enabled: boolean | null,
     deleted: boolean | null,
     page: number,
-    size: number
+    size: number,
+    sort: string
   ): Observable<PaginatedResponse<User>> {
 
     let params = new HttpParams()
       .set('page', page.toString())
-      .set('size', size.toString());
+      .set('size', size.toString())
+      .set('sort', sort);
 
     if (fullName) params = params.set('fullName', fullName);
     if (email) params = params.set('email', email);

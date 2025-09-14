@@ -8,7 +8,7 @@ import { Branch } from '@interfaces/enterprise.interface';
 import { PaginatedResponse } from '@interfaces/paginated-response.interface';
 import { User } from '@interfaces/users.interface';
 import { ImageService } from '@services/image.service';
-import { Check, CircleCheck, ListFilter, LucideAngularModule, Minus, Tag, Users, MapPinHouse, Crown } from 'lucide-angular';
+import { Check, CircleCheck, ListFilter, LucideAngularModule, Minus, Tag, Users, MapPinHouse, Crown, CircleMinus, CircleX } from 'lucide-angular';
 import { UserService } from '@services/user.service';
 import { TokenStorage } from '@core/auth/token-storage';
 import { BranchService } from '@services/branch.service';
@@ -30,6 +30,8 @@ export class ComponentCoreBranchOverviewList {
   readonly Minus = Minus;
   readonly Tag = Tag;
   readonly CircleCheck = CircleCheck;
+  readonly CircleMinus = CircleMinus;
+  readonly CircleX = CircleX;
   readonly Users = Users;
   readonly MapPinHouse = MapPinHouse;
   readonly Crown = Crown;

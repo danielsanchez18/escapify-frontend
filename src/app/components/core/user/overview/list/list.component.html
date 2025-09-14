@@ -1,0 +1,93 @@
+<section class="space-y-7 rounded-xl border border-gray-200 py-5">
+
+  <!-- Titulo, Busqueda, Filtros -->
+  <article class="flex items-center justify-between gap-x-3 px-5">
+
+    <!-- Buscar por nombre -->
+    <component-shared-search
+      [(searchQuery)]="searchByName"
+      [placeholder]="'Buscar por nombre...'"
+      (searchQueryChange)="loadUsers()" />
+
+    <!-- Boton de Filtros -->
+    <button
+      class="px-2 py-2 rounded-lg border border-gray-200 flex items-center gap-x-2 text-gray-600 hover:bg-gray-50 hover:shadow">
+      <lucide-icon [name]="ListFilter" class="size-4 stroke-[1.5]" />
+      <p class="font-medium text-sm">Filtros</p>
+      <p class="flex items-center justify-center rounded-full font-semibold bg-primary text-white size-5 text-xs">0</p>
+    </button>
+
+  </article>
+
+  <!-- Tabla empresas -->
+  <div class="overflow-x-hidden hover:overflow-x-auto sm:mx-5">
+    <div class="min-w-full inline-block align-middle">
+      <div class="overflow-hidden h-[25.5rem]">
+        <!-- Empty content -->
+        <div *ngIf="users.length === 0" class="flex flex-col items-center justify-center w-full h-full">
+          <img src="/img/empty.png" alt="Empty content" class="h-22 mask-b-from-40% mb-5">
+          <p class="font-medium mb-2">Sin datos</p>
+          <p class="text-sm text-gray-500 text-center">Aún no hay datos disponibles. <br> Le avisaremos cuando haya alguna actualización.</p>
+        </div>
+        <!-- Table content -->
+        <table *ngIf="users.length > 0" class="min-w-full divide-y divide-white">
+          <thead>
+            <tr class="text-xs uppercase bg-gray-100">
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">empresa</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">rol</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">provider</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">última conexión</th>
+              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">creado por</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr *ngFor="let user of users" routerLink="{{ user.id }}"
+              class="group hover:bg-gray-50 hover:cursor-pointer max-xl:w-full">
+              <td class="px-6 py-4 whitespace-nowrap text-sm">
+                <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
+                  <img *ngIf="user.photoUrl" [src]="user.photoUrl"
+                    alt="{{ user.name }}" class="min-w-10 max-w-10 h-10 bg-gray-100 rounded-full object-cover">
+                  <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
+                    <p class="text-gray-800 font-semibold group-hover:text-primary group-hover:underline">{{ user.name }} {{ user.lastname }}</p>
+                    <lucide-icon *ngIf="user.enabled && !user.deleted" [name]="CircleCheck" class="size-4 text-primary" title="Usuario Activo" />
+                    <lucide-icon *ngIf="!user.enabled && !user.deleted" [name]="CircleMinus" class="size-4 text-gray-600" title="Usuario Inactivo" />
+                    <lucide-icon *ngIf="user.deleted" [name]="CircleX" class="size-4 text-red-600" title="Usuario Eliminado" />
+                    <p class="text-gray-500 text-sm col-span-2">{{ user.email }}</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ user.provider }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ user.provider }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Hace 2 días</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
+                  <img class="min-w-10 max-w-10 h-10 bg-gray-100 rounded-full object-cover"
+                    [src]="user.audit && user.audit.createdBy && userPhotoMap[user.audit.createdBy] ? userPhotoMap[user.audit.createdBy] : '/img/logo-min.png'"
+                    alt="User Photo" />
+                  <div class="flex flex-col">
+                    <p class="text-gray-800 font-semibold">{{ user.audit && user.audit.createdBy &&
+                      userMap[user.audit.createdBy] ? userMap[user.audit.createdBy].name : 'Desconocido' }} {{
+                      user.audit && user.audit.createdBy && userMap[user.audit.createdBy] ?
+                      userMap[user.audit.createdBy].lastname : '' }}</p>
+                    <p class="text-gray-500 text-sm">{{ user.audit.createdAt | date: 'MMM dd, yyyy' }}</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paginación -->
+  <div *ngIf="users.length > 0" class="px-5">
+    <component-shared-paginator
+      [page]="page"
+      [totalPages]="totalPages"
+      [numberOfElements]="numberOfElements"
+      [totalElements]="totalElements"
+      (pageChange)="changePage($event)"
+    />
+  </div>
+</section>

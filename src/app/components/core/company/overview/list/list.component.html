@@ -36,7 +36,6 @@
               <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">n° sucur.</th>
               <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">n° trabaj.</th>
               <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">Ventas</th>
-              <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">Estado</th>
               <th scope="col" class="px-6 py-3 text-nowrap font-semibold text-start">creado por</th>
             </tr>
           </thead>
@@ -47,9 +46,12 @@
                 <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
                   <img *ngIf="company.logoUrl && company.id && logoMap[company.id]" [src]="logoMap[company.id]"
                     alt="{{ company.name }} logo" class="min-w-10 max-w-10 h-10 bg-gray-100 rounded-full object-cover">
-                  <div class="flex flex-col">
+                  <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
                     <p class="text-gray-800 font-semibold group-hover:text-primary group-hover:underline">{{ company.name }}</p>
-                    <p class="text-gray-500 text-xs">{{ company.tag }}</p>
+                    <lucide-icon *ngIf="company.enabled && !company.deleted" [name]="CircleCheck" class="size-4 text-primary" title="Empresa Activa" />
+                    <lucide-icon *ngIf="!company.enabled && !company.deleted" [name]="CircleMinus" class="size-4 text-gray-600" title="Empresa Inactiva" />
+                    <lucide-icon *ngIf="company.deleted" [name]="CircleX" class="size-4 text-red-600" title="Empresa Eliminada" />
+                    <p class="text-gray-500 text-sm col-span-2">{{ company.tag }}</p>
                   </div>
                 </div>
               </td>
@@ -62,14 +64,6 @@
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ branchCountMap[company.id!] }} sucursales</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">13 trabajadores</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">S/. 1203.00</td>
-              <td class="px-6 py-3 whitespace-nowrap text-sm font-medium">
-                @if (company.deleted) {
-                  <p class="text-xs uppercase font-semibold leading-none px-2 py-2 rounded-lg bg-red-600 text-white w-fit">Eliminada</p>
-                } @else {
-                  <p *ngIf="company.enabled" class="text-xs uppercase font-semibold leading-none px-2 py-2 rounded-lg bg-[#51965c] text-white w-fit">Activa</p>
-                  <p *ngIf="!company.enabled" class="text-xs uppercase font-medium leading-none px-2 py-2 rounded-lg bg-gray-200 w-fit">Inactiva</p>
-                }
-              </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                 <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
                   <img class="min-w-10 max-w-10 h-10 bg-gray-100 rounded-full object-cover"
@@ -80,7 +74,7 @@
                       userMap[company.audit.createdBy] ? userMap[company.audit.createdBy].name : 'Desconocido' }} {{
                       company.audit && company.audit.createdBy && userMap[company.audit.createdBy] ?
                       userMap[company.audit.createdBy].lastname : '' }}</p>
-                    <p class="text-gray-500 text-xs">{{ company.audit.createdAt | date: 'MMM dd, yyyy' }}</p>
+                    <p class="text-gray-500 text-sm">{{ company.audit.createdAt | date: 'MMM dd, yyyy' }}</p>
                   </div>
                 </div>
               </td>

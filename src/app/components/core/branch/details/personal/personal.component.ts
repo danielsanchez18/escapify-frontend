@@ -13,7 +13,6 @@ import { CircleCheck, LucideAngularModule } from 'lucide-angular';
     ComponentSharedPaginator,
     CommonModule,
     LucideAngularModule,
-    RouterLink
   ],
   templateUrl: './personal.component.html',
 })

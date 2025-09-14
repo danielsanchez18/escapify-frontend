@@ -86,7 +86,7 @@
           <span class="text-red-600">*</span>
         </label>
         <select
-          name="country"
+          id="country" name="country"
           formControlName="country"
           class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
           <option value="Peru">Perú</option>
@@ -102,7 +102,7 @@
           <span class="text-red-600">*</span>
         </label>
         <select
-          name="currency"
+          id="currency" name="currency"
           formControlName="currency"
           class="border rounded-lg border-gray-200 text-sm w-full py-2 px-4 hover:shadow focus:outline-primary">
           <option value="PEN">PEN</option>
@@ -202,7 +202,7 @@
 
   <component-shared-alerts-success
     [message]="successMessage"
-    [linkPrimary]="'core/empresas/{{ companyId }}'"
+    [linkPrimary]="'core/empresas/' + company?.id"
     />
 
 </div>

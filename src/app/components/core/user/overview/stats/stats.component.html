@@ -1,0 +1,62 @@
+<section class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
+
+  <!-- Total de usuarios -->
+  <article class="w-full bg-white py-5 space-y-2 px-5 rounded-xl border border-gray-200 shadow">
+    <div class="flex text-sm text-gray-600 items-center justify-between">
+      <h3>Total de Usuarios</h3>
+      <lucide-icon [img]="Users" class="size-5 stroke-[1.5]" />
+    </div>
+
+    <div class="space-y-1">
+      <p class="font-medium text-xl">1631 <span class="text-sm mr-2">usuarios</span></p>
+      <p class="text-xs text-gray-500 line-clamp-1">32 nuevos este mes</p>
+    </div>
+  </article>
+
+  <!-- Total de sucursales -->
+  <article class="w-full bg-white py-5 space-y-2 px-5 rounded-xl border border-gray-200 shadow">
+    <div class="flex text-sm text-gray-600 items-center justify-between">
+      <h3>Total de sucursales</h3>
+      <lucide-icon [img]="MapPinHouse" class="size-5 stroke-[1.5]" />
+    </div>
+
+    <div class="space-y-1">
+      <p class="font-medium text-xl">2310<span class="text-sm"> sucursales</span></p>
+      <p class="text-xs text-gray-500 line-clamp-1">6 nuevas este mes</p>
+    </div>
+  </article>
+
+  <!-- Suscripciones -->
+  <article class="w-full bg-white py-5 space-y-2 px-5 rounded-xl border border-gray-200 shadow">
+    <div class="flex text-sm text-gray-600 items-center justify-between">
+      <h3>Suscripciones</h3>
+      <lucide-icon [img]="CreditCard" class="size-5 stroke-[1.5]" />
+    </div>
+
+    <div class="space-y-1">
+      <p class="font-medium text-xl">S/. 2356<span class="text-sm">.29</span></p>
+      <div class="flex items-center gap-x-1 text-green-600">
+        <lucide-icon [img]="TrendingUp" class="size-4" />
+        <p class="text-xs line-clamp-1 font-medium">+40% este mes</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- Total de retención -->
+  <article class="w-full bg-white py-5 space-y-2 px-5 rounded-xl border border-gray-200 shadow">
+    <div class="flex text-sm text-gray-600 items-center justify-between">
+      <h3>Tasa de Retención</h3>
+      <lucide-icon [img]="Focus" class="size-5 stroke-[1.5]" />
+    </div>
+
+    <div class="space-y-1">
+      <p class="font-medium text-xl">92.2%</p>
+      <div class="flex items-center gap-x-1 text-red-600">
+        <lucide-icon [img]="TrendingDown" class="size-4" />
+        <p class="text-xs line-clamp-1 font-medium">-3.5% este mes</p>
+      </div>
+    </div>
+  </article>
+
+
+</section>
