@@ -13,10 +13,14 @@ export const USER_ROUTES: Routes = [
   //   path: 'exportar',
   //   loadComponent: () => import('./export/export.component').then(m => m.PageCoreUserExport),
   // },
-  // {
-  //   path: 'agregar',
-  //   loadComponent: () => import('./add/add.component').then(m => m.PageCoreUserAdd),
-  // }
+  {
+    path: 'agregar',
+    loadComponent: () => import('./add/add.component').then(m => m.PageCoreUserAdd),
+  },
+  {
+    path: ':id',
+    loadComponent: () => import('./details/details.component').then(m => m.PageCoreUserDetails),
+  }
 ];
 
 

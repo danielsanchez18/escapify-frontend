@@ -1,0 +1,221 @@
+<section class="bg-white rounded-xl border border-gray-200">
+
+  <div class="px-5 py-3 border-b border-gray-200">
+    <h2 class="text-sm font-medium">
+      Información del usuario
+    </h2>
+  </div>
+
+  <form [formGroup]="userForm"
+    class="grid md:grid-cols-2 gap-x-10 gap-y-5 p-5">
+
+    <!-- Foto -->
+    <div class="space-y-2 md:col-span-2">
+      <label for="image" class="block text-sm font-medium">
+        Foto
+        <span class="text-gray-500 font-normal text-xs">(La imagen no debe pesar mas de 2MB)</span>
+      </label>
+      <input
+        id="image" name="image"
+        type="file" accept="image/*"
+        (change)="onImageSelected($event)"
+        class="text-sm w-full contain-content rounded-lg border file:border-r file:border-gray-200 border-gray-200 file:text-sm file:py-2.5 file:px-4 file:focus:outline-primary file:mr-4 file:text-gray-600 hover:shadow hover:file:bg-gray-50 hover:cursor-pointer hover:file:cursor-pointer">
+        <p *ngIf="errorMessageValidator" class="text-red-600 text-xs">{{ errorMessageValidator }}</p>
+    </div>
+
+    <!-- Nombre -->
+    <div class="space-y-2">
+      <label for="name" class="block text-sm font-medium">
+        Nombre
+        <span class="text-red-600">*</span>
+        <span class="text-gray-500 font-normal text-xs"> (Máximo 50 caracteres)</span>
+      </label>
+
+      <input
+        id="name" name="name"
+        formControlName="name"
+        maxlength="50"
+        type="text"
+        placeholder="Ingrese el nombre del usuario"
+        class="border rounded-lg border-gray-200 text-sm w-full py-2.5   px-4 hover:shadow focus:outline-primary"
+      >
+
+      <div *ngIf="userForm.get('name')?.touched && userForm.get('name')?.invalid" class="text-red-600 text-xs">
+        <div *ngIf="userForm.get('name')?.errors?.['required']">El nombre es obligatorio.</div>
+        <div *ngIf="userForm.get('name')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</div>
+        <div *ngIf="userForm.get('name')?.errors?.['maxlength']">El nombre no debe exceder los 50 caracteres.</div>
+      </div>
+    </div>
+
+    <!-- Apellido -->
+    <div class="space-y-2">
+      <label for="lastname" class="block text-sm font-medium">
+        Apellido
+      </label>
+
+      <input
+        id="lastname" name="lastname"
+        formControlName="lastname"
+        maxlength="50"
+        type="text"
+        placeholder="Ingrese el apellido del usuario"
+        class="border rounded-lg border-gray-200 text-sm w-full py-2.5   px-4 hover:shadow focus:outline-primary"
+      >
+
+      <div *ngIf="userForm.get('lastname')?.touched && userForm.get('lastname')?.invalid" class="text-red-600 text-xs">
+        <div *ngIf="userForm.get('lastname')?.errors?.['required']">El apellido es obligatorio.</div>
+        <div *ngIf="userForm.get('lastname')?.errors?.['minlength']">El apellido debe tener al menos 3 caracteres.</div>
+        <div *ngIf="userForm.get('lastname')?.errors?.['maxlength']">El apellido no debe exceder los 50 caracteres.</div>
+      </div>
+    </div>
+
+    <!-- Telefono -->
+    <div class="space-y-2">
+      <label for="phoneNumber" class="block text-sm font-medium">
+        Telefono
+        <span class="text-red-600">*</span>
+        <span class="text-gray-500 font-normal text-xs"> (Máximo 20 caracteres)</span>
+      </label>
+
+      <input
+        id="phoneNumber" name="phoneNumber"
+        formControlName="phoneNumber"
+        type="text" maxlength="20"
+        placeholder="Ingrese el número de teléfono"
+        (input)="onPhoneNumberInput($event)"
+        class="border rounded-lg border-gray-200 text-sm w-full py-2.5 px-4 focus:outline-primary"
+      >
+
+      <div *ngIf="userForm.get('phoneNumber')?.touched && userForm.get('phoneNumber')?.invalid" class="text-red-600 text-xs">
+        <div *ngIf="userForm.get('phoneNumber')?.errors?.['minlength']">El teléfono debe tener al menos 9 dígitos.</div>
+        <div *ngIf="userForm.get('phoneNumber')?.errors?.['maxlength']">El teléfono no debe exceder los 20 dígitos.</div>
+      </div>
+    </div>
+
+    <!-- Correo -->
+    <div class="space-y-2">
+      <label for="email" class="block text-sm font-medium">
+        Correo
+        <span class="text-red-600">*</span>
+        <span class="text-gray-500 font-normal text-xs"> (Máximo 100 caracteres)</span>
+      </label>
+
+      <input
+        id="email" name="email"
+        formControlName="email"
+        type="email" maxlength="100"
+        placeholder="Ingrese el correo de la empresa"
+        class="border rounded-lg border-gray-200 text-sm w-full py-2.5 px-4 hover:shadow focus:outline-primary"
+      >
+
+      <div *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid" class="text-red-600 text-xs">
+        <div *ngIf="userForm.get('email')?.errors?.['email']">Ingrese un correo válido.</div>
+        <div *ngIf="userForm.get('email')?.errors?.['maxlength']">El correo no debe exceder los 100 caracteres.</div>
+      </div>
+    </div>
+
+    <!-- Contraseña -->
+    <div class="space-y-2 md:col-span-2">
+      <label for="password" class="block text-sm font-medium">
+        Contraseña
+      </label>
+
+      <!-- <input
+        id="password" name="password"
+        formControlName="password"
+        type="password" maxlength="100"
+        placeholder="Ingrese la contraseña"
+        class="border rounded-lg border-gray-200 text-sm w-full py-2.5 px-4 hover:shadow focus:outline-primary"
+      > -->
+
+      <div class="relative">
+        <input
+        id="password" name="password"
+        formControlName="password"
+        type="password" maxlength="100"
+        placeholder="Ingrese su contraseña"
+        class="border rounded-lg border-gray-300 text-sm py-2.5 w-full pl-4 pr-12 focus:outline-primary"
+      >
+
+        <button type="button" data-hs-toggle-password='{
+            "target": "#password"
+          }' class="absolute inset-y-0 end-0 flex items-center z-20 px-4 cursor-pointer text-gray-500 rounded-e-md focus:outline-hidden focus:text-primary">
+          <svg class="shrink-0 size-4.5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path class="hs-password-active:hidden" d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+            <path class="hs-password-active:hidden" d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+            <path class="hs-password-active:hidden" d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+            <line class="hs-password-active:hidden" x1="2" x2="22" y1="2" y2="22"></line>
+            <path class="hidden hs-password-active:block" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+            <circle class="hidden hs-password-active:block" cx="12" cy="12" r="3"></circle>
+          </svg>
+        </button>
+      </div>
+
+      <div *ngIf="userForm.get('password')?.touched && userForm.get('password')?.invalid" class="text-red-600 text-xs">
+        <div *ngIf="userForm.get('password')?.errors?.['required']">La contraseña debe ser obligatoria.</div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-end gap-x-2 md:col-span-2">
+      <button type="button"
+        routerLink=".."
+        class="px-3 py-2 text-sm font-medium border border-gray-200 bg-white hover:bg-gray-50 text-gray-800 rounded-lg hover:shadow">
+        Cancelar
+      </button>
+
+      <button type="button"
+        class="btn-primary text-sm" [disabled]="userForm.invalid"
+        aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-confirm" data-hs-overlay="#alerts-confirm">
+        Guardar
+      </button>
+    </div>
+  </form>
+
+</section>
+
+<!-- Modal de confirmación de registro de usuario -->
+<div id="alerts-confirm"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-confirm-label">
+
+  <component-shared-alerts-confirm
+    [message]="'¿Está seguro de que desea registrar un nuevo usuario?'"
+    (confirmAction)="onConfirmUser()"
+  />
+
+</div>
+
+<!-- Modal de éxito de registro de usuario -->
+<div id="alerts-success"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-success-label">
+
+  <component-shared-alerts-success
+    [message]="successMessage"
+    [linkPrimary]="'/core/usuarios'"
+    />
+
+</div>
+
+<!-- Modal de error de registro de usuario -->
+<div id="alerts-error"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-error-label">
+
+  <component-shared-alerts-error
+    [message]="errorMessage"
+    [btnPrimary]="'Cerrar'"
+  />
+
+</div>
+
+<!-- Botones de acción -->
+<button type="button"
+  class="hidden" id="open-error-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-error" data-hs-overlay="#alerts-error"
+></button>
+
+<button type="button"
+  class="hidden" id="open-success-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-success" data-hs-overlay="#alerts-success"
+></button>

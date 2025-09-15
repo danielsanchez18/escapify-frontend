@@ -88,7 +88,6 @@ export class ComponentCoreUserOverviewList {
         // Obtener IDs únicos de usuarios creadores
         const userIds = Array.from(new Set(this.users.map(c => c.audit?.createdBy).filter(Boolean)));
 
-
         // Cargar usuarios y guardarlos en el mapa
         userIds.forEach(id => {
           if (!this.userMap[id]) {
@@ -108,6 +107,15 @@ export class ComponentCoreUserOverviewList {
             );
           }
         });
+
+        this.users.forEach(user => {
+          if (user.photoUrl) {
+            this.imageService.getProtectedImageUrl(user.photoUrl, token ?? '').then(blobUrl => {
+              this.userPhotoMap[user.id!] = blobUrl;
+            });
+          }
+        })
+
       },
       (error) => {
         console.error('Error al cargar las empresas', error);
