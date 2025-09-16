@@ -92,7 +92,7 @@
           <div class="bg-white size-6 rounded-full flex items-center justify-center overflow-hidden">
             <img [src]="createdByPhotoUrl" alt="Usuario" class="object-cover">
           </div>
-          <a routerLink="/usuarios/{{ branch?.audit?.createdBy }}" class="text-sm hover:underline hover:text-primary">{{
+          <a href="/core/usuarios/{{ branch?.audit?.createdBy }}" class="text-sm hover:underline hover:text-primary">{{
             createdByUser?.name || 'Desconocido' }} {{
             createdByUser?.lastname || '' }}</a>
         </div>
@@ -111,7 +111,7 @@
           <div class="bg-white size-6 rounded-full overflow-hidden">
             <img [src]="updatedByPhotoUrl" alt="Usuario" class="object-cover">
           </div>
-          <a routerLink="/usuarios/{{ branch?.audit?.updatedBy }}" class="text-sm hover:underline hover:text-primary">{{
+          <a href="/core/usuarios/{{ branch?.audit?.updatedBy }}" class="text-sm hover:underline hover:text-primary">{{
             updatedByUser?.name || 'Desconocido' }} {{
             updatedByUser?.lastname || '' }}</a>
         </div>

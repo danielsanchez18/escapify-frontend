@@ -1,0 +1,65 @@
+<section class="p-3 md:p-5 border border-gray-200 rounded-xl shadow-xs bg-white">
+
+  <div class="space-y-3">
+    <div
+      class="bg-gray-100 bg-cover bg-[url('https://angular.pixelstrap.net/fastkart/assets/images/inner-page/cover-img.jpg')] w-full h-32 rounded-lg"
+    ></div>
+    <div
+      class="relative bg-gray-100 rounded-full w-28 h-28 border-4 border-white -mt-20 mx-auto"
+    >
+      <img
+        class="size-full bg-gray-100 rounded-full object-cover"
+        [src]="userPhotoUrl"
+        alt="Foto Usuario"
+      />
+      <div
+        class="rounded-full w-7 h-7 absolute bottom-0 end-0 flex items-center justify-center"
+        [ngClass]="{
+          'bg-green-600': user?.enabled && !user?.deleted,
+          'bg-gray-500': !user?.enabled && !user?.deleted,
+          'bg-red-500': user?.deleted
+        }"
+      >
+        <lucide-icon *ngIf="user?.enabled && !user?.deleted" [name]="Check" class="size-4.5 stroke-3 text-white" />
+        <lucide-icon *ngIf="!user?.enabled && !user?.deleted" [name]="Minus" class="size-4.5 stroke-3 text-white" />
+        <lucide-icon *ngIf="user?.deleted" [name]="X" class="size-4.5 stroke-3 text-white" />
+      </div>
+    </div>
+    <div class="flex flex-col items-center mx-auto w-fit px-3">
+      <h2 class="font-medium text-lg line-clamp-1">{{ user?.name }} {{ user?.lastname }}</h2>
+      <p class="text-gray-500 text-sm">{{ user?.email }}</p>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-x-3 px-1 pb-2 pt-7 overflow-x-auto scrollbar-hide">
+    <a
+      routerLink="/core/usuarios/{{ user?.id }}"
+      #rlaGeneral="routerLinkActive"
+      routerLinkActive="pointer-events-none text-gray-900"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="relative inline-flex items-center gap-x-1.5 px-2 py-1.5 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-black"
+    >
+      <lucide-icon [name]="ClipboardMinus" class="size-4.5 stroke-[1.5]" />
+      <p class="text-sm font-medium">Información General</p>
+      <div
+        class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[30%] h-[2.5px] rounded-full"
+        [ngClass]="rlaGeneral.isActive ? 'bg-gray-900' : 'bg-transparent'"
+      ></div>
+    </a>
+
+    <a
+      routerLink="conexiones"
+      #rlaConexiones="routerLinkActive"
+      routerLinkActive="pointer-events-none text-gray-900"
+      class="relative inline-flex items-center gap-x-1.5 px-2 py-1.5 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-black"
+    >
+      <lucide-icon [name]="ArrowRightLeft" class="size-4.5 stroke-[1.5]" />
+      <p class="text-sm font-medium">Conexiones</p>
+      <div
+        class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[30%] h-[2.5px] rounded-full"
+        [ngClass]="rlaConexiones.isActive ? 'bg-gray-900' : 'bg-transparent'"
+      ></div>
+    </a>
+  </div>
+
+</section>

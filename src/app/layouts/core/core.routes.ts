@@ -26,6 +26,11 @@ export const CORE_ROUTES: Routes = [
         loadChildren: () => import('@pages/core/user/user.routes').then(m => m.USER_ROUTES),
         data: { breadcrumb: 'Usuarios' }
       },
+      {
+        path: 'roles',
+        loadChildren: () => import('@pages/core/role/role.routes').then(m => m.ROLE_ROUTES),
+        data: { breadcrumb: 'Roles' }
+      },
     ]
   }
 ];

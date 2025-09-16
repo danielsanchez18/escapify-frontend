@@ -1,1 +1,92 @@
-<p>details works!</p>,
+
+<section class="w-full flex flex-col gap-y-7 lg:gap-y-10 px-5 sm:px-7 lg:px-10 relative h-full">
+
+  <div class="grid items-center">
+    <a routerLink=".." class="text-sm text-primary font-semibold hover:underline w-fit">Regresar</a>
+    <p class="text-lg font-medium">Detalles de Usuario</p>
+  </div>
+
+  <div *ngIf="user" class="h-full space-y-5">
+    <div class="relative">
+      <div class="sticky top-10">
+      <component-core-user-details-principal
+        [user]="user"
+        [userPhotoUrl]="userPhotoUrl"
+      />
+      </div>
+    </div>
+    <div class="w-full overflow-y-auto">
+      <router-outlet/>
+    </div>
+  </div>
+
+  <!-- Empty content -->
+  <div *ngIf="!user" class="flex flex-col items-center justify-center w-full h-full">
+    <img src="/img/empty.png" alt="Empty content" class="h-22 mask-b-from-40% mb-5">
+    <p class="font-medium mb-2">Sin datos</p>
+    <p class="text-sm text-gray-500 text-center">Aún no hay datos disponibles. <br> Le avisaremos cuando haya alguna actualización.</p>
+    <a routerLink=".." class="btn-primary text-sm mt-10">Regresar</a>
+  </div>
+
+  <!-- Toast Component (Editar / Eliminar / Exportar) -->
+  <div *ngIf="user" class="sticky bottom-5 left-1/2 transform z-40 w-full flex justify-center">
+    <component-shared-toast
+      [btnDelete]="!!user && !user.deleted"
+      [btnRestore]="!!user && !!user.deleted"
+      [btnEdit]="!!user &&!user.deleted"
+      [btnExport]="true"
+    />
+  </div>
+
+</section>
+
+
+<!-- Modal de confirmación de eliminar de usuario -->
+<div id="alerts-confirm"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-confirm-label">
+
+  <component-shared-alerts-confirm
+    *ngIf="user"
+    [message]="confirmMessage"
+    (confirmAction)="onConfirmUserAction()"
+  />
+
+</div>
+
+<!-- Modal de éxito de eliminar usuario -->
+<div id="alerts-success"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-success-label">
+
+  <component-shared-alerts-success
+    [message]="successMessage"
+    [linkPrimary]="'/core/usuarios'"
+  />
+
+</div>
+
+
+<!-- Modal de error de eliminar usuario -->
+<div id="alerts-error"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-error-label">
+
+  <component-shared-alerts-error
+    [message]="errorMessage"
+    [btnPrimary]="'Cerrar'"
+  />
+
+</div>
+
+<!-- Botones de acción -->
+<button type="button"
+  class="" id="open-error-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-error" data-hs-overlay="#alerts-error"
+></button>
+
+<button type="button"
+  class="hidden" id="open-success-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-success" data-hs-overlay="#alerts-success"
+></button>
+

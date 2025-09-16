@@ -13,7 +13,6 @@ import { Copy, CopyCheck, LucideAngularModule, MapPin, Phone } from 'lucide-angu
   selector: 'component-core-branch-details-general',
   imports: [
     CommonModule,
-    RouterLink,
     LucideAngularModule
   ],
   templateUrl: './general.component.html',

@@ -2,39 +2,36 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TokenStorage } from '@core/auth/token-storage';
-import { Company } from '@interfaces/enterprise.interface';
 import { User } from '@interfaces/users.interface';
-import { CompanyService } from '@services/company.service';
 import { ImageService } from '@services/image.service';
 import { UserService } from '@services/user.service';
-import { Copy, Globe, LucideAngularModule, Mail, Phone, Tag, MapPin, Coins, CopyCheck } from 'lucide-angular';
+import { Check, Copy, LucideAngularModule, CopyCheck, AtSign, Phone, UserCog, Info } from 'lucide-angular';
 
 @Component({
-  selector: 'component-core-company-details-general',
+  selector: 'component-core-user-details-general',
   imports: [
-    LucideAngularModule,
-    CommonModule
+    CommonModule,
+    LucideAngularModule
   ],
   templateUrl: './general.component.html',
 })
-export class ComponentCoreCompanyDetailsGeneral {
+export class ComponentCoreUserDetailsGeneral {
 
-  readonly Globe = Globe;
-  readonly Phone = Phone;
-  readonly Mail = Mail;
   readonly Copy = Copy;
   readonly CopyCheck = CopyCheck;
-  readonly Tag = Tag;
-  readonly MapPin = MapPin;
-  readonly Coins = Coins;
+  readonly Check = Check;
+
+  readonly Info = Info;
+  readonly UserCog = UserCog;
+  readonly AtSign = AtSign;
+  readonly Phone = Phone;
 
   private route = inject(ActivatedRoute);
-  private companyService = inject(CompanyService);
-  private imageService = inject(ImageService);
   private userService = inject(UserService);
+  private imageService = inject(ImageService);
 
-  company?: Company;
-  companyLogoUrl: string = 'img/logo-min.png';
+  user?: User;
+  userPhotoUrl: string = '/img/logo-min.png';
   createdByUser?: User;
   updatedByUser?: User;
   createdByPhotoUrl: string = '/img/logo-min.png';
@@ -47,16 +44,17 @@ export class ComponentCoreCompanyDetailsGeneral {
   ngOnInit() {
     const token = TokenStorage.getAccessToken() ?? '';
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.companyService.getById(id).subscribe({
-        next: async (response: any) => {
 
-          this.company = response.data;
-          if (this.company?.logoUrl) {
-            this.companyLogoUrl = await this.imageService.getProtectedImageUrl(this.company.logoUrl, token);
+    if (id) {
+      this.userService.getById(id).subscribe({
+        next: async (response: any) => {
+          this.user = response.data;
+
+          if (this.user?.photoUrl) {
+            this.userPhotoUrl = await this.imageService.getProtectedImageUrl(this.user.photoUrl, token);
           }
 
-          const createdById = this.company?.audit?.createdBy;
+          const createdById = this.user?.audit?.createdBy;
           if (createdById) {
             this.userService.getById(createdById).subscribe({
               next: async (res: any) => {
@@ -72,7 +70,7 @@ export class ComponentCoreCompanyDetailsGeneral {
             });
           }
 
-          const updatedById = this.company?.audit?.updatedBy;
+          const updatedById = this.user?.audit?.updatedBy;
           if (updatedById) {
             this.userService.getById(updatedById).subscribe({
               next: async (res: any) => {
@@ -89,12 +87,12 @@ export class ComponentCoreCompanyDetailsGeneral {
           }
 
         },
-        error: (error) => this.errorMessage = 'No se pudo cargar la empresa'
-      });
+        error: (error) => this.errorMessage = error?.error?.message || 'Error al cargar el usuario'
+      })
     }
   }
 
-  copyCompanyId(id?: string) {
+  copyUserId(id?: string) {
     if (!id || this.isCopyDisabled) return;
     navigator.clipboard.writeText(id);
     this.isCopied = true;

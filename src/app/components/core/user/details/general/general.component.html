@@ -1,0 +1,92 @@
+<div class="grid gap-5 lg:grid-cols-2">
+
+  <!-- Información General -->
+  <section class="border border-gray-200 rounded-xl p-5 shadow-xs">
+
+    <article class="space-y-3 pb-5">
+
+      <h2 class="font-medium text-sm">Información General</h2>
+
+      <button class="flex items-center text-start gap-x-2 text-gray-600 hover:text-black disabled:pointer-events-none my-5"
+        [disabled]="isCopyDisabled" (click)="copyUserId(user?.id)">
+        <lucide-icon [name]="Info" class="size-4" />
+        <p class="text-sm line-clamp-1 ">ID: {{ user?.id }}</p>
+        <lucide-icon *ngIf="!isCopied" [name]="Copy" class="size-4" />
+        <div *ngIf="isCopied" class="rounded-full size-4.5 bg-green-600 flex items-center justify-center">
+          <lucide-icon [name]="Check" class="size-2.5 stroke-[4px] text-white" />
+        </div>
+      </button>
+
+      <div class="flex items-center gap-x-2">
+        <lucide-icon [name]="UserCog" class="size-4 text-gray-600" />
+        <p class="text-sm text-gray-600">Nombre:</p>
+        <p class="text-sm">{{ user?.name }} {{ user?.lastname }}</p>
+      </div>
+
+      <div class="flex items-center gap-x-2">
+        <lucide-icon [name]="AtSign" class="size-4 text-gray-600" />
+        <p class="text-sm text-gray-600">Correo:</p>
+        <p class="text-sm">{{ user?.email }}</p>
+      </div>
+
+      <div class="flex items-center gap-x-2">
+        <lucide-icon [name]="Phone" class="size-4 text-gray-600" />
+        <p class="text-sm text-gray-600">Teléfono:</p>
+        <p class="text-sm">{{ user?.phoneNumber }}</p>
+      </div>
+    </article>
+
+    <article class="pt-5 border-t border-gray-200 space-y-3">
+
+      <h2 class="font-medium text-sm">Providers</h2>
+
+      <div class="border border-gray-200 rounded-lg px-3 py-2 flex items-center gap-x-2 w-fit">
+        <img *ngIf="user?.provider === 'ESCAPIFY'" src="/img/logo-min.png" alt="Escapify icon" class="size-5 object-cover">
+        <img *ngIf="user?.provider === 'google'" src="/img/google-icon.png" alt="Google icon" class="size-5 object-cover">
+        <img *ngIf="user?.provider === 'facebook'" src="/img/facebook-icon.png" alt="Facebook icon" class="size-5 object-cover">
+        <p class="text-sm font-medium">{{ user?.provider | titlecase }}</p>
+      </div>
+    </article>
+
+  </section>
+
+
+  <!-- Auditoría -->
+  <section class="border border-gray-200 rounded-xl p-5 shadow-xs">
+    <h2 class="text-sm font-medium">Información de Auditoría</h2>
+
+
+    <div class="divide-y divide-gray-200">
+      <div class="py-5 space-y-2">
+        <div class="flex items-center gap-x-2">
+          <p class="text-sm text-gray-500">Fecha de creación:</p>
+          <p class="text-sm">{{ user?.audit?.createdAt | date: 'MMM dd, yyyy - HH:mm' }}</p>
+        </div>
+        <div class="flex items-center gap-x-1">
+          <p class="text-sm text-gray-500 mr-3">Creado por:</p>
+          <div class="bg-white size-6 rounded-full flex items-center justify-center overflow-hidden">
+            <img [src]="createdByPhotoUrl" alt="Usuario" class="object-cover">
+          </div>
+          <a href="/core/usuarios/{{ user?.audit?.createdBy }}" class="text-sm hover:underline hover:text-primary">{{ createdByUser?.name || 'Desconocido' }} {{ createdByUser?.lastname || '' }}</a>
+        </div>
+      </div>
+      <div class="py-5 space-y-2">
+        <div class="flex items-center gap-x-2">
+          <p class="text-sm text-gray-500">Fecha de actualización:</p>
+          @if (user?.audit?.updatedAt) {
+            <p class="text-sm">{{ user?.audit?.updatedAt | date: 'MMM dd, yyyy - HH:mm' }}</p>
+          } @else {
+            <p class="text-sm">Sin actualizar</p>
+          }
+        </div>
+        <div *ngIf="user?.audit?.updatedAt" class="flex items-center gap-x-1">
+          <p class="text-sm text-gray-500 mr-3">Actualizado por:</p>
+          <div class="bg-white size-6 rounded-full overflow-hidden">
+            <img [src]="updatedByPhotoUrl" alt="Usuario" class="object-cover">
+          </div>
+          <a href="/core/usuarios/{{ user?.audit?.updatedBy }}" class="text-sm hover:underline hover:text-primary">{{ updatedByUser?.name || 'Desconocido' }} {{ updatedByUser?.lastname || '' }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

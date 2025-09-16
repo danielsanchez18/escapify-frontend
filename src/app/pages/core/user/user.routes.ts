@@ -20,6 +20,16 @@ export const USER_ROUTES: Routes = [
   {
     path: ':id',
     loadComponent: () => import('./details/details.component').then(m => m.PageCoreUserDetails),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('@components/core/user/details/general/general.component').then(m => m.ComponentCoreUserDetailsGeneral)
+      },
+      {
+        path: 'conexiones',
+        loadComponent: () => import('@components/core/user/details/conections/conections.component').then(m => m.ComponentCoreUserDetailsConections)
+      },
+    ]
   }
 ];
 
