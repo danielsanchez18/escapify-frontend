@@ -6,6 +6,10 @@ import { LoginGuard } from './core/guards/login.guard';
 
 export const routes: Routes = [
   {
+    path: '',
+    loadChildren: () => import('./layouts/customer/customer.routes').then(m => m.CUSTOMER_ROUTES),
+  },
+  {
     path: 'ingresar',
     component: PageLogin,
     // canActivate: [LoginGuard]
@@ -19,9 +23,5 @@ export const routes: Routes = [
   {
     path: 'error',
     component: PageError
-  },
-  {
-    path: '**',
-    redirectTo: 'ingresar'
   }
 ];
