@@ -1,0 +1,140 @@
+<section class="py-20 space-y-10">
+
+  <!-- Title -->
+  <div class="text-center space-y-3 sm:space-y-5">
+    <h1 class="text-4xl sm:text-5xl font-bold text-gray-900">Precios sencillos y transparentes</h1>
+    <p class="text-gray-800 max-sm:text-sm md:text-lg">Sea cual sea tu situación, nuestras ofertas se adaptan a tus necesidades.</p>
+  </div>
+
+  <!-- Monthly and yearly switch -->
+  <div class="w-fit flex items-center gap-x-3 mx-auto">
+    <p class="text-gray-800">Mensual</p>
+    <label for="hs-basic-usage" class="relative inline-block w-11 h-6 cursor-pointer">
+      <input type="checkbox" id="hs-basic-usage" class="peer sr-only" checked>
+      <span class="absolute inset-0 bg-gray-200 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-primary peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
+      <span class="absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-white rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full"></span>
+    </label>
+    <p class="text-gray-800">Anual</p>
+  </div>
+
+  <!-- Plans -->
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+    <!-- Free plan -->
+    <article class="w-full bg-white border border-gray-200 rounded-lg shadow-xs p-5 space-y-7">
+      <div>
+        <h3 class="text-lg font-semibold">Starter</h3>
+        <p class="text-[13px] text-gray-500">Lo mejor para desarrolladores individuales</p>
+
+        <div class="text-4xl font-semibold text-gray-900 flex gap-x-2 mt-5">
+          <span class="text-sm">S/.</span>
+          <p>0</p>
+          <span class="text-sm font-normal">PEN</span>
+        </div>
+
+        <p class="text-gray-500 text-[13px]">/mensual para una persona</p>
+      </div>
+
+      <button class="w-full py-2 px-4 text-sm bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:shadow transition">
+        Empezar ahora
+      </button>
+
+      <div class="border-t border-gray-200 py-5 gap-y-2 grid">
+        @for (item of features_free; track $index) {
+          <div class="flex items-center gap-x-3">
+            <lucide-icon [name]="Check" class="size-4 stroke-3 text-gray-800" />
+            <p class="text-sm">{{ item }}</p>
+          </div>
+        }
+      </div>
+    </article>
+
+    <!-- Pro Plan -->
+    <article class="w-full bg-white border border-gray-200 rounded-lg shadow-xs p-5 space-y-7">
+      <div>
+        <h3 class="text-lg font-semibold">Pro <span class="text-sm text-primary font-normal"> - Más popular</span> </h3>
+        <p class="text-[13px] text-gray-500">Ideal para pequeñas empresas</p>
+
+        <div class="text-4xl font-semibold text-gray-900 flex gap-x-2 mt-5">
+          <span class="text-sm">S/.</span>
+          <p>15</p>
+          <span class="text-sm font-normal">PEN</span>
+        </div>
+
+        <p class="text-gray-500 text-[13px]">/mensual para una persona</p>
+      </div>
+
+      <button class="w-full btn-primary text-sm hover:shadow transition">
+        Empezar ahora
+      </button>
+
+      <div class="border-t border-gray-200 py-5 gap-y-2 grid">
+        @for (item of features_free; track $index) {
+          <div class="flex items-center gap-x-3">
+            <lucide-icon [name]="Check" class="size-4 stroke-3 text-gray-800" />
+            <p class="text-sm">{{ item }}</p>
+          </div>
+        }
+      </div>
+    </article>
+
+    <!-- Team Plan -->
+    <article class="w-full bg-white border border-gray-200 rounded-lg shadow-xs p-5 space-y-7">
+      <div>
+        <h3 class="text-lg font-semibold">Team</h3>
+        <p class="text-[13px] text-gray-500">Ideal para equipos de trabajo</p>
+
+        <div class="text-4xl font-semibold text-gray-900 flex gap-x-2 mt-5">
+          <span class="text-sm">S/.</span>
+          <p>45</p>
+          <span class="text-sm font-normal">PEN</span>
+        </div>
+
+        <p class="text-gray-500 text-[13px]">/mensual para una persona</p>
+      </div>
+
+      <button class="w-full btn-primary text-sm hover:shadow transition">
+        Empezar ahora
+      </button>
+
+      <div class="border-t border-gray-200 py-5 gap-y-2 grid">
+        @for (item of features_free; track $index) {
+          <div class="flex items-center gap-x-3">
+            <lucide-icon [name]="Check" class="size-4 stroke-3 text-gray-800" />
+            <p class="text-sm">{{ item }}</p>
+          </div>
+        }
+      </div>
+    </article>
+
+    <!-- Enterprise Plan -->
+    <article class="w-full bg-white border border-gray-200 rounded-lg shadow-xs p-5 space-y-7">
+      <div>
+        <h3 class="text-lg font-semibold">Enterprise</h3>
+        <p class="text-[13px] text-gray-500">Ideal para grandes empresas</p>
+
+        <div class="text-4xl font-semibold text-gray-900 flex gap-x-2 mt-5">
+          <span class="text-sm">S/.</span>
+          <p>199</p>
+          <span class="text-sm font-normal">PEN</span>
+        </div>
+
+        <p class="text-gray-500 text-[13px]">/mensual para una persona</p>
+      </div>
+
+      <button class="w-full btn-primary text-sm hover:shadow transition">
+        Empezar ahora
+      </button>
+
+      <div class="border-t border-gray-200 py-5 gap-y-2 grid">
+        @for (item of features_free; track $index) {
+          <div class="flex items-center gap-x-3">
+            <lucide-icon [name]="Check" class="size-4 stroke-3 text-gray-800" />
+            <p class="text-sm">{{ item }}</p>
+          </div>
+        }
+      </div>
+    </article>
+
+  </div>
+</section>

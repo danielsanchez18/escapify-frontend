@@ -14,6 +14,10 @@ export const CUSTOMER_ROUTES: Routes = [
       {
         path: 'servicios',
         loadComponent: () => import('@pages/customer/services/services.component').then(c => c.PageCustomerServices)
+      },
+      {
+        path: 'precios',
+        loadComponent: () => import('@pages/customer/prices/prices.component').then(c => c.PageCustomerPrices)
       }
     ]
   }
