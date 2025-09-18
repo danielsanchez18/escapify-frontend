@@ -2,7 +2,7 @@
 
   <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 text-center">Compare las características de los planes</h3>
 
-  <!-- Table -->
+  <!-- Table for SM -->
   <div class="relative hidden sm:block">
 
     <!-- Header -->
@@ -177,7 +177,344 @@
         <button class="w-full btn-primary text-sm hover:shadow transition">Empezar<span class="-ml-1 max-lg:hidden">ahora</span></button>
       </div>
     </div>
+  </div>
+  <!-- End Table for SM -->
+
+  <!-- Table for Mobile -->
+  <div class="sm:hidden space-y-5 w-full">
+
+    <!-- General -->
+    <div class="grid">
+      <h4 class="p-5 font-semibold text-gray-900">General</h4>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Number of seats</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5">1</p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5">Up to 3</p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5">Up to 10</p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5">Unlimited</p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Storage</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5">15 GB</p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5">1 TB</p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5">15 TB</p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5">Unlimited</p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Email sharing</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Any time, anywhere access</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+    </div>
+    <!-- End General -->
+
+    <!-- Financial data -->
+    <div class="grid">
+      <h4 class="p-5 font-semibold text-gray-900">Financial data</h4>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Open/High/Low/Close</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Price-volume difference indicator</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+    </div>
+    <!-- End Financial Data -->
+
+    <!-- On-chain data -->
+    <div class="grid">
+      <h4 class="p-5 font-semibold text-gray-900">On-chain data</h4>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Network growth</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Average gamzn age consumed</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Exchange flow</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Total ERC20 exchange funds flow</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Transaction volume</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Total circulation (beta)</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Total circulation (beta)</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">ETH gas used</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+    </div>
+    <!-- End Financial Data -->
+
+    <!-- Social data -->
+    <div class="grid">
+      <h4 class="p-5 font-semibold text-gray-900">Social data</h4>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Dev activity</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Topic search</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+
+      <h4 class="px-5 py-2 text-sm border border-gray-100 bg-gray-100 font-semibold text-gray-900">Relative social dominance</h4>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Free</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Startup</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm border-b border-gray-200">
+        <p class="py-2 px-5">Team</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Minus" class="text-gray-800 size-5" /></p>
+      </div>
+      <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+        <p class="py-2 px-5">Enterprise</p>
+        <p class="py-2 px-5"><lucide-icon [name]="Check" class="text-primary size-5" /></p>
+      </div>
+    </div>
+    <!-- End Social Data -->
 
   </div>
+  <!-- End Table for Mobile -->
+
 
 </section>
