@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { LucideAngularModule, Check } from 'lucide-angular';
+import { LucideAngularModule, Check, MessagesSquare } from 'lucide-angular';
 
 @Component({
   selector: 'component-customer-prices-plans',
@@ -13,6 +13,7 @@ import { LucideAngularModule, Check } from 'lucide-angular';
 export class ComponentCustomerPricesPlans {
 
   readonly Check = Check;
+  readonly MessagesSquare = MessagesSquare;
 
   features_free = [
     '5 GB Cloud Storage',
