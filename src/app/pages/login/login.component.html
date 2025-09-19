@@ -1,37 +1,77 @@
-<section class="h-[100dvh] flex items-center w-full justify-center py-10">
+<section class="min-h-[100dvh] w-full">
 
-  <div class="flex flex-col items-center space-y-10 bg-white">
+  <div class="w-full max-w-[70rem] mx-auto">
+    <component-customer-shared-navbar />
+  </div>
 
-    <img src="/img/logo.png" alt="Logo Escapify" class="h-24" />
+  <div class="w-full max-w-[70rem] mx-auto py-10 md:py-16">
 
-    <div class="text-center space-y-2">
-      <h1 class="text-primary font-bold text-xl uppercase">Iniciar Sesión</h1>
-      <p class="text-sm text-gray-500">Ingresa tus credenciales para ingresar al sistema.</p>
+    <!-- Title -->
+    <div class="space-y-5 flex flex-col items-center justify-center py-10 px-5">
+      <!-- Logo -->
+      <!-- <div class="w-32 h-12 bg-red-100"></div> -->
+
+      <h1 class="text-3xl md:text-4xl leading-[] text-center font-bold text-gray-900 text-balance">
+        ¡Bienvenido de nuevo! <br> Inicia sesión con sus credenciales.
+      </h1>
+    </div>
+    <!-- End Title -->
+
+    <!-- Login with Google or Facebook  -->
+    <div class="grid md:grid-cols-2 gap-x-5 gap-y-3 max-w-xl mx-auto px-5">
+      <button class="flex items-center justify-center gap-x-2 rounded-lg px-3 py-3 border border-gray-200 hover:border-black">
+        <div class="size-5">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" alt="Google Icon" class="w-full h-full object-contain" />
+        </div>
+        <p class="text-gray-800 text-sm font-medium">Ingresar con Google</p>
+      </button>
+      <button class="flex items-center justify-center gap-x-2 rounded-lg px-3 py-2.5 border border-gray-200 hover:border-black">
+        <svg class="size-6 text-black/70" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95" />
+        </svg>
+        <p class="text-gray-800 text-sm font-medium">Ingresar con Facebook</p>
+      </button>
+    </div>
+    <!-- End Login with Google or Facebook  -->
+
+    <div class="max-w-xl mx-auto my-10 px-5 flex items-center gap-x-5">
+      <div class="h-px bg-gray-300 flex-1"></div>
+      <p class="text-center text-gray-700 font-medium text-sm text-nowrap">O inicia sesión con tu correo</p>
+      <div class="h-px bg-gray-300 flex-1"></div>
     </div>
 
-    <form class="space-y-5 w-full" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Form -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="max-w-xl mx-auto px-5 space-y-5">
 
       <!-- Correo -->
       <div class="gap-y-2 flex flex-col">
-        <label for="email" class="text-sm font-medium">Correo:</label>
+        <label for="email" class="max-sm:text-sm text-gray-800 font-medium">Correo:</label>
         <div class="relative">
-          <input type="email" name="email" id="email" formControlName="email" placeholder="Ingrese su correo"
-            class="border rounded-lg border-gray-300 text-sm px-4 py-2.5 w-full pl-12 focus:outline-primary">
-          <lucide-icon [name]="AtSign" class="absolute text-gray-500 size-4 top-1/2 -translate-y-1/2 left-2" />
+          <input type="email"
+            id="email"
+            name="email"
+            formControlName="email"
+            placeholder="Ingrese su correo"
+            class="border rounded-lg border-gray-300 px-5 py-3 w-full pl-14 hover:shadow focus:outline-primary">
+          <lucide-icon [name]="AtSign" class="absolute text-gray-500 size-5 top-1/2 -translate-y-1/2 left-2.5" />
         </div>
       </div>
 
       <!-- Contraseña -->
       <div class="gap-y-2 flex flex-col">
-        <label for="password" class="text-sm font-medium">Contraseña:</label>
+        <label for="password" class="max-sm:text-sm text-gray-800 font-medium">Contraseña:</label>
         <div class="relative">
-          <input type="password" name="password" id="password" formControlName="password" placeholder="Ingrese su contraseña"
-            class="border rounded-lg border-gray-300 text-sm py-2.5 w-full pl-12 pr-12 focus:outline-primary">
-          <lucide-icon [name]="Lock" class="absolute text-gray-500 size-4 top-1/2 -translate-y-1/2 left-2" />
+          <lucide-icon [name]="Lock" class="absolute text-gray-500 size-5 top-1/2 -translate-y-1/2 left-2.5" />
+          <input type="password"
+            name="password"
+            id="password"
+            formControlName="password"
+            placeholder="Ingrese su contraseña"
+            class="border rounded-lg border-gray-300 py-3 w-full pl-14 pr-14 hover:shadow focus:outline-primary">
           <button type="button" data-hs-toggle-password='{
               "target": "#password"
-            }' class="absolute inset-y-0 end-0 flex items-center z-20 px-4 cursor-pointer text-gray-500 rounded-e-md focus:outline-hidden focus:text-primary">
-            <svg class="shrink-0 size-4.5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            }' class="absolute inset-y-0 end-0 flex items-center z-20 px-5 cursor-pointer text-gray-500 rounded-e-md focus:outline-hidden focus:text-primary">
+            <svg class="shrink-0 size-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path class="hs-password-active:hidden" d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
               <path class="hs-password-active:hidden" d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
               <path class="hs-password-active:hidden" d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
@@ -41,25 +81,42 @@
             </svg>
           </button>
         </div>
-
-        <div class="flex items-center justify-between mt-3">
-          <div class="flex items-center space-x-2">
-            <input type="checkbox" id="rememberMe" formControlName="rememberMe" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded cursor-pointer">
-            <label for="rememberMe" class="text-sm cursor-pointer">Recordar</label>
-          </div>
-          <a routerLink="/forgot-password" class="text-sm text-primary font-medium self-end underline-offset-4 hover:underline">Olvidé mi contraseña</a>
-        </div>
       </div>
 
-      <!-- Boton -->
+      <!-- Remember me and forgot password -->
+      <div class="flex items-center justify-between my-7">
+        <div class="flex items-center space-x-2">
+          <input type="checkbox"
+            id="rememberMe"
+            formControlName="rememberMe"
+            class="size-5 text-primary focus:ring-primary border-gray-300 rounded cursor-pointer">
+          <label for="rememberMe" class="text-sm font-medium text-gray-800 cursor-pointer">Recordar</label>
+        </div>
+        <a routerLink="/forgot-password" class="hover:text-primary text-sm font-medium self-end underline">Olvidé mi contraseña</a>
+      </div>
+
+      <!-- Submit Button -->
       <button type="submit"
-        class="block btn-primary !py-2.5 mt-10 text-sm w-full text-center">
+        class="block btn-primary !py-3 w-full text-center"
+        [ngClass]="{
+          'pointer-events-none': loading()
+        }">
         {{ loading() ? 'Cargando ...' : 'Ingresar' }}
       </button>
     </form>
-  </div>
-</section>
+    <!-- EndForm -->
 
+    <!-- Sign up -->
+    <div class="flex items-center justify-center gap-x-2 max-md:text-sm my-10">
+      <p class="text-gray-600 ">¿Aún no tienes una cuenta?</p>
+      <a routerLink="/registrar" class="font-semibold underline hover:text-primary">Regístrate</a>
+    </div>
+    <!-- End Sign up -->
+  </div>
+
+  <component-customer-shared-footer />
+
+</section>
 
 <!-- Botones de acción -->
 <button type="button"
@@ -79,3 +136,4 @@
   />
 
 </div>
+

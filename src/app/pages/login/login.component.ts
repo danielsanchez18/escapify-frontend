@@ -1,19 +1,26 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
+import { ComponentCustomerSharedFooter } from '@components/customer/shared/footer/footer.component';
+import { ComponentCustomerSharedNavbar } from '@components/customer/shared/navbar/navbar.component';
 import { ComponentSharedAlertsError } from '@components/shared/alerts/error/error.component';
 import { AuthRequest } from '@interfaces/authentication.interface';
 import { AuthService } from '@services/auth.service';
 import { AtSign, Github, Lock, LucideAngularModule, Mail} from 'lucide-angular';
 
+
 @Component({
   selector: 'page-login',
   imports: [
     LucideAngularModule,
+    CommonModule,
     RouterLink,
     ReactiveFormsModule,
-    ComponentSharedAlertsError
-  ],
+    ComponentCustomerSharedNavbar,
+    ComponentCustomerSharedFooter,
+    ComponentSharedAlertsError,
+],
   templateUrl: './login.component.html',
 })
 export class PageLogin {
