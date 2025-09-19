@@ -1,6 +1,6 @@
-<section class="max-md:pb-16 max-md:pt-5 md:h-[25rem] flex flex-col justify-center">
+<section class="max-md:pb-16 max-md:pt-5 md:h-[25rem] grid grid-cols-[auto_1fr] items-center">
   <div class="grid gap-y-5 max-w-xl">
-    <h1 class="text-4xl md:text-6xl font-bold text-gray-900">Organiza tu espacio de trabajo</h1>
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 text-balance">Organiza tu espacio de trabajo</h1>
 
     <p class="text-gray-800 max-sm:text-sm">Colabora mejor con herramientas diseñadas para centralizar tareas, agilizar procesos y mantener a todo tu equipo alineado desde un solo lugar.</p>
 
@@ -8,5 +8,38 @@
       <a href="/probar" class="btn-primary text-sm !px-3 !py-2">Probar ahora</a>
       <a href="/demo" class="text-sm hover:underline hover:text-primary transition font-semibold">Ver demo</a>
     </div>
+  </div>
+
+  <div class="max-lg:hidden w-full max-w-sm ml-auto">
+    <p class="text-sm text-gray-500 mb-5">Descarga la app en</p>
+
+    <button class="flex items-center justify-between px-5 py-3.5 border border-b-transparent border-gray-200 hover:border-gray-300 rounded-t-xl w-full">
+
+      <div class="flex items-center gap-x-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/15/15476.png" alt="Logo App Store" class="size-5 object-contain">
+        <p class="text-sm font-semibold text-gray-800 text-nowrap">App Store</p>
+      </div>
+
+      <div class="flex items-center gap-x-0.5">
+        <lucide-icon [name]="Star" class="stroke-0 fill-gray-800 size-3.5" />
+        <p class="text-[13px] font-semibold text-gray-800 text-nowrap">4.9</p>
+        <p class="text-[13px] text-gray-500 text-nowrap ml-1.5">1.2M reseñas</p>
+      </div>
+    </button>
+
+    <button class="flex items-center justify-between px-5 py-3.5 border border-gray-200 hover:border-gray-300 rounded-b-xl w-full">
+
+      <div class="flex items-center gap-x-2">
+        <img src="https://img.icons8.com/fluent/600/google-play-store-new.png" alt="Logo Google Play" class="size-5 object-contain">
+        <p class="text-sm font-semibold text-gray-800 text-nowrap">Google Play</p>
+      </div>
+
+      <div class="flex items-center gap-x-0.5">
+        <lucide-icon [name]="Star" class="stroke-0 fill-gray-800 size-3.5" />
+        <p class="text-[13px] font-semibold text-gray-800 text-nowrap">4.9</p>
+        <p class="text-[13px] text-gray-500 text-nowrap ml-1.5">367k reseñas</p>
+      </div>
+    </button>
+
   </div>
 </section>
