@@ -2,12 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
-import { ComponentCustomerSharedFooter } from '@components/customer/shared/footer/footer.component';
 import { ComponentCustomerSharedNavbar } from '@components/customer/shared/navbar/navbar.component';
 import { ComponentSharedAlertsError } from '@components/shared/alerts/error/error.component';
 import { AuthRequest } from '@interfaces/authentication.interface';
 import { AuthService } from '@services/auth.service';
-import { AtSign, Github, Lock, LucideAngularModule, Mail} from 'lucide-angular';
+import { AtSign, Lock, LucideAngularModule } from 'lucide-angular';
 
 
 @Component({
@@ -15,10 +14,8 @@ import { AtSign, Github, Lock, LucideAngularModule, Mail} from 'lucide-angular';
   imports: [
     LucideAngularModule,
     CommonModule,
-    RouterLink,
     ReactiveFormsModule,
     ComponentCustomerSharedNavbar,
-    ComponentCustomerSharedFooter,
     ComponentSharedAlertsError,
 ],
   templateUrl: './login.component.html',
@@ -34,8 +31,6 @@ export class PageLogin {
 
   readonly AtSign = AtSign;
   readonly Lock = Lock;
-  readonly Mail = Mail;
-  readonly Github = Github;
 
   // Flag de carga
   loading = signal(false);

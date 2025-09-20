@@ -31,6 +31,10 @@ export const CORE_ROUTES: Routes = [
         loadChildren: () => import('@pages/core/role/role.routes').then(m => m.ROLE_ROUTES),
         data: { breadcrumb: 'Roles' }
       },
+      {
+        path: '**',
+        redirectTo: 'dashboard'
+      }
     ]
   }
 ];
