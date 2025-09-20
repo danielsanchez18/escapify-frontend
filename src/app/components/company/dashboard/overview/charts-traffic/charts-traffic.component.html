@@ -1,0 +1,35 @@
+<section class="w-full bg-white rounded-xl border border-gray-200 contain-content space-y-5 px-5 py-5">
+
+  <article class="flex items-center justify-between gap-x-5">
+
+    <div class="grid grid-cols-[auto_1fr] gap-x-2 items-center">
+      <lucide-icon [name]="TrendingUp" class="size-5 stroke-[1.5]" />
+      <p class="font-medium truncate">Tráfico de plataforma</p>
+      <p class="text-gray-600 text-sm line-clamp-1 col-span-2">Visitas y usuarios activos por día</p>
+    </div>
+
+    <button class="text-xs flex items-center gap-x-1 font-medium p-2 border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow">
+      <p class="text-xs font-medium flex items-center gap-x-1">
+        <span class="hidden sm:block">Últimos</span>30d
+      </p>
+      <lucide-icon [img]="ChevronDown" class="size-4 stroke-[1.5]"/>
+    </button>
+
+  </article>
+
+  <article class="flex items-center justify-end gap-x-10">
+    <div class="flex items-center gap-x-2">
+      <span class="w-4 h-4 rounded-md bg-primary"></span>
+      <p class="text-sm">Usuarios</p>
+    </div>
+    <div class="flex items-center gap-x-2">
+      <span class="w-4 h-4 rounded-md bg-gray-700"></span>
+      <p class="text-sm">Visitas</p>
+    </div>
+  </article>
+
+  <!-- TODO: Gráfico de tráfico de plataforma -->
+  <article class="w-full min-h-80">
+  </article>
+
+</section>

@@ -3,10 +3,10 @@
   <div class="border-b border-gray-200">
 
     <!-- Header -->
-    <header class="flex items-center justify-between py-3 w-full max-w-[90rem] px-5 sm:px-7 lg:px-10 mx-auto">
+    <header class="flex items-center justify-between py-3 w-full max-w-[80rem] px-5 sm:px-7 lg:px-10 mx-auto">
 
       <!-- Logo -->
-      <a href="/core" class="h-6.5">
+      <a href="/empresa" class="h-6.5">
         <img src="/img/logo.png" alt="Logo Escapify" class="h-full">
       </a>
 
@@ -54,10 +54,10 @@
   <div class="border-b border-gray-200">
 
     <!-- Módulos -->
-    <section class="flex items-center gap-x-3 w-full max-w-[90rem] px-5 sm:px-7 lg:px-10 mx-auto">
+    <section class="flex items-center gap-x-3 w-full max-w-[80rem] px-5 sm:px-7 lg:px-10 mx-auto">
 
       <div class="max-md:hidden overflow-x-auto scrollbar-hide">
-        <component-core-shared-navbar />
+        <component-company-shared-navbar />
       </div>
 
       <!-- Menu Responsive -->
@@ -65,7 +65,7 @@
         hs-overlay-open:translate-x-0
         -translate-x-full transition-all duration-200 transform
         fixed top-0 start-0 bottom-0 z-60" role="dialog" tabindex="-1" aria-label="Sidebar" >
-        <component-core-shared-navbar />
+        <component-company-shared-navbar />
       </div>
 
       <!-- Breadcrumb -->
@@ -94,7 +94,7 @@
   </div>
 
   <!-- Contenido -->
-  <main class="flex-1 w-full max-w-[90rem] mx-auto py-7 lg:py-10">
+  <main class="flex-1 w-full max-w-[80rem] mx-auto py-7 lg:py-10">
     <router-outlet />
   </main>
 

@@ -26,6 +26,14 @@ export const routes: Routes = [
     loadChildren: () => import('./layouts/core/core.routes').then(m => m.CORE_ROUTES),
   },
   {
+    path: 'empresa',
+    loadChildren: () => import('./layouts/company/company.routes').then(m => m.COMPANY_ROUTES),
+  },
+  {
+    path: '**',
+    redirectTo: '/'
+  },
+  {
     path: 'error',
     component: PageError
   }
