@@ -3,7 +3,7 @@ import { PageError } from '@pages/error/error.component';
 import { PageLogin } from '@pages/login/login.component';
 import { PermissionGuard } from './core/guards/permission.guard';
 import { LoginGuard } from './core/guards/login.guard';
-import { PageSignUp } from '@pages/sign-up/sign-up.component';
+import { PageRegister } from '@pages/register/register.component';
 
 export const routes: Routes = [
   {
@@ -16,14 +16,14 @@ export const routes: Routes = [
     // canActivate: [LoginGuard]
   },
   {
-    path: 'registrar',
-    component: PageSignUp
-  },
-  {
     path: 'core',
     // canActivate: [PermissionGuard],
     // data: { requiredPermission: 'ACCESS.FULL' },
     loadChildren: () => import('./layouts/core/core.routes').then(m => m.CORE_ROUTES),
+  },
+  {
+    path: 'registrar',
+    component: PageRegister
   },
   {
     path: 'empresa',

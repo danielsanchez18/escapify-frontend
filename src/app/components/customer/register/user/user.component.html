@@ -1,16 +1,13 @@
 <section class="min-h-[100dvh] w-full">
 
-  <div class="sticky top-0 z-40 bg-white/70 backdrop-blur-md">
-    <component-customer-shared-navbar />
-  </div>
-
   <div class="w-full max-w-[70rem] mx-auto py-10 pb-20 md:py-14">
 
     <!-- Title -->
-    <div class="space-y-5 flex flex-col items-center justify-center py-10 px-5">
+    <div class="space-y-3 flex flex-col items-center justify-center py-10 px-5">
       <h1 class="text-3xl md:text-4xl text-center font-bold text-gray-900 text-balance">
-        ¡Únete hoy mismo! Obtén <br> ventajas especiales y mantente al día.
+        ¡Únete hoy mismo!
       </h1>
+      <p class="text-gray-500">Comienza tu prueba gratuita de 14 días</p>
     </div>
     <!-- End Title -->
 
@@ -38,24 +35,86 @@
     </div>
 
     <!-- Form -->
-    <form class="max-w-xl mx-auto px-5 space-y-5">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()"
+      class="max-w-xl mx-auto px-5 grid grid-cols-2 gap-5">
+
+      <!-- Nombre -->
+      <div class="gap-y-2 flex flex-col">
+        <label for="name" class="max-sm:text-sm text-gray-800 font-medium">Nombre:</label>
+        <input type="text"
+          id="name"
+          name="name"
+          formControlName="name"
+          maxlength="50"
+          placeholder="Ingrese su nombre"
+          class="border rounded-lg border-gray-300 px-5 py-3 w-full hover:shadow focus:outline-primary">
+
+        <div *ngIf="userForm.get('name')?.touched && userForm.get('name')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="userForm.get('name')?.errors?.['required']">El nombre es obligatorio.</div>
+          <div *ngIf="userForm.get('name')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</div>
+          <div *ngIf="userForm.get('name')?.errors?.['maxlength']">El nombre no debe exceder los 50 caracteres.</div>
+        </div>
+      </div>
+
+      <!-- Apellido -->
+      <div class="gap-y-2 flex flex-col">
+        <label for="lastname" class="max-sm:text-sm text-gray-800 font-medium">Apellido:</label>
+        <input type="text"
+          id="lastname"
+          name="lastname"
+          formControlName="lastname"
+          maxlength="50"
+          placeholder="Ingrese su apellido"
+          class="border rounded-lg border-gray-300 px-5 py-3 w-full hover:shadow focus:outline-primary">
+
+        <div *ngIf="userForm.get('lastname')?.touched && userForm.get('lastname')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="userForm.get('lastname')?.errors?.['required']">El apellido es obligatorio.</div>
+          <div *ngIf="userForm.get('lastname')?.errors?.['minlength']">El apellido debe tener al menos 3 caracteres.</div>
+          <div *ngIf="userForm.get('lastname')?.errors?.['maxlength']">El apellido no debe exceder los 50 caracteres.</div>
+        </div>
+      </div>
+
+      <!-- Teléfono -->
+      <div class="gap-y-2 flex flex-col col-span-2">
+        <label for="phoneNumber" class="max-sm:text-sm text-gray-800 font-medium">Teléfono:</label>
+        <div class="relative">
+          <input type="text"
+            id="phoneNumber"
+            name="phoneNumber"
+            formControlName="phoneNumber"
+            maxlength="20"
+            placeholder="Ingrese su teléfono"
+            (input)="onPhoneNumberInput($event)"
+            class="border rounded-lg border-gray-300 px-5 py-3 w-full pl-14 hover:shadow focus:outline-primary">
+          <lucide-icon [name]="Phone" class="absolute text-gray-500 size-5 top-1/2 -translate-y-1/2 left-2.5" />
+        </div>
+        <div *ngIf="userForm.get('phoneNumber')?.touched && userForm.get('phoneNumber')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="userForm.get('phoneNumber')?.errors?.['minlength']">El teléfono debe tener al menos 9 dígitos.</div>
+          <div *ngIf="userForm.get('phoneNumber')?.errors?.['maxlength']">El teléfono no debe exceder los 20 dígitos.</div>
+        </div>
+      </div>
 
       <!-- Correo -->
-      <div class="gap-y-2 flex flex-col">
+      <div class="gap-y-2 flex flex-col col-span-2">
         <label for="email" class="max-sm:text-sm text-gray-800 font-medium">Correo:</label>
         <div class="relative">
           <input type="email"
             id="email"
             name="email"
             formControlName="email"
+            maxlength="100"
             placeholder="Ingrese su correo"
             class="border rounded-lg border-gray-300 px-5 py-3 w-full pl-14 hover:shadow focus:outline-primary">
           <lucide-icon [name]="AtSign" class="absolute text-gray-500 size-5 top-1/2 -translate-y-1/2 left-2.5" />
         </div>
+        <div *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="userForm.get('email')?.errors?.['email']">Ingrese un correo válido.</div>
+          <div *ngIf="userForm.get('email')?.errors?.['maxlength']">El correo no debe exceder los 100 caracteres.</div>
+        </div>
       </div>
 
       <!-- Contraseña -->
-      <div class="gap-y-2 flex flex-col">
+      <div class="gap-y-2 flex flex-col col-span-2">
         <label for="password" class="max-sm:text-sm text-gray-800 font-medium">Contraseña:</label>
         <div class="relative">
           <lucide-icon [name]="Lock" class="absolute text-gray-500 size-5 top-1/2 -translate-y-1/2 left-2.5" />
@@ -78,15 +137,19 @@
             </svg>
           </button>
         </div>
+
+        <div *ngIf="userForm.get('password')?.touched && userForm.get('password')?.invalid" class="text-red-600 text-xs">
+          <div *ngIf="userForm.get('password')?.errors?.['required']">La contraseña debe ser obligatoria.</div>
+        </div>
       </div>
 
       <!-- Aceptar términos -->
-      <div class="flex space-x-3 my-7">
+      <div class="flex space-x-3 my-7 col-span-2">
         <input type="checkbox"
           id="acceptTerms"
-          formControlName="acceptTerms"
+          checked
           class="size-5 text-primary focus:ring-primary border-gray-300 rounded cursor-pointer">
-        <label for="acceptTerms" class="text-xs sm:text-sm font-medium text-gray-500 cursor-pointer">
+        <label for="acceptTerms" class="text-sm font-medium text-gray-500 cursor-pointer">
           Aceptar
           <a href="terminos" class="text-gray-800 underline hover:text-primary">Términos y condiciones</a>
           y
@@ -95,9 +158,10 @@
       </div>
 
       <!-- Submit Button -->
-      <button type="submit"
-        class="block btn-primary !py-3 w-full text-center"
-        >
+      <button id="submitButton"
+        type="submit"
+        class="block btn-primary !py-3 w-full text-center col-span-2"
+      >
         Crear Cuenta
       </button>
     </form>
@@ -112,14 +176,24 @@
 
   </div>
 
-  <!-- Footer -->
-  <div class="w-full max-w-[70rem] mx-auto flex flex-wrap max-sm:justify-center items-center gap-x-3 gap-y-2 py-5">
-    <a href="/" class="text-xs text-gray-500 hover:underline hover:text-gray-900 text-nowrap">© 2025 Escape Code.</a>
-    <div class="rounded-full size-1 bg-gray-600"></div>
-    <a href="/terminos" class="text-xs text-gray-500 hover:underline hover:text-gray-900 text-nowrap">Términos y Condiciones.</a>
-    <div class="rounded-full size-1 bg-gray-600"></div>
-    <a href="/politica" class="text-xs text-gray-600 hover:underline hover:text-gray-900 text-nowrap">Política de privacidad.</a>
-  </div>
-
 </section>
+
+
+<!-- Modal de error de registro de usuario -->
+<div id="alerts-error"
+  class="hs-overlay hidden size-full fixed top-0 start-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none"
+  role="dialog" tabindex="-1" aria-labelledby="alerts-error-label">
+
+  <component-shared-alerts-error
+    [message]="errorMessage"
+    [btnPrimary]="'Cerrar'"
+  />
+
+</div>
+
+<!-- Botones de acción -->
+<button type="button"
+  class="hidden" id="open-error-modal"
+  aria-haspopup="dialog" aria-expanded="false" aria-controls="alerts-error" data-hs-overlay="#alerts-error"
+></button>
 

@@ -1,0 +1,96 @@
+<section class="min-h-[100dvh] w-full">
+
+  <div class="w-full max-w-[70rem] mx-auto py-10 pb-20 md:py-14">
+
+    <!-- Title -->
+    <div class="space-y-3 flex flex-col items-center justify-center py-10 px-5">
+      <h1 class="text-3xl md:text-4xl text-center font-bold text-gray-900 text-balance">
+        Registra tu empresa
+      </h1>
+      <p class="text-gray-500 text-center text-balance">Hola Daniel Sanchez, ahora necesitamos información sobre tu empresa</p>
+    </div>
+    <!-- End Title -->
+
+    <form class="max-w-xl mx-auto px-5 grid grid-cols-2 gap-5">
+
+      <!-- Nombre -->
+      <div class="gap-y-2 flex flex-col col-span-2">
+        <label for="name" class="max-sm:text-sm text-gray-800 font-medium">Nombre:</label>
+        <input type="text"
+          id="name"
+          name="name"
+          formControlName="name"
+          maxlength="100"
+          placeholder="Ingrese su el nombre de la empresa"
+          class="border rounded-lg border-gray-300 px-5 py-3 w-full hover:shadow focus:outline-primary">
+      </div>
+
+      <!-- Tag -->
+      <div class="gap-y-2 flex flex-col col-span-2">
+        <label for="tag" class="max-sm:text-sm text-gray-800 font-medium">Rubro / Industria:</label>
+        <input type="text"
+          id="tag"
+          name="tag"
+          formControlName="tag"
+          maxlength="20"
+          placeholder="Seleccione el rubro de la empresa"
+          class="border rounded-lg border-gray-300 px-5 py-3 w-full hover:shadow focus:outline-primary">
+      </div>
+
+      <!-- País -->
+      <div class="gap-y-2 flex flex-col max-sm:col-span-2">
+        <label for="country" class="max-sm:text-sm text-gray-800 font-medium">País:</label>
+        <input type="text"
+          id="country"
+          name="country"
+          formControlName="country"
+          maxlength="100"
+          placeholder="Seleccione un país"
+          class="border rounded-lg border-gray-300 px-5 py-3 w-full hover:shadow focus:outline-primary">
+      </div>
+
+      <!-- Moneda -->
+      <div class="gap-y-2 flex flex-col max-sm:col-span-2">
+        <label for="currency" class="max-sm:text-sm text-gray-800 font-medium">Moneda:</label>
+        <input type="text"
+          id="currency"
+          name="currency"
+          formControlName="currency"
+          maxlength="100"
+          placeholder="Seleccione una moneda"
+          class="border rounded-lg border-gray-300 px-5 py-3 w-full hover:shadow focus:outline-primary">
+      </div>
+
+      <!-- Foto -->
+      <div class="gap-y-5 flex flex-col col-span-2">
+        <label for="photo" class="max-sm:text-sm text-gray-800 font-medium">Logo de empresa:</label>
+        <div class="flex items-center gap-5 w-fit ">
+          <!-- Preview -->
+          <div class="border-2 border-dashed rounded-xl border-gray-300 size-20 flex flex-col items-center justify-center">
+            <lucide-icon [name]="Image" class="size-7 stroke-[1.2px] text-gray-500" />
+          </div>
+          <!-- Buttons -->
+          <div class="grid grid-cols-2 gap-x-2 gap-y-1">
+            <button type="button" class="flex items-center gap-x-2 px-3 py-2.5 text-xs font-semibold text-white bg-primary rounded-lg hover:bg-primary-dark transition" >
+              <lucide-icon [name]="Upload" class="size-4 " />
+              Subir logo
+            </button>
+            <button class="flex items-center gap-x-2 px-3 py-2.5 text-xs font-semibold text-red-600 rounded-lg hover:bg-gray-50 transition w-fit" >
+              Borrar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button id="submitButton"
+        type="submit"
+        class="block btn-primary !py-3 w-full text-center col-span-2 mt-10"
+      >
+        Crear Empresa
+      </button>
+    </form>
+
+  </div>
+
+</section>

@@ -5,7 +5,6 @@ import { PageCustomerServices } from "@pages/customer/services/services.componen
 import { PageCustomerPrices } from "@pages/customer/prices/prices.component";
 import { PageCustomerClients } from "@pages/customer/clients/clients.component";
 import { PageCustomerDemo } from "@pages/customer/demo/demo.component";
-import { PageCustomerTry } from "@pages/customer/try/try.component";
 import { PageCustomerPartnerts } from "@pages/customer/partnerts/partnerts.component";
 import { PageCustomerContacts } from "@pages/customer/contacts/contacts.component";
 import { PageCustomerReport } from "@pages/customer/report/report.component";
@@ -21,7 +20,6 @@ export const CUSTOMER_ROUTES: Routes = [
       { path: 'precios',      component: PageCustomerPrices    },
       { path: 'clientes',     component: PageCustomerClients   },
       { path: 'demo',         component: PageCustomerDemo      },
-      { path: 'probar',       component: PageCustomerTry       },
       { path: 'afiliados',    component: PageCustomerPartnerts },
       { path: 'contactanos',  component: PageCustomerContacts  },
       { path: 'politicas',    component: PageCustomerPolicies  },
