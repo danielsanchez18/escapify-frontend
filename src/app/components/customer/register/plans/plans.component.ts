@@ -1,38 +1,41 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { LucideAngularModule, Check, MessagesSquare } from 'lucide-angular';
+import { FormsModule } from '@angular/forms';
+import { LucideAngularModule, Star, Check, Tag, CircleCheck, CircleX } from 'lucide-angular';
 
 @Component({
-  selector: 'component-customer-prices-plans',
+  selector: 'component-customer-register-plans',
   imports: [
-    CommonModule,
     LucideAngularModule,
+    CommonModule,
+    FormsModule
   ],
   templateUrl: './plans.component.html',
 })
-export class ComponentCustomerPricesPlans {
+export class ComponentCustomerRegisterPlans {
 
+  readonly Star = Star;
   readonly Check = Check;
-  readonly MessagesSquare = MessagesSquare;
+  readonly Tag = Tag;
+  readonly CircleCheck = CircleCheck;
+  readonly CircleX = CircleX;
 
-  isAnnual: boolean = true;
+  isAnnual: boolean = false;
+  hasCoupon: boolean = false;
+  couponCode: String = '';
+  couponValid: any;
+  couponTried: boolean = false;
+
+  selectedPlan: any = null;
+
+  // Example coupons
+  readonly coupons = [
+    { code: 'DESCUENTO10', discount: 10 },
+    { code: 'PROMO20', discount: 20 },
+    { code: 'OFERTA30', discount: 30 }
+  ];
 
   readonly plans = [
-    {
-      name: 'Free',
-      price_monthly: 0,
-      price_annual: 0,
-      displayPrice: 0,
-      features: [
-        '5 GB Cloud Storage',
-        '5 API Requests/min',
-        '1 Team Member',
-        '1 Project Template',
-        '50 Build Minutes/month',
-        'Email Support',
-        'Basic Analytics'
-      ],
-    },
     {
       name: 'Startup',
       price_monthly: 15,
@@ -47,7 +50,7 @@ export class ComponentCustomerPricesPlans {
         'Email Support',
         'Basic Analytics'
       ],
-      highlighted: true
+      selected: false,
     },
     {
       name: 'Team',
@@ -63,7 +66,7 @@ export class ComponentCustomerPricesPlans {
         'Email Support',
         'Basic Analytics'
       ],
-      highlighted: false
+      selected: false
     },
     {
       name: 'Enterprise',
@@ -79,7 +82,7 @@ export class ComponentCustomerPricesPlans {
         'Email Support',
         'Basic Analytics'
       ],
-      highlighted: false
+      selected: false
     },
   ]
 
@@ -115,6 +118,25 @@ export class ComponentCustomerPricesPlans {
     };
 
     requestAnimationFrame(step);
+  }
+
+  selectPlan(plan: any) {
+    this.plans.forEach(p => p.selected = false);
+    plan.selected = true;
+    this.selectedPlan = plan;
+  }
+
+  applyCoupon() {
+    this.hasCoupon = true;
+  }
+
+  validateCoupon() {
+    this.couponTried = true;
+    this.couponValid = this.coupons.find(c => c.code === this.couponCode.trim().toUpperCase());
+  }
+
+  onCouponInputChange() {
+    this.couponTried = false;
   }
 
 }

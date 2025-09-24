@@ -1,0 +1,113 @@
+<section class="min-h-[100dvh] w-full">
+
+  <div class="w-full max-w-[70rem] mx-auto py-20 space-y-10 px-5">
+
+    <!-- Title -->
+    <div class="space-y-3 flex flex-col items-center justify-center">
+      <h1 class="text-3xl md:text-4xl text-center font-bold text-gray-900 text-balance">
+        Elige tu plan perfecto
+      </h1>
+      <p class="text-gray-500 text-center text-balance">Selecciona el plan que mejor se adapte a las necesidades de Escapify</p>
+    </div>
+    <!-- End Title -->
+
+    <!-- Free Trial Message -->
+    <div class="w-fit mx-auto flex items-center justify-center gap-x-2 text-[13px] font-medium text-white bg-primary rounded-lg px-3 py-1.5">
+      <lucide-angular [name]="Star" class="size-3 fill-white stroke-0" />
+      <p>14 días de prueba gratuita</p>
+    </div>
+    <!-- End Free Trial Message -->
+
+    <!-- Plans -->
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <button *ngFor="let plan of plans"
+        (click)="selectPlan(plan)"
+        class="text-start w-full bg-white border border-gray-200 rounded-xl shadow-xs p-5 space-y-7 hover:shadow-lg transition"
+        [class.border-2]="plan.selected"
+        [class.border-primary]="plan.selected">
+        <div>
+          <h3 class="text-lg font-semibold">{{ plan.name }}</h3>
+          <p class="text-[13px] text-gray-500">Lo mejor para desarrolladores individuales</p>
+
+          <div class="text-4xl font-semibold text-gray-900 flex gap-x-2 mt-5">
+            <span class="text-sm">S/.</span>
+            <p>{{ plan.displayPrice }}</p>
+            <span class="text-sm font-normal">PEN</span>
+          </div>
+
+          <p class="text-gray-500 text-[13px]">/mensual para una persona</p>
+        </div>
+
+        <button *ngIf="!plan.selected"
+          class="w-full py-2 px-4 text-sm font-medium bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:shadow transition">
+          Seleccionar Plan
+        </button>
+
+        <button *ngIf="plan.selected"
+        class="w-full btn-primary text-sm hover:shadow transition">
+          Plan Seleccionado
+        </button>
+
+        <div class="border-t border-gray-200 py-5 gap-y-2 grid">
+          @for (features of plan.features; track $index) {
+            <div class="flex items-center gap-x-3">
+              <lucide-icon [name]="Check" class="size-4 stroke-3 text-gray-800" />
+              <p class="text-sm">{{ features }}</p>
+            </div>
+          }
+        </div>
+      </button>
+    </div>
+    <!-- End Plans -->
+
+    <!-- Discount Coupon Container -->
+    <div *ngIf="selectedPlan"
+      class="w-full border border-gray-200 bg-white rounded-xl shadow-xs p-5 flex flex-col gap-y-3">
+      <div class="flex items-center gap-x-3">
+        <lucide-icon [name]="Tag" class="size-4.5 text-gray-900" />
+        <h3 class="font-semibold text-gray-900">¿Tienes un cupón de descuento?</h3>
+      </div>
+
+      <button class="w-full text-sm font-medium border border-gray-200 hover:bg-gray-50 hover:shadow rounded-lg px-4 py-2 transition"
+        (click)="applyCoupon()"
+        [ngClass]="{ 'hidden': hasCoupon }">
+        Aplicar cupón de descuento
+      </button>
+
+      <div *ngIf="hasCoupon" class="flex items-center gap-x-3 w-full">
+        <input type="text"
+          class="border border-gray-300 text-sm rounded-lg px-4 py-2 w-full"
+          placeholder="Ingresa tu código de cupón"
+          [(ngModel)]="couponCode" />
+        <button (click)="validateCoupon()"
+          [disabled]="!couponCode.trim()"
+        class="bg-primary text-white rounded-lg px-4 py-2 font-medium text-sm disabled:opacity-80">Aplicar</button>
+      </div>
+
+      <!-- Message if coupon is applied -->
+      <div *ngIf="hasCoupon && couponValid && couponTried"
+        class="flex gap-x-3 w-full px-4 py-2 rounded-lg bg-primary-light/10 font-medium text-primary text-sm">
+        <lucide-icon [name]="CircleCheck" class="size-4.5" />
+        Cupón "{{ couponValid.code }}" aplicado: {{ couponValid.discount }}% de descuento primer mes
+      </div>
+
+      <!-- Message if coupon is invalid -->
+      <div *ngIf="hasCoupon && !couponValid && couponTried"
+       class="flex gap-x-3 w-full px-4 py-2 rounded-lg bg-red-50 font-medium text-red-600 text-sm">
+        <lucide-icon [name]="CircleX" class="size-4.5" />
+        Cupón inválido. Por favor, verifica el código e inténtalo de nuevo.
+      </div>
+    </div>
+    <!-- End Discount Coupon Container -->
+
+    <!-- Submit Button -->
+    <button *ngIf="selectedPlan"
+      id="submitButton"
+      type="submit"
+      class="block btn-primary !py-3 w-full text-center col-span-2 mt-5"
+    >
+      Continuar
+    </button>
+  </div>
+
+</section>
