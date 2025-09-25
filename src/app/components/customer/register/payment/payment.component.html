@@ -1,1 +1,165 @@
-<p>payment works!</p>,
+<section class="w-full">
+
+  <div class="w-full max-w-[70rem] mx-auto py-20 px-5 flex max-lg:flex-col gap-5">
+
+    <!-- Métodos de pago -->
+    <div class="space-y-10 w-full border border-gray-200 rounded-xl p-5 ">
+      <article class="bg-white space-y-5">
+
+        <!-- Title -->
+        <div class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0">
+          <!-- <lucide-icon [name]="LockKeyhole" class="size-4.5 text-gray-800" /> -->
+          <h3 class="font-semibold text-gray-800">Método de pago</h3>
+          <p class="text-gray-600 text-sm col-span-2">Selecciona cómo deseas pagar tu suscripción</p>
+        </div>
+        <!-- End Title -->
+
+        <!-- Card Free Trial -->
+        <button
+          class="bg-primary-light/10 rounded-xl px-5 py-4 flex items-center gap-x-3 text-start w-full hover:shadow transition">
+
+          <div
+            class="rounded-full min-w-5 max-w-5 h-5 border-2 border-primary bg-white flex items-center justify-center">
+            <span class="w-3 h-3 bg-primary rounded-full"></span>
+          </div>
+          <div>
+            <h4 class="font-semibold text-sm text-primary line-clamp-1">Iniciar periodo de prueba gratuita</h4>
+            <p class="text-xs text-gray-800 line-clamp-2">14 días gratis, luego S/.79.00 al mes. Cancela cuando quieras.
+            </p>
+          </div>
+
+          <div class="ml-auto items-center gap-x-1 text-white bg-primary px-2.5 py-1.5 rounded-lg hidden sm:flex">
+            <lucide-icon [name]="Gift" class="size-4" />
+            <span class="font-semibold text-xs leading-none">Gratis</span>
+          </div>
+        </button>
+        <!-- End Card Free Trial -->
+
+      </article>
+
+      <article class="bg-white space-y-0">
+
+        <!-- Title -->
+        <h3 class="font-semibold text-gray-800 mb-5">Selecciona tu método de pago</h3>
+        <!-- End Title -->
+
+        <div class="rounded-xl border border-gray-200 divide-y divide-gray-200 overflow-hidden">
+          <!-- Credit Card -->
+          <button class="px-5 py-4 flex items-center gap-x-3 text-start w-full hover:shadow transition">
+            <div class="text-gray-800">
+              <lucide-icon [name]="CreditCard" class="size-6 stroke-[1.5]" />
+            </div>
+            <div>
+              <h4 class="font-semibold text-sm text-primary line-clamp-1">Tarjeta de Crédito/Débito</h4>
+              <p class="text-xs text-gray-800 line-clamp-2">Visa, Mastercard, American Express</p>
+            </div>
+            <div
+              class="ml-auto rounded-full min-w-5  max-w-5 h-5 border-2 border-primary bg-white flex items-center justify-center">
+              <!-- <span class="w-3 h-3 bg-primary rounded-full"></span> -->
+            </div>
+          </button>
+
+          <!-- Yape -->
+          <button class="px-5 py-4 flex items-center gap-x-3 text-start w-full hover:shadow transition">
+            <img src="https://logosenvector.com/logo/img/yape-37283.png" alt="Yape" class="size-6">
+            <div>
+              <h4 class="font-semibold text-sm text-primary line-clamp-1">Yape</h4>
+              <p class="text-xs text-gray-800 line-clamp-2">Pago móvil instantáneo</p>
+            </div>
+            <div
+              class="ml-auto rounded-full min-w-5  max-w-5 h-5 border-2 border-primary bg-white flex items-center justify-center">
+              <!-- <span class="w-3 h-3 bg-primary rounded-full"></span> -->
+            </div>
+          </button>
+
+          <!-- Plin -->
+          <button class="px-5 py-4 flex items-center gap-x-3 text-start w-full hover:shadow transition">
+            <img src="https://images.seeklogo.com/logo-png/38/2/plin-logo-png_seeklogo-386806.png" alt="Plin"
+              class="size-6">
+            <div>
+              <h4 class="font-semibold text-sm text-primary line-clamp-1">Plin</h4>
+              <p class="text-xs text-gray-800 line-clamp-2">Pago móvil instantáneo</p>
+            </div>
+            <div
+              class="ml-auto rounded-full min-w-5  max-w-5 h-5 border-2 border-primary bg-white flex items-center justify-center">
+              <!-- <span class="w-3 h-3 bg-primary rounded-full"></span> -->
+            </div>
+          </button>
+
+          <!-- PayPal -->
+          <button class="px-5 py-4 flex items-center gap-x-3 text-start w-full hover:shadow transition">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png" alt="Plin"
+              class="size-6">
+            <div>
+              <h4 class="font-semibold text-sm text-primary line-clamp-1">PayPal</h4>
+              <p class="text-xs text-gray-800 line-clamp-2">Pago seguro internacional</p>
+            </div>
+            <div
+              class="ml-auto rounded-full min-w-5  max-w-5 h-5 border-2 border-primary bg-white flex items-center justify-center">
+              <!-- <span class="w-3 h-3 bg-primary rounded-full"></span> -->
+            </div>
+          </button>
+        </div>
+
+
+      </article>
+
+      <!-- Message Payment Security -->
+      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3">
+        <div class="flex items-center gap-x-1">
+          <lucide-icon [name]="ShieldCheck" class="size-4 sm:size-4.5 text-gray-600" />
+          <span class="text-sm text-gray-600">Pago 100% seguro</span>
+        </div>
+        <div class="size-1 rounded-full bg-gray-500"></div>
+        <div class="flex items-center gap-x-1">
+          <lucide-icon [name]="Lock" class="size-4 sm:size-4.5 text-gray-600" />
+          <span class="text-sm text-gray-600">Datos encriptados</span>
+        </div>
+      </div>
+    </div>
+    <!-- End métodos de pago -->
+
+    <!-- Summary -->
+    <div class="p-5 border border-gray-200 rounded-xl space-y-5 h-fit block w-full lg:w-md">
+      <h3 class="font-semibold text-gray-800">Resumen de la suscripción</h3>
+
+      <div class="space-y-2">
+        <p class="text-sm font-semibold text-gray-900">Plan Pro - 14 días</p>
+        <p class="text-xs text-gray-800">Ideal para empresas en crecimiento con múltiples ubicaciones</p>
+      </div>
+
+      <div class="py-5 border-y border-gray-200 space-y-1">
+        <p class="flex items-center justify-between text-sm">
+          <span>Empresa:</span>
+          <span class="font-semibold text-gray-900">Escapify</span>
+        </p>
+        <p class="flex items-center justify-between text-sm text-gray-900">
+          <span>RUC:</span>
+          <span>200123456789</span>
+        </p>
+      </div>
+      <p class="flex items-center justify-between text-sm">
+        <span>Precio base:</span>
+        <span class="font-semibold text-gray-900">S/. 199.00/mes</span>
+      </p>
+      <div class="pt-5 border-t border-gray-200 flex justify-between gap-x-2">
+        <p class="text-sm mt-0.5">Total:</p>
+        <div class="text-right">
+          <p class="font-semibold text-primary">14 días gratis</p>
+          <p class="text-xs text-gray-600">luego S/.79.00 al mes</p>
+        </div>
+      </div>
+      <div class="p-3 border-xl bg-primary-light/10 text-sm px-4 text-gray-900 rounded-lg">
+        <lucide-icon [name]="CalendarDays" class="size-4 inline-block mr-1 mb-1" />
+        Tu prueba gratuita termina el 09 de Septiembre de 2025
+      </div>
+
+      <button class="w-full bg-primary text-white font-semibold rounded-lg px-4 py-3 hover:bg-primary-dark transition">
+        Iniciar prueba gratuita
+      </button>
+      <p class="text-xs text-gray-500 text-center">Al continuar, aceptas nuestros términos de servicio y política de privacidad.</p>
+    </div>
+    <!-- End Summary -->
+  </div>
+
+</section>

@@ -93,7 +93,7 @@
 
       <!-- Message if coupon is invalid -->
       <div *ngIf="hasCoupon && !couponValid && couponTried"
-       class="flex gap-x-3 w-full px-4 py-2 rounded-lg bg-red-50 font-medium text-red-600 text-sm">
+       class="flex items-center gap-x-3 w-full px-4 py-2 rounded-lg bg-red-50 font-medium text-red-600 text-sm">
         <lucide-icon [name]="CircleX" class="size-4.5" />
         Cupón inválido. Por favor, verifica el código e inténtalo de nuevo.
       </div>
@@ -104,9 +104,10 @@
     <button *ngIf="selectedPlan"
       id="submitButton"
       type="submit"
-      class="block btn-primary !py-3 w-full text-center col-span-2 mt-5"
+      class="btn-primary !py-3 !rounded-xl w-full text-center col-span-2 mt-5 max-w-sm mx-auto flex items-center gap-x-2"
     >
       Continuar
+      <!-- <lucide-icon [name]="ChevronRight" class="size-5" /> -->
     </button>
   </div>
 

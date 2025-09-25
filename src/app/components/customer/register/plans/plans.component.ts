@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { LucideAngularModule, Star, Check, Tag, CircleCheck, CircleX } from 'lucide-angular';
+import { LucideAngularModule, Star, Check, Tag, CircleCheck, CircleX, ChevronRight } from 'lucide-angular';
 
 @Component({
   selector: 'component-customer-register-plans',
@@ -19,6 +19,7 @@ export class ComponentCustomerRegisterPlans {
   readonly Tag = Tag;
   readonly CircleCheck = CircleCheck;
   readonly CircleX = CircleX;
+  readonly ChevronRight = ChevronRight;
 
   isAnnual: boolean = false;
   hasCoupon: boolean = false;
