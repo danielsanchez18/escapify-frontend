@@ -1,6 +1,6 @@
 <section class="min-h-[100dvh] w-full">
 
-  <div class="w-full max-w-[70rem] mx-auto py-20 space-y-10 px-5">
+  <div class="w-full max-w-[70rem] mx-auto py-20 space-y-10">
 
     <!-- Title -->
     <div class="space-y-3 flex flex-col items-center justify-center">
@@ -36,7 +36,7 @@
 
     <!-- Form -->
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()"
-      class="max-w-xl mx-auto px-5 grid grid-cols-2 gap-5">
+      class="max-w-xl mx-auto px-5 grid sm:grid-cols-2 gap-5">
 
       <!-- Nombre -->
       <div class="gap-y-2 flex flex-col">
@@ -75,7 +75,7 @@
       </div>
 
       <!-- Teléfono -->
-      <div class="gap-y-2 flex flex-col col-span-2">
+      <div class="gap-y-2 flex flex-col sm:col-span-2">
         <label for="phoneNumber" class="max-sm:text-sm text-gray-800 font-medium">Teléfono:</label>
         <div class="relative">
           <input type="text"
@@ -95,7 +95,7 @@
       </div>
 
       <!-- Correo -->
-      <div class="gap-y-2 flex flex-col col-span-2">
+      <div class="gap-y-2 flex flex-col sm:col-span-2">
         <label for="email" class="max-sm:text-sm text-gray-800 font-medium">Correo:</label>
         <div class="relative">
           <input type="email"
@@ -114,7 +114,7 @@
       </div>
 
       <!-- Contraseña -->
-      <div class="gap-y-2 flex flex-col col-span-2">
+      <div class="gap-y-2 flex flex-col sm:col-span-2">
         <label for="password" class="max-sm:text-sm text-gray-800 font-medium">Contraseña:</label>
         <div class="relative">
           <lucide-icon [name]="Lock" class="absolute text-gray-500 size-5 top-1/2 -translate-y-1/2 left-2.5" />
@@ -144,7 +144,7 @@
       </div>
 
       <!-- Aceptar términos -->
-      <div class="flex space-x-3 my-7 col-span-2">
+      <div class="flex space-x-3 my-7 sm:col-span-2">
         <input type="checkbox"
           id="acceptTerms"
           checked
@@ -160,7 +160,7 @@
       <!-- Submit Button -->
       <button id="submitButton"
         type="submit"
-        class="block btn-primary !py-3 w-full text-center col-span-2"
+        class="block btn-primary !py-3 w-full text-center sm:col-span-2"
       >
         Crear Cuenta
       </button>
